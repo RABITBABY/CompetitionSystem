@@ -4,9 +4,11 @@ public class TestAction {
 
 	private String s(){
 		System.out.println("lujianwei");
-		System.out.println("ÎÒÊÇ»¶ö©ÎÒÎÒÎÒÎÒ");
-		System.out.println("ÎÒÊÇ»¶ö©ÎÒÎÒÎÒÎÒ");
-		System.out.println("ÎÒÊÇ»¶ö©ÎÒÎÒÎÒÎÒ");
+		System.out.println("ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("ss");
+		int s=1;
+		String ss="ä½ å¥½";
 		return "sss";
 	}
 }
