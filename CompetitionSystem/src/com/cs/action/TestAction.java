@@ -4,10 +4,9 @@ public class TestAction {
 
 	private String s(){
 		System.out.println("lujianwei");
-
-		System.out.println("ss");
-		int s=1;
-		String ss="你好";
-		return "sss";
+		System.out.println("我是欢雯我我我我");
+		System.out.println("我是欢雯我我我我");
+		String stringeee="你是谁";
+        return "sss";
 	}
 }
