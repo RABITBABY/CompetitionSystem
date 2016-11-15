@@ -6,7 +6,7 @@ public class TestAction {
 		System.out.println("lujianwei");
 		System.out.println("我是欢雯我我我我");
 		System.out.println("我是欢雯我我我我");
-		String stringeee="你是谁";
-        return "sss";
+		String stringmy="你是谁";
+        return "ssw";
 	}
 }
