@@ -4,9 +4,9 @@ public class TestAction {
 
 	private String s(){
 		System.out.println("lujianwei");
-		System.out.println("我是欢雯我我我我");
-		System.out.println("我是欢雯我我我我");
-		String stringmy="你s是谁";
-        return "ssw";
+		System.out.println("欢蚊");
+		System.out.println("22");
+		String stringwwwwe="222";
+		return "sss";
 	}
 }
