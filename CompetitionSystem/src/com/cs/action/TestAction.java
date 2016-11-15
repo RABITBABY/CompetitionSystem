@@ -4,7 +4,7 @@ public class TestAction {
 
 	private String s(){
 		System.out.println("lujianwei");
-		System.out.println("ÔªÃ·µçÄÔtesttest");
-		return "ÃÀĞÀ¿ì¹¤×÷~";
+		System.out.println("å…ƒæ¢…ç«¯");
+		return "ç¾å¿ƒå§å§";
 	}
 }
