@@ -10,6 +10,18 @@ public class TestAction {
 		System.out.println(string);
 		System.out.println("ss");
 		System.out.println("ss");
+		String string="225";
+		System.out.println(string);
+		System.out.println("ss");
+		System.out.println("ss");
+		String string="225";
+		System.out.println(string);
+		System.out.println("ss");
+		System.out.println("ss");
+		String string="225";
+		System.out.println(string);
+		System.out.println("ss");
+		System.out.println("ss");
 		return "s1";
 	}
 }
