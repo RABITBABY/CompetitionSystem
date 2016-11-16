@@ -8,6 +8,7 @@ public class TestAction {
 		System.out.println("22");
 		String string="225";
 		System.out.println(string);
+		System.out.println("ss");
 		return "sss";
 	}
 }
