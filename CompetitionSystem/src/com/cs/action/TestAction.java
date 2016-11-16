@@ -6,7 +6,6 @@ public class TestAction {
 		System.out.println("lujianwei");
 		System.out.println("欢");
 		System.out.println("22");
-		String strings="222";
 		String string="222";
 		System.out.println(string);
 		return "sss";
