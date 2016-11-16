@@ -6,7 +6,7 @@ public class TestAction {
 		System.out.println("lujianwei");
 		System.out.println("欢");
 		System.out.println("22");
-		String stringwww="222";
+		String stringwww="222雯";
 		return "sss";
 	}
 }
