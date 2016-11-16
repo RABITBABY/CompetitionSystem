@@ -9,6 +9,8 @@ public class TestAction {
 		String string="225";
 		System.out.println(string);
 		System.out.println("ss");
+		System.out.println("ss");
+		System.out.println("ss");
 		return "sss";
 	}
 }
