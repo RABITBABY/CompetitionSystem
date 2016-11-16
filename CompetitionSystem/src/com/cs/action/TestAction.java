@@ -9,6 +9,6 @@ public class TestAction {
 	private String s22(){
 		System.out.println("lujianwei");
 		System.out.println("欢");
-		return "测";
+		return "测测试";
 	}
 }
