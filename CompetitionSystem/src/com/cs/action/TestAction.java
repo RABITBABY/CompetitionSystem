@@ -11,6 +11,6 @@ public class TestAction {
 		System.out.println("ss");
 		System.out.println("ss");
 		System.out.println("s");
-		return "sss";
+		return "s";
 	}
 }
