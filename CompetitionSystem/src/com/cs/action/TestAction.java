@@ -10,7 +10,7 @@ public class TestAction {
 		System.out.println(string);
 		System.out.println("ss");
 		System.out.println("ss");
-		System.out.println("ss");
+		System.out.println("s000s");
 		return "sss";
 	}
 }
