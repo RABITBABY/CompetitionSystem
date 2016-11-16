@@ -51,7 +51,7 @@ public class Teacher implements Serializable {
 	
 	@OneToMany
 	@JoinColumn(name="tno")
-	private Set<Groups> groups;
+	private Set<Group> groups;
 	
 	@OneToMany
 	@JoinColumn(name="tno")
@@ -185,11 +185,11 @@ public class Teacher implements Serializable {
 		this.examiner = examiner;
 	}
 
-	public Set<Groups> getGroups() {
+	public Set<Group> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Set<Groups> groups) {
+	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
 	}
 

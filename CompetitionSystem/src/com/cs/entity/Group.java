@@ -1,6 +1,7 @@
 package com.cs.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,46 +10,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="groups")
-public class Groups implements Serializable {
+@Table(name="group")
+public class Group implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int gno;
 	
 	@ManyToOne
 	@JoinColumn(name="com_id")
 	private Competition competition;
 	
 	@Column
-	private int gno;
-	
-	@Column
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name="tno")
-	private Student student;
+	@OneToMany
+	@JoinColumn(name="gno")
+	private Set<GDetail> gDetails;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="tno")
 	private Teacher teacher;
-	
-	@ManyToOne
-	@JoinColumn(name="gno")
+
+	@OneToOne(mappedBy="groups")
 	private Production production;
 
 	//__________________
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Competition getCompetition() {
 		return competition;
@@ -74,13 +65,6 @@ public class Groups implements Serializable {
 		this.name = name;
 	}
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
 
 	public Teacher getTeacher() {
 		return teacher;

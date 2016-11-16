@@ -19,10 +19,10 @@ public class Production implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	//组别号
+	//作品====组别号
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="gno")
-	private Set<Groups> groups;
+	private Group groups;
 	
 	@Column
 	private String name;
@@ -41,11 +41,12 @@ public class Production implements Serializable{
 		this.id = id;
 	}
 
-	public Set<Groups> getGroups() {
+
+	public Group getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Set<Groups> groups) {
+	public void setGroups(Group groups) {
 		this.groups = groups;
 	}
 
