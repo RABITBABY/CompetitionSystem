@@ -1,0 +1,49 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!-- 方言 -->
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<!-- 连接字符串 -->
+	<property name="connection.url">
+		jdbc:mysql:///competition?characterEncoding=utf-8
+	</property>
+	<!-- 加载驱动 -->
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<!-- 用户名和密码 -->
+	<property name="connection.username">root</property>
+	<property name="connection.password">123123</property>
+
+	<!-- session 可以从指定的上下文中获取session会话  -->
+	<property name="current_session_context_class">thread</property>
+	<!--是否可以创建数据库中的数据表   create创建表并覆盖     update 创建并追加      create_drop 创建并删除-->
+	<property name="hibernate.hbm2ddl.auto">update</property>
+	<!-- 在控制台显示Hibernate生成的SQL语句 -->
+	<property name="show_sql">true</property>
+
+
+	<!-- 映射实体类配置文件 -->
+	<!-- 映射实体类   class：类的权限名 -->
+	<mapping class="com.xkjs.entity.Adminster" />
+	<mapping class="com.xkjs.entity.Awards" />
+	<mapping class="com.xkjs.entity.Budget" />
+	<mapping class="com.xkjs.entity.Competition" />
+	<mapping class="com.xkjs.entity.Groups" />
+	<mapping class="com.xkjs.entity.Hour" />
+	<mapping class="com.xkjs.entity.Level" />
+	<mapping class="com.xkjs.entity.Prize" />
+	<mapping class="com.xkjs.entity.Production" />
+	<mapping class="com.xkjs.entity.Project" />
+	<mapping class="com.xkjs.entity.Schedule" />
+	<mapping class="com.xkjs.entity.Standard" />
+	<mapping class="com.xkjs.entity.Student" />
+	<mapping class="com.xkjs.entity.Teacher" />
+
+</session-factory>
+</hibernate-configuration>

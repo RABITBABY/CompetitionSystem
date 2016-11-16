@@ -3,6 +3,7 @@
     <wb-module deploy-name="CompetitionSystem">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <property name="context-root" value="CompetitionSystem"/>
         <property name="java-output-path" value="/CompetitionSystem/WebRoot/WEB-INF/classes"/>
     </wb-module>
