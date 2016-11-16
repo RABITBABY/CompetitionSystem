@@ -10,6 +10,6 @@ public class TestAction {
 		System.out.println("lujianwei");
 		System.out.println("欢");
 		
-		return "s1";
+		return "s122";
 	}
 }
