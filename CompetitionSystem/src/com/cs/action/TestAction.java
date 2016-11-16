@@ -10,6 +10,6 @@ public class TestAction {
 		System.out.println(string);
 		System.out.println("ss");
 		System.out.println("ss");
-		return "www";
+		return "s1";
 	}
 }
