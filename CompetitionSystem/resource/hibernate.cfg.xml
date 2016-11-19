@@ -34,7 +34,6 @@
 	<mapping class="com.xkjs.entity.Awards" />
 	<mapping class="com.xkjs.entity.Budget" />
 	<mapping class="com.xkjs.entity.Competition" />
-	<mapping class="com.xkjs.entity.Groups" />
 	<mapping class="com.xkjs.entity.Hour" />
 	<mapping class="com.xkjs.entity.Level" />
 	<mapping class="com.xkjs.entity.Prize" />
@@ -44,6 +43,8 @@
 	<mapping class="com.xkjs.entity.Standard" />
 	<mapping class="com.xkjs.entity.Student" />
 	<mapping class="com.xkjs.entity.Teacher" />
+	<mapping class="com.cs.entity.GDetail" />
+	<mapping class="com.cs.entity.Group" />
 
 </session-factory>
 </hibernate-configuration>

@@ -11,6 +11,12 @@ public class TestAction {
 		System.out.println("欢");
 		return "测测试";
 	}
+	
+	private String s23(){
+		System.out.println("lujianwei");
+		System.out.println("欢");
+		return "测测试";
+	}
 	private String s24(){
 		System.out.println("lujianwei");
 		System.out.println("欢");

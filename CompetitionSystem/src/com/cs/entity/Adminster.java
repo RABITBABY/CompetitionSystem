@@ -14,19 +14,20 @@ import javax.persistence.Table;
 public class Adminster implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int no;
+	private String no;
 	@Column
 	private String password;
 	
 	//-----------------------------
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
+	
 	public String getPassword() {
 		return password;
+	}
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
 	}
 	public void setPassword(String password) {
 		this.password = password;
