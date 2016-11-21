@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--JavaScript插件都是依赖与jQuery库-->
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="<%=path%>/js/studentIndex.js" ></script>
   </head>
   
   <body>
@@ -47,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="list-group-item">获奖情况</li>
 							<li class="list-group-item">我的信息</li>
 							<li class="list-group-item">下载中心</li>
+							<li class="list-group-item"></li>
 						</ul>
 					</div>
 				</div>
