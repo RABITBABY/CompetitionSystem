@@ -1,0 +1,48 @@
+*{
+	font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif;
+}
+
+body,div{
+    margin:0;
+    padding:0;
+}
+body{
+	background-color: #E7E8EB;
+}
+.head{
+	height: 100px;
+	background-color: #008AE3;
+}
+.head-right{
+	margin-right: 30px;
+	padding-top: 50px;
+}
+.head-right a{	
+	float: right;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+#helloUser{
+	border-right: 2px solid gainsboro;
+	padding-right: 10px;
+}
+.list-g li{
+	cursor: pointer;
+}
+.list-g li:last-child{
+	height: 455px;
+}
+.rowadd{
+	margin-left: 60px;
+	margin-right: 60px;
+	margin-top: 41px;
+}
+
+.left-part{
+	padding-right: 0px;
+}
+.right-part{
+	padding-left: 0px;
+}

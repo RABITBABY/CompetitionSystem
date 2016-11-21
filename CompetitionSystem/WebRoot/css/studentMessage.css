@@ -1,0 +1,22 @@
+.msg-head span{
+	height: 70px;
+	line-height: 70px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.msg-head{
+	border-bottom: 1px solid #EEEEEE;
+	padding-left: 20px;
+}
+.madia-msg{
+	font-weight: bold;
+	font-size: 15px;
+}
+.mbody{
+	background-color:#FEFEFE ;
+	border: 1px solid #EEEEEE;
+	padding: 5px 15px;
+}
+.media.msg-part{
+	margin: 20px 15px;
+}

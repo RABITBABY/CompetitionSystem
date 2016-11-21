@@ -1,0 +1,16 @@
+.info-head span{
+	height: 70px;
+	line-height: 70px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.info-head{
+	border-bottom: 1px solid #EEEEEE;
+	padding-left: 20px;
+}
+.infoform{
+	width: 58%;
+	margin-top: 20px;
+}
+
+ 

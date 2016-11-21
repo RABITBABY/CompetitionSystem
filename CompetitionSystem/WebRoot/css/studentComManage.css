@@ -1,0 +1,26 @@
+.manage-head div span{
+	font-size: 15px;
+	font-weight: bold;
+	height: 70px;
+	line-height: 70px;
+}
+.manage-head{
+	border-bottom: 1px solid #EEEEEE;
+	width: 100%;
+	padding-left: 15px;
+}
+.addbtn{
+	margin-top: 20px;
+}
+.comp-table{
+	margin: 20px;
+	width: 75%;
+}
+.range{
+	margin-top: 16px;
+}
+.range-title{
+	padding-left:42px;
+	padding-top: 11px;
+	font-size: 15px;
+}

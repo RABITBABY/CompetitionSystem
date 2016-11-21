@@ -1,0 +1,17 @@
+.down-head span{
+	height: 70px;
+	line-height: 70px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.down-head{
+	border-bottom: 1px solid #EEEEEE;
+	padding-left: 20px;
+}
+.down-content{
+	margin: 20px 0 0 30px;
+}
+.down-table{
+	margin: 20px 0 0 30px;
+	width: 60%;
+}
