@@ -16,6 +16,15 @@
                 /WEB-INF/jsp/student/studentIndex.jsp
             </result>
         </action>
+        
+	</package>
+	
+	<package name="studentPage" namespace="/stuPage" extends="json-default">
+	   <action name="toComManager" class="com.cs.action.student.StudentManagement" method="toComManager">
+            <result name="success" type="json">
+                <param name="includeProperties">page</param>
+            </result>
+        </action>
 		
 	</package>
 

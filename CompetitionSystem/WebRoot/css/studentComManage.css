@@ -1,3 +1,7 @@
+.main{
+	background-color: white;
+	height: 700px
+}
 .manage-head div span{
 	font-size: 15px;
 	font-weight: bold;
@@ -8,6 +12,7 @@
 	border-bottom: 1px solid #EEEEEE;
 	width: 100%;
 	padding-left: 15px;
+	margin-left: 0px;
 }
 .addbtn{
 	margin-top: 20px;
@@ -20,7 +25,9 @@
 	margin-top: 16px;
 }
 .range-title{
-	padding-left:42px;
+	padding-left:29px;
 	padding-top: 11px;
 	font-size: 15px;
+	margin-right: -13px;
+	
 }

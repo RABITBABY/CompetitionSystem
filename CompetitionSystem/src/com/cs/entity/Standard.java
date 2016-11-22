@@ -16,25 +16,27 @@ import javax.persistence.Table;
 public class Standard implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int standardId;
 	
 	@ManyToOne
-	@JoinColumn(name="level_id")
+	@JoinColumn(name="levelId")
 	private Level level;
 	
 	@ManyToOne
-	@JoinColumn(name="pri_id")
+	@JoinColumn(name="prizeId")
 	private Prize prize;
 	
 	@Column
-	private int student;
+	private int student;//学生奖励标准
 	@Column
-	private int teacher;
-	public int getId() {
-		return id;
+	private int teacher;//教师奖励标准
+	
+	
+	public int getStandardId() {
+		return standardId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setStandardId(int standardId) {
+		this.standardId = standardId;
 	}
 	public Level getLevel() {
 		return level;

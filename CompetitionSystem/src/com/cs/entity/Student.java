@@ -16,9 +16,9 @@ import javax.persistence.Table;
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int sno;
+	private int studentNo;
 	@Column
-	private String name;
+	private String studentName;
 	@Column
 	private String gender;
 	@Column
@@ -26,7 +26,7 @@ public class Student {
 	@Column
 	private String profession;
 	@Column
-	private int classno;
+	private int classNo;
 	@Column
 	private int grade;
 	@Column
@@ -35,98 +35,67 @@ public class Student {
 	private String email;
 	@Column
 	private String password;
-	
-	@OneToMany
-	@JoinColumn(name="tno")
-	private Set<Groups> groups;
-
-	public int getSno() {
-		return sno;
+	public int getStudentNo() {
+		return studentNo;
 	}
-
-	public void setSno(int sno) {
-		this.sno = sno;
+	public void setStudentNo(int studentNo) {
+		this.studentNo = studentNo;
 	}
-
-	public String getName() {
-		return name;
+	public String getStudentName() {
+		return studentName;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
-
 	public String getGender() {
 		return gender;
 	}
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 	public String getDepartment() {
 		return department;
 	}
-
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-
 	public String getProfession() {
 		return profession;
 	}
-
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
-
-	public int getClassno() {
-		return classno;
+	public int getClassNo() {
+		return classNo;
 	}
-
-	public void setClassno(int classno) {
-		this.classno = classno;
+	public void setClassNo(int classNo) {
+		this.classNo = classNo;
 	}
-
 	public int getGrade() {
 		return grade;
 	}
-
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Set<Groups> getGroups() {
-		return groups;
-	}
-
-	public void setGroups(Set<Groups> groups) {
-		this.groups = groups;
-	}
 	
+
 	
 }

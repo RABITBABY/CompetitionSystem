@@ -16,12 +16,12 @@ import javax.persistence.Table;
 @Table(name="schedule")
 public class Schedule implements Serializable{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int com_id;
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
 	
 	@ManyToOne
-	@JoinColumn(name="tno")
+	@JoinColumn(name="teacherNo")
 	private Teacher teacher;
 	
 	@Column
@@ -31,12 +31,12 @@ public class Schedule implements Serializable{
 	@Column
 	private Date date;
 	@Column
-	private int hour;
-	public int getCom_id() {
-		return com_id;
+	private int hours;
+	public Competition getCompetition() {
+		return competition;
 	}
-	public void setCom_id(int com_id) {
-		this.com_id = com_id;
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
 	}
 	public Teacher getTeacher() {
 		return teacher;
@@ -62,12 +62,13 @@ public class Schedule implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getHour() {
-		return hour;
+	public int getHours() {
+		return hours;
 	}
-	public void setHour(int hour) {
-		this.hour = hour;
+	public void setHours(int hours) {
+		this.hours = hours;
 	}
+	
 	
 	
 

@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="gdetail")
+@Table(name="groupsDetail")
 public class GDetail {
 
 	@Id
@@ -17,11 +17,11 @@ public class GDetail {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="gno")
+	@JoinColumn(name="groupsNo")
 	private Groups  groups;
 	
 	@ManyToOne
-	@JoinColumn(name="sno")
+	@JoinColumn(name="studentNo")
 	private Student student;
 	public int getId() {
 		return id;

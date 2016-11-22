@@ -18,25 +18,26 @@ import javax.persistence.Table;
 public class Groups implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int gno;//组ID
+	private int groupsNo;//组ID
 	
 	@ManyToOne
-	@JoinColumn(name="com_id")
+	@JoinColumn(name="comId")
 	private Competition competition;//参加竞赛ID
 	
 	@Column
-	private String name;//组名
-	
-	@OneToMany
-	@JoinColumn(name="gno")
-	private Set<GDetail> gDetails;//组成员详细信息
-	
+	private String groupsName;//组名
 	
 	@ManyToOne
-	@JoinColumn(name="tno")
+	@JoinColumn(name="teacherNo")
 	private Teacher teacher;//指导老师
 
-	//__________________
+	public int getGroupsNo() {
+		return groupsNo;
+	}
+
+	public void setGroupsNo(int groupsNo) {
+		this.groupsNo = groupsNo;
+	}
 
 	public Competition getCompetition() {
 		return competition;
@@ -46,22 +47,13 @@ public class Groups implements Serializable {
 		this.competition = competition;
 	}
 
-	public int getGno() {
-		return gno;
+	public String getGroupsName() {
+		return groupsName;
 	}
 
-	public void setGno(int gno) {
-		this.gno = gno;
+	public void setGroupsName(String groupsName) {
+		this.groupsName = groupsName;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 
 	public Teacher getTeacher() {
 		return teacher;
@@ -69,8 +61,6 @@ public class Groups implements Serializable {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
-	}
-
-
+	}	
 	
 }

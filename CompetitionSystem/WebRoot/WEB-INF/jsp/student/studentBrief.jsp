@@ -8,30 +8,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>概况-学科竞赛</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<meta http-equiv="Content-Tpye" content="text/html;charset=utf-8">
-	<!--样式文件引用-->
-	<link href="<%=path%>/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-	<!--JavaScript插件都是依赖与jQuery库-->
-	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--样式文件引用-->
 	<link rel="stylesheet" href="<%=path%>/css/studentBrief.css" />
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
   </head>
   
   <body>
-     	<div>
+    <div class="main">
 			<!--竞赛统计与获奖统计-->
 			<div class="row acconut-style" >
 				<!--竞赛统计-->

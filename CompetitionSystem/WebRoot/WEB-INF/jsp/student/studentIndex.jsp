@@ -51,8 +51,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-10 right-part">
-				  <jsp:include page="test.jsp"></jsp:include>
+				<div class="col-md-10 right-part" id="mycontent">
+				  
+				  <jsp:include page="studentBrief.jsp" ></jsp:include>
+				 
 				  <%--  <jsp:include page="studentBrief.jsp"></jsp:include> --%>
 				   <!-- <iframe src="studentBrief.html" height="700px" width="100%" scrolling="no" frameborder="no"> -->
 				   <!-- <iframe src="studentComManage.html" height="700px" width="100%" scrolling="no" frameborder="no">-->

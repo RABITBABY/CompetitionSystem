@@ -8,26 +8,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="budget")
 public class Budget implements Serializable {
-	@Id
-	private int com_id;
+
 	@Column
 	private String subject;
 	@Column
 	private int sum;
 	@Column
 	private String reasons;
-	public int getCom_id() {
-		return com_id;
-	}
-	public void setCom_id(int com_id) {
-		this.com_id = com_id;
-	}
+	
 	public String getSubject() {
 		return subject;
 	}
