@@ -14,27 +14,38 @@ import javax.persistence.Table;
 public class Adminster implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String no;
+	private String adminNo;//管理员账号唯一不重复
 	@Column
-	private String password;
-	
+	private String password;//密码
+	@Column
+	private String adminName;//管理员真实姓名
+	@Column
+	private String department;//管理员所在系
 	//-----------------------------
-	
+	public String getAdminNo() {
+		return adminNo;
+	}
+	public void setAdminNo(String adminNo) {
+		this.adminNo = adminNo;
+	}
 	public String getPassword() {
 		return password;
-	}
-	public String getNo() {
-		return no;
-	}
-	public void setNo(String no) {
-		this.no = no;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+	public String getAdminName() {
+		return adminName;
+	}
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	
 	
 	

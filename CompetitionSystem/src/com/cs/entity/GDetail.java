@@ -18,7 +18,7 @@ public class GDetail {
 	
 	@ManyToOne
 	@JoinColumn(name="gno")
-	private Group  groups;
+	private Groups  groups;
 	
 	@ManyToOne
 	@JoinColumn(name="sno")
@@ -29,10 +29,10 @@ public class GDetail {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Group getGroups() {
+	public Groups getGroups() {
 		return groups;
 	}
-	public void setGroups(Group groups) {
+	public void setGroups(Groups groups) {
 		this.groups = groups;
 	}
 	public Student getStudent() {

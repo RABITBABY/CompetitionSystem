@@ -96,10 +96,6 @@ public class Competition {
 	@PrimaryKeyJoinColumn
 	private Schedule schedule;
 
-	// 外键一对一 项目一览表
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Project project;
 
 	public int getId() {
 		return id;
@@ -347,14 +343,6 @@ public class Competition {
 
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
 	}
 
 
