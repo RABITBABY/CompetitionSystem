@@ -15,29 +15,39 @@ import javax.persistence.Table;
 public class Project implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int com_id;
+	private int comId;
 	@Column
-	private String name;
+	private String comName;
 	
 	@ManyToOne
-	@JoinColumn(name="level_id")
+	@JoinColumn(name="levelId")
 	private Level level;
 	
 	@Column
 	private String hunit;
 	@Column
-	private String sch_organizer;
-	public int getCom_id() {
-		return com_id;
+	private String sOrganizer;
+	@Column
+	private String introduction;
+	@Column
+	private String DateapplyDate;
+	@Column
+	private String comDate;
+	@Column
+	private int isPublish;
+	
+	
+	public int getComId() {
+		return comId;
 	}
-	public void setCom_id(int com_id) {
-		this.com_id = com_id;
+	public void setComId(int comId) {
+		this.comId = comId;
 	}
-	public String getName() {
-		return name;
+	public String getComName() {
+		return comName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setComName(String comName) {
+		this.comName = comName;
 	}
 	public Level getLevel() {
 		return level;
@@ -51,12 +61,37 @@ public class Project implements Serializable{
 	public void setHunit(String hunit) {
 		this.hunit = hunit;
 	}
-	public String getSch_organizer() {
-		return sch_organizer;
+	public String getsOrganizer() {
+		return sOrganizer;
 	}
-	public void setSch_organizer(String sch_organizer) {
-		this.sch_organizer = sch_organizer;
+	public void setsOrganizer(String sOrganizer) {
+		this.sOrganizer = sOrganizer;
 	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	public String getDateapplyDate() {
+		return DateapplyDate;
+	}
+	public void setDateapplyDate(String dateapplyDate) {
+		DateapplyDate = dateapplyDate;
+	}
+	public String getComDate() {
+		return comDate;
+	}
+	public void setComDate(String comDate) {
+		this.comDate = comDate;
+	}
+	public int getIsPublish() {
+		return isPublish;
+	}
+	public void setIsPublish(int isPublish) {
+		this.isPublish = isPublish;
+	}
+	
 	
 	
 

@@ -17,34 +17,34 @@ import javax.persistence.Table;
 public class Level implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int level_id;
+	private int levelId;
 	
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="levelName")
+	private String levelName;
 	
 	@OneToMany
-	@JoinColumn(name="level_id")
+	@JoinColumn(name="levelId")
 	private Set<Competition> competitions;
 	
 	@OneToMany
-	@JoinColumn(name="level_id")
+	@JoinColumn(name="levelId")
 	private Set<Project> project;
 
-	public int getLevel_id() {
-		return level_id;
+	public int getLevelId() {
+		return levelId;
 	}
 
-	public void setLevel_id(int level_id) {
-		this.level_id = level_id;
+	public void setLevelId(int levelId) {
+		this.levelId = levelId;
 	}
 
-	public String getName() {
-		return name;
+	public String getLevelName() {
+		return levelName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLevelName(String levelName) {
+		this.levelName = levelName;
 	}
 
 	public Set<Competition> getCompetitions() {
@@ -62,9 +62,7 @@ public class Level implements Serializable{
 	public void setProject(Set<Project> project) {
 		this.project = project;
 	}
-	
-	
-	
-	
 
+	
+	
 }

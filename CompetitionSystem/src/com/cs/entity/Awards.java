@@ -18,89 +18,84 @@ import javax.persistence.Table;
 public class Awards implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int awardsId;//序号
 	
 	@Column
-	private String name;
+	private String name;//竞赛名称
 	
 	@Column
-	private Date date;
-	
-	//作品外键
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="produ_id")
-	private Production production;
+	private Date date;//竞赛时间
 	
 	@Column
-	private String hunit;
+	private String hunit;//主办单位
 	
 	@ManyToOne
-	@JoinColumn(name="pri_id")
-	private Prize  prize;
-	
+	@JoinColumn(name="prizeId")
+	private Prize  prize;//获奖等级
+	@ManyToOne
+	@JoinColumn(name="groupsNo")
+	private Groups groups;
 	@Column
-	private String sname;
-	@Column
-	private String instructor;
-	@Column
-	private int people;
-	
+	private int isPublish;
 	//-----------------------------
-	public int getId() {
-		return id;
+
+	public int getAwardsId() {
+		return awardsId;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setAwardsId(int awardsId) {
+		this.awardsId = awardsId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Production getProduction() {
-		return production;
-	}
-	public void setProduction(Production production) {
-		this.production = production;
-	}
+
 	public String getHunit() {
 		return hunit;
 	}
+
 	public void setHunit(String hunit) {
 		this.hunit = hunit;
 	}
+
 	public Prize getPrize() {
 		return prize;
 	}
+
 	public void setPrize(Prize prize) {
 		this.prize = prize;
 	}
-	public String getSname() {
-		return sname;
+
+
+	public Groups getGroups() {
+		return groups;
 	}
-	public void setSname(String sname) {
-		this.sname = sname;
+
+	public void setGroups(Groups groups) {
+		this.groups = groups;
 	}
-	public String getInstructor() {
-		return instructor;
+
+	public int getIsPublish() {
+		return isPublish;
 	}
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
+
+	public void setIsPublish(int isPublish) {
+		this.isPublish = isPublish;
 	}
-	public int getPeople() {
-		return people;
-	}
-	public void setPeople(int people) {
-		this.people = people;
-	}
-	
+
 	
 	
 }

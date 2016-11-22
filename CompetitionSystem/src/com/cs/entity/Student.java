@@ -38,7 +38,7 @@ public class Student {
 	
 	@OneToMany
 	@JoinColumn(name="tno")
-	private Set<Group> groups;
+	private Set<Groups> groups;
 
 	public int getSno() {
 		return sno;
@@ -120,11 +120,11 @@ public class Student {
 		this.password = password;
 	}
 
-	public Set<Group> getGroups() {
+	public Set<Groups> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(Set<Group> groups) {
+	public void setGroups(Set<Groups> groups) {
 		this.groups = groups;
 	}
 	

@@ -15,29 +15,26 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="group")
-public class Group implements Serializable {
+public class Groups implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int gno;
+	private int gno;//组ID
 	
 	@ManyToOne
 	@JoinColumn(name="com_id")
-	private Competition competition;
+	private Competition competition;//参加竞赛ID
 	
 	@Column
-	private String name;
+	private String name;//组名
 	
 	@OneToMany
 	@JoinColumn(name="gno")
-	private Set<GDetail> gDetails;
+	private Set<GDetail> gDetails;//组成员详细信息
 	
 	
 	@ManyToOne
 	@JoinColumn(name="tno")
-	private Teacher teacher;
-
-	@OneToOne(mappedBy="groups")
-	private Production production;
+	private Teacher teacher;//指导老师
 
 	//__________________
 
@@ -74,14 +71,6 @@ public class Group implements Serializable {
 		this.teacher = teacher;
 	}
 
-	public Production getProduction() {
-		return production;
-	}
-
-	public void setProduction(Production production) {
-		this.production = production;
-	}
-	
 
 	
 }

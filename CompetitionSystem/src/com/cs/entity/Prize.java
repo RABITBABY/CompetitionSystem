@@ -17,34 +17,34 @@ import javax.persistence.Table;
 public class Prize implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int pri_id;
+	private int prizeId;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="prizeName")
+	private String prizeName;
 	
 	
 	@OneToMany
-	@JoinColumn(name="pri_id")
+	@JoinColumn(name="prizeId")
 	private Set<Awards> awards;
 
 
-	public int getPri_id() {
-		return pri_id;
+	public int getPrizeId() {
+		return prizeId;
 	}
 
 
-	public void setPri_id(int pri_id) {
-		this.pri_id = pri_id;
+	public void setPrizeId(int prizeId) {
+		this.prizeId = prizeId;
 	}
 
 
-	public String getName() {
-		return name;
+	public String getPrizeName() {
+		return prizeName;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPrizeName(String prizeName) {
+		this.prizeName = prizeName;
 	}
 
 
@@ -56,7 +56,8 @@ public class Prize implements Serializable{
 	public void setAwards(Set<Awards> awards) {
 		this.awards = awards;
 	}
-	
+
+
 	
 	
 }
