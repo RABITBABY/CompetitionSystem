@@ -1,6 +1,9 @@
+body{
+	background-color: #E7E8EB;
+}
 .main{
 	background-color: white;
-	height: 700px
+	height: 700px;
 }
 .manage-head div span{
 	font-size: 15px;
@@ -11,8 +14,10 @@
 .manage-head{
 	border-bottom: 1px solid #EEEEEE;
 	width: 100%;
-	padding-left: 15px;
 	margin-left: 0px;
+}
+.combody{
+	margin-left: 20px
 }
 .addbtn{
 	margin-top: 20px;

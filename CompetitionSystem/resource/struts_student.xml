@@ -13,7 +13,7 @@
 	<package name="student" namespace="/student" extends="struts-default">
         <action name="toIndex" class="com.cs.action.student.StudentManagement" method="toIndex">
             <result name="success">
-                /WEB-INF/jsp/student/studentIndex.jsp
+                /WEB-INF/jsp/student/studentComManage.jsp
             </result>
         </action>
         
