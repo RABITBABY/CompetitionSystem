@@ -38,64 +38,49 @@ public class Awards implements Serializable {
 	@Column
 	private int isPublish;
 	//-----------------------------
-
 	public int getAwardsId() {
 		return awardsId;
 	}
-
 	public void setAwardsId(int awardsId) {
 		this.awardsId = awardsId;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Date getDate() {
 		return date;
 	}
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 	public String getHunit() {
 		return hunit;
 	}
-
 	public void setHunit(String hunit) {
 		this.hunit = hunit;
 	}
-
 	public Prize getPrize() {
 		return prize;
 	}
-
 	public void setPrize(Prize prize) {
 		this.prize = prize;
 	}
-
-
 	public Groups getGroups() {
 		return groups;
 	}
-
 	public void setGroups(Groups groups) {
 		this.groups = groups;
 	}
-
 	public int getIsPublish() {
 		return isPublish;
 	}
-
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
-
+	
 	
 	
 }

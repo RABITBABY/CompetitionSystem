@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name="administer")
 public class Adminster implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String adminNo;//管理员账号唯一不重复
 	@Column
 	private String password;//密码
@@ -46,7 +45,6 @@ public class Adminster implements Serializable {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
 	
 	
 }

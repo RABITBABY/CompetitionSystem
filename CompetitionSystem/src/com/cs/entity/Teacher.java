@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Table(name="teacher")
 public class Teacher implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int teacherNo;
 	@Column
 	private String teacherName;
@@ -48,6 +47,7 @@ public class Teacher implements Serializable {
 	private String password;
 	@Column
 	private int examiner;//是否审批人员
+	
 	
 	public int getTeacherNo() {
 		return teacherNo;
@@ -145,6 +145,7 @@ public class Teacher implements Serializable {
 	public void setExaminer(int examiner) {
 		this.examiner = examiner;
 	}
+	
 	
 	
 	

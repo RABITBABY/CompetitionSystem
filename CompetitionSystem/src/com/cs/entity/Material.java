@@ -1,5 +1,7 @@
 package com.cs.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "material")
-public class Material {
+public class Material implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,7 +60,7 @@ public class Material {
 	public void setMaterialPic(String materialPic) {
 		this.materialPic = materialPic;
 	}
-	
+
 	
 	
 }

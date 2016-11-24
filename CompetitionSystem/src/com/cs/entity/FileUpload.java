@@ -60,6 +60,6 @@ public class FileUpload implements Serializable{
 		this.uploadUser = uploadUser;
 	}
 	
-
+	
 	
 }

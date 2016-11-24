@@ -30,21 +30,25 @@
 
 	<!-- 映射实体类配置文件 -->
 	<!-- 映射实体类   class：类的权限名 -->
-	<mapping class="com.xkjs.entity.Adminster" />
-	<mapping class="com.xkjs.entity.Awards" />
-	<mapping class="com.xkjs.entity.Budget" />
-	<mapping class="com.xkjs.entity.Competition" />
-	<mapping class="com.xkjs.entity.Hour" />
-	<mapping class="com.xkjs.entity.Level" />
-	<mapping class="com.xkjs.entity.Prize" />
-	<mapping class="com.xkjs.entity.Production" />
-	<mapping class="com.xkjs.entity.Project" />
-	<mapping class="com.xkjs.entity.Schedule" />
-	<mapping class="com.xkjs.entity.Standard" />
-	<mapping class="com.xkjs.entity.Student" />
-	<mapping class="com.xkjs.entity.Teacher" />
-	<mapping class="com.cs.entity.GDetail" />
-	<mapping class="com.cs.entity.Group" />
+	<mapping class="com.cs.entity.Adminster" />
+	<mapping class="com.cs.entity.Article" />
+	<mapping class="com.cs.entity.Awards" />
+	<mapping class="com.cs.entity.Budget" />
+	<mapping class="com.cs.entity.Competition" />
+	<mapping class="com.cs.entity.FileUpload" />
+	<mapping class="com.cs.entity.Groups" />
+	<mapping class="com.cs.entity.GroupsDetail" />
+	<mapping class="com.cs.entity.Hour" />
+	<mapping class="com.cs.entity.Level" />
+	<mapping class="com.cs.entity.Material" />
+	<mapping class="com.cs.entity.Prize" />
+	<mapping class="com.cs.entity.Production" />
+	<mapping class="com.cs.entity.Project" />
+	<mapping class="com.cs.entity.Schedule" />
+	<mapping class="com.cs.entity.Standard" />
+	<mapping class="com.cs.entity.Student" />
+	<mapping class="com.cs.entity.Teacher" />
+
 
 </session-factory>
 </hibernate-configuration>

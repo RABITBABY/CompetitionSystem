@@ -1,5 +1,6 @@
 package com.cs.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,9 +14,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="student")
-public class Student {
+public class Student implements Serializable{
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int studentNo;
 	@Column
 	private String studentName;
@@ -35,6 +35,8 @@ public class Student {
 	private String email;
 	@Column
 	private String password;
+	
+	
 	public int getStudentNo() {
 		return studentNo;
 	}
@@ -96,6 +98,7 @@ public class Student {
 		this.password = password;
 	}
 	
-
+	
+	
 	
 }

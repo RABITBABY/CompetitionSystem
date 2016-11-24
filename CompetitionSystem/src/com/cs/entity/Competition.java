@@ -1,5 +1,6 @@
 package com.cs.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "competition")
-public class Competition {
+public class Competition implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int comId;
@@ -97,7 +98,7 @@ public class Competition {
 	// 外键一对一 培训工作安排
 	@OneToMany
 	@JoinColumn(name="comId")
-	private Schedule schedule;
+	private Set<Schedule> schedule;
 
 	public int getComId() {
 		return comId;
@@ -339,13 +340,14 @@ public class Competition {
 		this.hour = hour;
 	}
 
-	public Schedule getSchedule() {
+	public Set<Schedule> getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(Schedule schedule) {
+	public void setSchedule(Set<Schedule> schedule) {
 		this.schedule = schedule;
 	}
 
+	
 	
 }

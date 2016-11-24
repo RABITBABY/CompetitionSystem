@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="type")
+@Table(name="prize")
 public class Prize implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,37 +27,27 @@ public class Prize implements Serializable{
 	@JoinColumn(name="prizeId")
 	private Set<Awards> awards;
 
-
 	public int getPrizeId() {
 		return prizeId;
 	}
-
-
+	
 	public void setPrizeId(int prizeId) {
 		this.prizeId = prizeId;
 	}
-
 
 	public String getPrizeName() {
 		return prizeName;
 	}
 
-
 	public void setPrizeName(String prizeName) {
 		this.prizeName = prizeName;
 	}
-
 
 	public Set<Awards> getAwards() {
 		return awards;
 	}
 
-
 	public void setAwards(Set<Awards> awards) {
 		this.awards = awards;
 	}
-
-
-	
-	
 }

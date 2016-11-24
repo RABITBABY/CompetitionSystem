@@ -16,6 +16,11 @@ import javax.persistence.Table;
 @Table(name="schedule")
 public class Schedule implements Serializable{
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
+	private Integer scheduleId;
+	
 	@ManyToOne
 	@JoinColumn(name="comId")
 	private Competition competition;
@@ -32,6 +37,13 @@ public class Schedule implements Serializable{
 	private Date date;
 	@Column
 	private int hours;
+	
+	public Integer getScheduleId() {
+		return scheduleId;
+	}
+	public void setScheduleId(Integer scheduleId) {
+		this.scheduleId = scheduleId;
+	}
 	public Competition getCompetition() {
 		return competition;
 	}
@@ -71,5 +83,4 @@ public class Schedule implements Serializable{
 	
 	
 	
-
 }

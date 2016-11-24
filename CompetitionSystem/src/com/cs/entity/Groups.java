@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="group")
+@Table(name="groups")
 public class Groups implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -61,6 +61,7 @@ public class Groups implements Serializable {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
-	}	
+	}
+
 	
 }

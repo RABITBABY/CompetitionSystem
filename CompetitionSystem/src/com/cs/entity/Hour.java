@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,18 +16,30 @@ import javax.persistence.Table;
 public class Hour  implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int com_id;
+	private int hoursId;
+	
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
 	@Column
 	private String type;
 	@Column
 	private int hours;
 	@Column
 	private String remarks;
-	public int getCom_id() {
-		return com_id;
+	
+	
+	public int getHoursId() {
+		return hoursId;
 	}
-	public void setCom_id(int com_id) {
-		this.com_id = com_id;
+	public void setHoursId(int hoursId) {
+		this.hoursId = hoursId;
+	}
+	public Competition getCompetition() {
+		return competition;
+	}
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
 	}
 	public String getType() {
 		return type;
@@ -48,7 +62,4 @@ public class Hour  implements Serializable{
 	
 	
 	
-	
-	
-
 }

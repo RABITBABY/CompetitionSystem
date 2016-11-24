@@ -16,6 +16,13 @@ import javax.persistence.Table;
 @Table(name="budget")
 public class Budget implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer bugetId;
+	
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
 	@Column
 	private String subject;
 	@Column
@@ -23,6 +30,19 @@ public class Budget implements Serializable {
 	@Column
 	private String reasons;
 	
+	
+	public Integer getBugetId() {
+		return bugetId;
+	}
+	public void setBugetId(Integer bugetId) {
+		this.bugetId = bugetId;
+	}
+	public Competition getCompetition() {
+		return competition;
+	}
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
+	}
 	public String getSubject() {
 		return subject;
 	}
@@ -41,6 +61,7 @@ public class Budget implements Serializable {
 	public void setReasons(String reasons) {
 		this.reasons = reasons;
 	}
+	
 	
 	
 }
