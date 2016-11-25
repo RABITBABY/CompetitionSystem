@@ -17,16 +17,15 @@
             </result>
         </action>
         
-	</package>
-	
-	<package name="studentPage" namespace="/stuPage" extends="json-default">
-	   <action name="toComManager" class="com.cs.action.student.StudentManagement" method="toComManager">
-            <result name="success" type="json">
-                <param name="includeProperties">page</param>
+        <action name="toCompManage" class="com.cs.action.student.StudentManagement" method="toCompManage">
+            <result name="success">
+                /WEB-INF/jsp/student/studentComManage.jsp
             </result>
         </action>
-		
+        
 	</package>
+	
+
 
 </struts>
 

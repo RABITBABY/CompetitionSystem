@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name="groups")
@@ -29,7 +30,7 @@ public class Groups implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="teacherNo")
-	private Teacher teacher;//指导老师
+	private Teacher teacher;//指导老师	
 
 	public int getGroupsNo() {
 		return groupsNo;

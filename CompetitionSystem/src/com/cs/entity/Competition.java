@@ -99,6 +99,10 @@ public class Competition implements Serializable{
 	@OneToMany
 	@JoinColumn(name="comId")
 	private Set<Schedule> schedule;
+	
+	@OneToMany
+	@JoinColumn(name="comId")
+	private Set<Groups> groups;
 
 	public int getComId() {
 		return comId;
@@ -348,6 +352,12 @@ public class Competition implements Serializable{
 		this.schedule = schedule;
 	}
 
+	public Set<Groups> getGroups() {
+		return groups;
+	}
 	
+	public void setGroups(Set<Groups> groups) {
+		this.groups = groups;
+	}
 	
 }

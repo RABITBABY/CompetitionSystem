@@ -5,13 +5,13 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <base href="<%=basePath%>">
 
-<title>学生个人中心-学科竞赛</title>
+<title>竞赛管理-学科竞赛</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -28,6 +28,7 @@
 <script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript"
 	src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=path%>/js/studentIndex.js" ></script>
 
 </head>
 
@@ -48,7 +49,7 @@
 						<div class="panel-heading"><i class="glyphicon glyphicon-home"></i>个人中心</div>
 						<!-- List group -->
 						<ul class="list-group list-g">
-							<li class="list-group-item">概况</li>
+							<li class="list-group-item" onclick="indPage()">概况</li>
 							<li class="list-group-item change_left">竞赛管理</li>
 							<li class="list-group-item">我的消息</li>
 							<li class="list-group-item">获奖情况</li>
@@ -96,6 +97,7 @@
 								</tr>
 							</thead>
 							<tbody>
+							    
 								<tr>
 									<td>蓝桥杯校赛</td>
 									<td>2016-08-07</td>

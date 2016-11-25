@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- List group -->
 						<ul class="list-group list-g">
 							<li class="list-group-item change_left">概况</li>
-							<li class="list-group-item">竞赛管理</li>
+							<li class="list-group-item" onclick="comPage();">竞赛管理</li>
 							<li class="list-group-item">我的消息</li>
 							<li class="list-group-item">获奖情况</li>
 							<li class="list-group-item">我的信息</li>
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 comp-account" align="center">
 								<div class="icon-comp">
 									<i class="glyphicon glyphicon-book"></i>
-									<span>2</span>
+									<span>${comAccount}</span>
 								</div>
 								<div class="account">
 									竞赛次数
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 award-account" align="center">
 								<div class="icon-comp">
 									<i class="glyphicon glyphicon-bookmark"></i>
-									<span>2</span>
+									<span>${awardsAccount}</span>
 								</div>
 								<div class="account">
 									获奖次数
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="media-body mbody">
 										<span class="media-heading madia-msg">学生认证</span>
 										<div>
-											<p>林欢雯同学，您的认证信息已经提交，客服会在3个工作日内完成审核</p>
+											<p>林欢雯同学，这部分还没有完成，这部分还没有完成，这部分还没有完成，这部分还没有完成，</p>
 											<span>2016-09-18 10:17:02</span>
 										</div>
 									</div>

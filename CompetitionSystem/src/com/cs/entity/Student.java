@@ -1,6 +1,7 @@
 package com.cs.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -36,6 +37,9 @@ public class Student implements Serializable{
 	@Column
 	private String password;
 	
+	@OneToMany
+	@JoinColumn(name="studentNo")
+	private Set<GroupsDetail> groupsDetails;
 	
 	public int getStudentNo() {
 		return studentNo;
@@ -98,7 +102,12 @@ public class Student implements Serializable{
 		this.password = password;
 	}
 	
+	public Set<GroupsDetail> getGroupsDetails() {
+		return groupsDetails;
+	}
 	
-	
+	public void setGroupsDetails(Set<GroupsDetail> groupsDetails) {
+		this.groupsDetails = groupsDetails;
+	}
 	
 }
