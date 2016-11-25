@@ -8,25 +8,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="budget")
 public class Budget implements Serializable {
+
 	@Id
-	private int com_id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer bugetId;
+	
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
 	@Column
 	private String subject;
 	@Column
 	private int sum;
 	@Column
 	private String reasons;
-	public int getCom_id() {
-		return com_id;
+	
+	
+	public Integer getBugetId() {
+		return bugetId;
 	}
-	public void setCom_id(int com_id) {
-		this.com_id = com_id;
+	public void setBugetId(Integer bugetId) {
+		this.bugetId = bugetId;
+	}
+	public Competition getCompetition() {
+		return competition;
+	}
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
 	}
 	public String getSubject() {
 		return subject;
@@ -46,6 +61,7 @@ public class Budget implements Serializable {
 	public void setReasons(String reasons) {
 		this.reasons = reasons;
 	}
+	
 	
 	
 }

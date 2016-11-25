@@ -19,11 +19,11 @@ public class Production implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int proId;//作品序号
 	@Column
+	private String proName;//作品的名字
+	@Column
 	private  String award;//获得奖项名称
 	@Column
 	private String membersName;//作品成员名字
-	@Column
-	private String proName;//作品的名字
 	@Column
 	private String introduction;//作品介绍
 	@Column
@@ -35,6 +35,12 @@ public class Production implements Serializable{
 	}
 	public void setProId(int proId) {
 		this.proId = proId;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
 	}
 	public String getAward() {
 		return award;
@@ -48,12 +54,6 @@ public class Production implements Serializable{
 	public void setMembersName(String membersName) {
 		this.membersName = membersName;
 	}
-	public String getProName() {
-		return proName;
-	}
-	public void setProName(String proName) {
-		this.proName = proName;
-	}
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -66,6 +66,7 @@ public class Production implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
+	
 	
 
 }

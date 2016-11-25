@@ -1,6 +1,8 @@
 package com.cs.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,28 +12,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "competition")
-public class Competition {
+public class Competition implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(name="name")
-	private String name;
+	private int comId;
+	
+	@Column
+	private String comName;
 	
 	@ManyToOne
-	@JoinColumn(name="tno")
+	@JoinColumn(name="teacherNo")
 	private Teacher teacher;
 	
 	@Column
 	private String unit;
 	
 	@ManyToOne
-	@JoinColumn(name="level_id")
+	@JoinColumn(name="levelId")
 	private Level level;
 	
 	@Column
@@ -82,35 +86,38 @@ public class Competition {
 	private Date lsdate;
 
 	// 外键一对一 预算
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Budget budget;
+	@OneToMany
+    @JoinColumn(name="comId")
+	private Set<Budget> budget;
 
 	// 外键一对一 课时预算
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Hour hour;
+	@OneToMany
+	@JoinColumn(name="comId")
+	private Set<Hour> hour;
 
 	// 外键一对一 培训工作安排
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Schedule schedule;
+	@OneToMany
+	@JoinColumn(name="comId")
+	private Set<Schedule> schedule;
+	
+	@OneToMany
+	@JoinColumn(name="comId")
+	private Set<Groups> groups;
 
-
-	public int getId() {
-		return id;
+	public int getComId() {
+		return comId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setComId(int comId) {
+		this.comId = comId;
 	}
 
-	public String getName() {
-		return name;
+	public String getComName() {
+		return comName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setComName(String comName) {
+		this.comName = comName;
 	}
 
 	public Teacher getTeacher() {
@@ -321,31 +328,36 @@ public class Competition {
 		this.lsdate = lsdate;
 	}
 
-	public Budget getBudget() {
+	public Set<Budget> getBudget() {
 		return budget;
 	}
 
-	public void setBudget(Budget budget) {
+	public void setBudget(Set<Budget> budget) {
 		this.budget = budget;
 	}
 
-	public Hour getHour() {
+	public Set<Hour> getHour() {
 		return hour;
 	}
 
-	public void setHour(Hour hour) {
+	public void setHour(Set<Hour> hour) {
 		this.hour = hour;
 	}
 
-	public Schedule getSchedule() {
+	public Set<Schedule> getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(Schedule schedule) {
+	public void setSchedule(Set<Schedule> schedule) {
 		this.schedule = schedule;
 	}
 
-
+	public Set<Groups> getGroups() {
+		return groups;
+	}
 	
-
+	public void setGroups(Set<Groups> groups) {
+		this.groups = groups;
+	}
+	
 }

@@ -30,7 +30,7 @@ public class Project implements Serializable{
 	@Column
 	private String introduction;
 	@Column
-	private String DateapplyDate;
+	private String applyDate;
 	@Column
 	private String comDate;
 	@Column
@@ -73,11 +73,11 @@ public class Project implements Serializable{
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	public String getDateapplyDate() {
-		return DateapplyDate;
+	public String getApplyDate() {
+		return applyDate;
 	}
-	public void setDateapplyDate(String dateapplyDate) {
-		DateapplyDate = dateapplyDate;
+	public void setApplyDate(String applyDate) {
+		this.applyDate = applyDate;
 	}
 	public String getComDate() {
 		return comDate;
@@ -94,5 +94,4 @@ public class Project implements Serializable{
 	
 	
 	
-
 }

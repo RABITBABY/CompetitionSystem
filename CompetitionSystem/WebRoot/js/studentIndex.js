@@ -1,9 +1,7 @@
-$(function(){
-	$(".list-g li").click(function(){
-		$(this).addClass("change_left");
-		$(this).siblings().removeClass("change_left");
-	});
-			
-	
-});
+function indPage(){
+	location.href="student/toIndex"
+}
+function comPage() {
+	location.href="student/toCompManage"
+}
 

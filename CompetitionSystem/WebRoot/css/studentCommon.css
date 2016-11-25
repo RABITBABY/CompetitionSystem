@@ -1,0 +1,43 @@
+
+.head{
+	height: 100px;
+	background-color: #008AE3;
+	margin-bottom: 42px;
+}
+.head-right{
+	margin-right: 30px;
+	padding-top: 50px;
+}
+.head-right a{	
+	float: right;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+#helloUser{
+	border-right: 2px solid gainsboro;
+	padding-right: 10px;
+}
+.list-g li{
+	cursor: pointer;
+}
+.list-g{
+	height: 659px;
+}
+.rowadd{
+	margin-left: 60px;
+	margin-right: 60px;
+	margin-top: 7px;
+}
+
+.left-part{
+	padding-right: 0px;
+}
+.right-part{
+	padding-left: 0px;
+}
+.change_left{
+	background-color: #008AE3;
+	color: white;
+}

@@ -16,8 +16,16 @@
                 /WEB-INF/jsp/student/studentIndex.jsp
             </result>
         </action>
-		
+        
+        <action name="toCompManage" class="com.cs.action.student.StudentManagement" method="toCompManage">
+            <result name="success">
+                /WEB-INF/jsp/student/studentComManage.jsp
+            </result>
+        </action>
+        
 	</package>
+	
+
 
 </struts>
 
