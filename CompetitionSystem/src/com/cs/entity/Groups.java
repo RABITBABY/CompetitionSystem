@@ -31,6 +31,9 @@ public class Groups implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="teacherNo")
 	private Teacher teacher;//指导老师	
+	
+	@Column
+	private Integer status;
 
 	public int getGroupsNo() {
 		return groupsNo;
@@ -64,5 +67,11 @@ public class Groups implements Serializable {
 		this.teacher = teacher;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	
 }
