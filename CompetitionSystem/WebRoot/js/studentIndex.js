@@ -14,6 +14,6 @@ function awardPage(){
 	location.href="student/toAward";
 }
 function downloadPage(){
-	location.href="student/toDownload";
+	location.href="#";
 }
 

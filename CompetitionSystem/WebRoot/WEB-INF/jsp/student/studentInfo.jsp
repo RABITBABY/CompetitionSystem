@@ -72,21 +72,21 @@
 								<label for="num" class="col-sm-2 control-label">学号</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="num"
-										value="201301554420" disabled="disabled">
+										value="${studentInfo.studentNo}" disabled="disabled">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">姓名</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="name" value="林欢雯"
+									<input type="text" class="form-control" id="name" value="${studentInfo.studentName}"
 										disabled="disabled">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="name" class="col-sm-2 control-label">学院</label>
+								<label for="name" class="col-sm-2 control-label">系部</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="name" value="信息学院"
+									<input type="text" class="form-control" id="name" value="${studentInfo.department}"
 										disabled="disabled">
 								</div>
 							</div>
@@ -94,15 +94,19 @@
 								<label for="name" class="col-sm-2 control-label">专业</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="name"
-										value="计算机科学与技术" disabled="disabled">
+										value="${studentInfo.profession}" disabled="disabled">
 								</div>
 							</div>
-							<div class="form-group">
+							
+						<div class="info-head">
+						   <span>辅助信息</span>
+					    </div>
+					    <div class="form-group" style="margin-top: 20px">
 								<label for="name" class="col-sm-2 control-label">学生证</label>
 								<div class="col-sm-10">
 									<img class="thumbnail" src="img/touxiang.png" />
 								</div>
-							</div>
+						</div>
 
 						</form>
 					</div>

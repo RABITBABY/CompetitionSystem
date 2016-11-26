@@ -48,7 +48,11 @@ public class StudentManagement extends ActionSupport implements RequestAware,Ses
 	}
 
 	public String toInfo(){		
-
+		Student student=new Student();
+		student.setStudentNo(1);
+		student.setPassword("123456");
+		Student studentInfo=stuService.findStudentByNoAndPwd(student);
+		request.put("studentInfo", studentInfo);
 		return SUCCESS;
 	}
 	
