@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2016-11-25 21:31:46
+Date: 2016-11-26 14:28:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,6 +65,7 @@ CREATE TABLE `awards` (
   `date` date DEFAULT NULL COMMENT '竞赛时间',
   `hunit` varchar(45) DEFAULT NULL COMMENT '主办单位',
   `prizeId` int(11) DEFAULT NULL COMMENT '获奖等级',
+  `levelId` int(11) DEFAULT NULL COMMENT '竞赛等级',
   `groupsNo` int(45) DEFAULT NULL COMMENT '获奖组别',
   `isPublish` int(11) DEFAULT '0' COMMENT '发布状态(0未，1发布)',
   PRIMARY KEY (`awardsId`),
@@ -78,8 +79,8 @@ CREATE TABLE `awards` (
 -- ----------------------------
 -- Records of awards
 -- ----------------------------
-INSERT INTO `awards` VALUES ('1', '甲骨文java程序设计', '2016-11-15', '甲骨文公司', '3', '1', '0');
-INSERT INTO `awards` VALUES ('2', '蓝桥杯', '2016-11-21', '蓝桥杯公司', '1', '2', '0');
+INSERT INTO `awards` VALUES ('1', '甲骨文java程序设计', '2016-11-15', '甲骨文公司', '3', null, '1', '0');
+INSERT INTO `awards` VALUES ('2', '蓝桥杯', '2016-11-21', '蓝桥杯公司', '1', null, '2', '0');
 
 -- ----------------------------
 -- Table structure for `budget`
@@ -178,22 +179,24 @@ CREATE TABLE `groups` (
   `comId` int(11) DEFAULT NULL,
   `groupsName` varchar(45) DEFAULT NULL COMMENT '组名',
   `teacherNo` int(11) DEFAULT NULL,
-  `status` int(2) DEFAULT NULL COMMENT '报名状态（0.正在审核 1.等待缴费 2报名成功 3比赛结束）',
+  `status` int(2) DEFAULT NULL COMMENT '报名状态（0.正在审核2.审核未通过 3.等待缴费4报名成功 5比赛结束）',
   PRIMARY KEY (`groupsNo`),
   KEY `com_id` (`comId`),
   KEY `FK_2klbi1qhox9yt1b0j5ovl5lbe` (`teacherNo`),
   KEY `FKB63DD9D4EDBA9C01` (`comId`),
   KEY `FKB63DD9D46741EFEB` (`teacherNo`),
+  KEY `FKB63DD9D4CB59385B` (`comId`),
   CONSTRAINT `FKB63DD9D46741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
+  CONSTRAINT `FKB63DD9D4CB59385B` FOREIGN KEY (`comId`) REFERENCES `project` (`comId`),
   CONSTRAINT `FKB63DD9D4EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of groups
 -- ----------------------------
-INSERT INTO `groups` VALUES ('1', '1', '三剑侠', '1', null);
-INSERT INTO `groups` VALUES ('2', '2', '一剑侠', '1', null);
-INSERT INTO `groups` VALUES ('3', '3', 'xxx', '1', null);
+INSERT INTO `groups` VALUES ('1', '1', '三剑侠', '1', '4');
+INSERT INTO `groups` VALUES ('2', '2', '一剑侠', '1', '4');
+INSERT INTO `groups` VALUES ('3', '3', 'xxx', '1', '4');
 
 -- ----------------------------
 -- Table structure for `groupsdetail`
@@ -338,6 +341,9 @@ CREATE TABLE `project` (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
+INSERT INTO `project` VALUES ('1', '甲骨文', '1', null, null, null, '2016-10-01', '2016-10-03', '2016-10-11', '300.00', '0', '0');
+INSERT INTO `project` VALUES ('2', '软件设计比赛', '2', null, null, null, '2016-11-01', '2016-11-02', '2016-11-22', '200.00', '0', '0');
+INSERT INTO `project` VALUES ('3', '美术杯', '2', null, null, null, '2016-01-01', '2016-01-10', '2016-03-10', '0.00', '0', '0');
 
 -- ----------------------------
 -- Table structure for `schedule`

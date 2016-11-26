@@ -47,6 +47,26 @@ public class StudentManagement extends ActionSupport implements RequestAware,Ses
 		return SUCCESS;
 	}
 
+	public String toInfo(){		
+
+		return SUCCESS;
+	}
+	
+	public String toMessage(){		
+
+		return SUCCESS;
+	}
+	
+	public String toAward(){		
+
+		return SUCCESS;
+	}
+	
+	public String toDownload(){		
+
+		return SUCCESS;
+	}
+
 
 
 	@Override

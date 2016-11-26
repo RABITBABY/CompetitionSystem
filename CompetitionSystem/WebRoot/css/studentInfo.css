@@ -1,3 +1,10 @@
+body{
+	background-color: #E7E8EB;
+}
+.main{
+	background-color: white;
+	height: 700px;
+}
 .info-head span{
 	height: 70px;
 	line-height: 70px;

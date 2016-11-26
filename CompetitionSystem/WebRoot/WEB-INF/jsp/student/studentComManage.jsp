@@ -51,10 +51,10 @@
 						<ul class="list-group list-g">
 							<li class="list-group-item" onclick="indPage()">概况</li>
 							<li class="list-group-item change_left">竞赛管理</li>
-							<li class="list-group-item">我的消息</li>
-							<li class="list-group-item">获奖情况</li>
-							<li class="list-group-item">我的信息</li>
-							<li class="list-group-item">下载中心</li>
+							<li class="list-group-item" onclick="messagePage()">我的消息</li>
+							<li class="list-group-item" onclick="awardPage()">获奖情况</li>
+							<li class="list-group-item" onclick="infoPage()">我的信息</li>
+							<li class="list-group-item" onclick="downloadPage()">下载中心</li>
 							<li class="list-group-item"></li>
 						</ul>
 					</div>
