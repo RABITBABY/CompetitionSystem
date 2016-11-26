@@ -91,37 +91,38 @@
 							<thead>
 								<tr>
 									<th>名称</th>
-									<th>报名时间</th>
+									<th>竞赛级别</th>
+									<th>竞赛时间</th>
 									<th>金额(元)</th>
 									<th>报名状态</th>
 								</tr>
 							</thead>
 							<tbody>
-							    
-								<tr>
-									<td>蓝桥杯校赛</td>
-									<td>2016-08-07</td>
-									<td>0.00</td>
-									<td>通过审核</td>
-								</tr>
-								<tr>
-									<td>蓝桥杯省赛</td>
-									<td>2016-09-07</td>
-									<td>300.00</td>
-									<td>等待缴费</td>
-								</tr>
-								<tr>
-									<td>甲骨文java程序设计大赛</td>
-									<td>2016-10-07</td>
-									<td>0.00</td>
-									<td>未通过</td>
-								</tr>
-								<tr>
-									<td>蓝桥杯校赛</td>
-									<td>2016-08-07</td>
-									<td>0.00</td>
-									<td>正在审核</td>
-								</tr>
+							    <c:forEach items="${groupsList}" var="gro">
+							        <tr>
+										<td>${gro.project.comName}</td>
+										<td>${gro.project.level.levelName}</td>
+										<td>${gro.project.comDate}</td>
+										<td>${gro.project.cost}</td>
+										<c:choose>
+										    <c:when test="${gro.status==0}">
+										       <td>正在审核</td>
+										    </c:when>
+										    <c:when test="${gro.status==1}">
+										        <td>审核未通过</td>
+										    </c:when>
+										    <c:when test="${gro.status==2}">
+										        <td>等待缴费</td>
+										    </c:when>
+										    <c:when test="${gro.status==3}">
+										        <td>报名成功</td>
+										    </c:when>
+										    <c:otherwise>
+										        <td>比赛结束</td>
+										    </c:otherwise>
+										</c:choose>
+								    </tr>
+							    </c:forEach>								
 							</tbody>
 						</table>
 					</div>

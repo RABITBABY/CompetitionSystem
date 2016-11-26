@@ -1,4 +1,4 @@
-package com.cs.dao.competition;
+package com.cs.dao.project;
 
 import java.util.List;
 
@@ -9,9 +9,11 @@ import org.hibernate.Transaction;
 import com.cs.entity.Awards;
 import com.cs.entity.Competition;
 import com.cs.entity.Groups;
+import com.cs.entity.Project;
 import com.cs.util.HibernateUtil;
 
-public class CompetitionDaoImpl implements CompetitionDao{
+public class ProjectDaoImpl implements ProjectDao{
+
 
    
 }

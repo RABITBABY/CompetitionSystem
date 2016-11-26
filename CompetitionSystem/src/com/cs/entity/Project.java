@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="project")
 public class Project implements Serializable{
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int comId;
 	@Column
 	private String comName;

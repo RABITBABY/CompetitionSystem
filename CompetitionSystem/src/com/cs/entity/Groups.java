@@ -20,10 +20,7 @@ public class Groups implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int groupsNo;//组ID
-	
-	@ManyToOne
-	@JoinColumn(name="comId")
-	private Competition competition;//参加竞赛ID
+
 	
 	@Column
 	private String groupsName;//组名
@@ -33,7 +30,11 @@ public class Groups implements Serializable {
 	private Teacher teacher;//指导老师	
 	
 	@Column
-	private Integer status;
+	private Integer status;//报名状态（0.正在审核1.审核未通过 2.等待缴费3报名成功 4比赛结束）
+	
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Project project;
 
 	public int getGroupsNo() {
 		return groupsNo;
@@ -41,14 +42,6 @@ public class Groups implements Serializable {
 
 	public void setGroupsNo(int groupsNo) {
 		this.groupsNo = groupsNo;
-	}
-
-	public Competition getCompetition() {
-		return competition;
-	}
-
-	public void setCompetition(Competition competition) {
-		this.competition = competition;
 	}
 
 	public String getGroupsName() {
@@ -72,6 +65,14 @@ public class Groups implements Serializable {
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	
+	public Project getProject() {
+		return project;
+	}
+	
+	public void setProject(Project project) {
+		this.project = project;
 	}
 	
 }
