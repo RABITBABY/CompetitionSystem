@@ -5,7 +5,9 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -63,31 +65,24 @@
 			<div class="col-md-10 right-part">
 				<div class="main">
 					<div class="award-head">
-						<span>获奖情况(<span>2</span>)
+						<span>获奖情况(<span>${fn:length(awards)}</span>)
 						</span>
 					</div>
 					<div class="award-context">
 						<ul class="cbp_tmtimeline">
-							<li>
-								<div class="cbp_tmtime">
-									<span>4/10/13</span>
-								</div>
-								<div class="cbp_tmicon"></div>
-								<div class="cbp_tmlabel">
-									<h2 class="mytitle">全国-甲骨文杯java程序设计大赛</h2>
-									<p>三等奖</p>
-								</div>
-							</li>
-							<li>
-								<div class="cbp_tmtime">
-									<span>4/11/13</span>
-								</div>
-								<div class="cbp_tmicon"></div>
-								<div class="cbp_tmlabel">
-									<h2 lass="mytitle">校级-蓝桥杯</h2>
-									<p>三等奖</p>
-								</div>
-							</li>
+						   <c:forEach items="${awards}" var="awd">
+						 
+							   <li>
+									<div class="cbp_tmtime">
+										<span><fmt:formatDate value="${awd.date}" pattern="yyyy/MM/dd"/></span>
+									</div>
+									<div class="cbp_tmicon"></div>
+									<div class="cbp_tmlabel">
+										<h2 class="mytitle">${awd.level.levelName}-${awd.name}</h2>
+										<p>${awd.prize.prizeName}</p>
+									</div>
+								</li>
+						   </c:forEach>
 						</ul>
 					</div>
 				</div>

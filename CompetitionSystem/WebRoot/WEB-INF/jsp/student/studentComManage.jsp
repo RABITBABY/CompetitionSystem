@@ -6,6 +6,7 @@
 			+ path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -64,7 +65,7 @@
 					<div class="row manage-head">
 					    <div class="combody">
 					       <div class="col-md-10">
-							<span>我的竞赛(<span>4</span>)
+							<span>我的竞赛(<span>${fn:length(awards)}</span>)
 							</span>
 							</div>
 							<div class="col-md-2 addbtn">

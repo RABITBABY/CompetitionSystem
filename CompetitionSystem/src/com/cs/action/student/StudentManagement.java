@@ -57,8 +57,12 @@ public class StudentManagement extends ActionSupport implements RequestAware,Ses
 		return SUCCESS;
 	}
 	
-	public String toAward(){		
-
+	public String toAward(){	
+		Student student=new Student();
+		student.setStudentNo(1);
+		//学生获奖详情
+	    List<Awards> awards = stuService.findStudentAwards(student);
+	    request.put("awards", awards);
 		return SUCCESS;
 	}
 	
