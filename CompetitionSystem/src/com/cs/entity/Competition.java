@@ -84,6 +84,8 @@ public class Competition implements Serializable{
 	private String lsign;
 	@Column
 	private Date lsdate;
+	@Column
+	private Integer status;
 
 	// 外键一对一 预算
 	@OneToMany
@@ -328,6 +330,14 @@ public class Competition implements Serializable{
 		this.lsdate = lsdate;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	public Set<Budget> getBudget() {
 		return budget;
 	}
@@ -355,9 +365,12 @@ public class Competition implements Serializable{
 	public Set<Groups> getGroups() {
 		return groups;
 	}
-	
+
 	public void setGroups(Set<Groups> groups) {
 		this.groups = groups;
 	}
+
+	
+	
 	
 }

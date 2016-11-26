@@ -12,7 +12,9 @@ import com.cs.dao.groupsDetail.GroupsDetailDaoImpl;
 import com.cs.dao.student.StudentDaoImpl;
 import com.cs.entity.Awards;
 import com.cs.entity.Competition;
+import com.cs.entity.Groups;
 import com.cs.entity.GroupsDetail;
+import com.cs.entity.Project;
 import com.cs.entity.Student;
 import com.cs.service.student.StudentService;
 import com.cs.util.HibernateUtil;
@@ -29,10 +31,10 @@ public class StudentTest {
 		StudentService stuService=new StudentService();
 
 		//学生参加竞赛次数
-		List<Competition> competitions=stuService.findStudentCompetition(student);
-		System.out.println(competitions.size());
-		for (Competition competition : competitions) {
-			System.out.println(competition.getComName()+"1");
+		List<Groups> groups=stuService.findStudentGroupsProj(student);
+		System.out.println(groups.size());
+		for (Groups g : groups) {
+			System.out.println(g.getProject().getComName()+"1");
 		}
 	}
 	

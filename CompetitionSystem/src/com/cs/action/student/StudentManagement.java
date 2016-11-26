@@ -10,6 +10,8 @@ import org.jboss.weld.context.ApplicationContext;
 
 import com.cs.entity.Awards;
 import com.cs.entity.Competition;
+import com.cs.entity.Groups;
+import com.cs.entity.Project;
 import com.cs.entity.Student;
 import com.cs.service.student.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,17 +32,18 @@ public class StudentManagement extends ActionSupport implements RequestAware,Ses
 		List<Awards> awards = stuService.findStudentAwards(student);	
 		request.put("awardsAccount", awards.size());
 		//学生参加竞赛次数
-		List<Competition> competitions=stuService.findStudentCompetition(student);
-		request.put("comAccount", competitions.size());
+		Integer comAccount=stuService.findSuccessGroupsAccount(student);
+		request.put("comAccount",comAccount);
 		return SUCCESS;
 	}
 	
 	public String toCompManage(){		
 		Student student=new Student();
 		student.setStudentNo(1);
-		//学生参加竞赛次数
-		List<Competition> competitions=stuService.findStudentCompetition(student);
-		request.put("comAccount", competitions);
+		//学生报名参加竞赛的详情
+		List<Groups> groupsList=stuService.findStudentGroupsProj(student);
+		request.put("groupsList", groupsList);
+		
 		return SUCCESS;
 	}
 

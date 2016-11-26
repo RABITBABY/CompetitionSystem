@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="project")
 public class Project implements Serializable{
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int comId;
 	@Column
 	private String comName;
@@ -30,13 +29,17 @@ public class Project implements Serializable{
 	@Column
 	private String introduction;
 	@Column
-	private String applyDate;
+	private String applyBeginDate;
+	@Column
+	private String applyEndDate;
 	@Column
 	private String comDate;
 	@Column
+	private Double cost;
+	@Column
+	private Integer status;
+	@Column
 	private int isPublish;
-	
-	
 	public int getComId() {
 		return comId;
 	}
@@ -73,17 +76,35 @@ public class Project implements Serializable{
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	public String getApplyDate() {
-		return applyDate;
+	public String getApplyBeginDate() {
+		return applyBeginDate;
 	}
-	public void setApplyDate(String applyDate) {
-		this.applyDate = applyDate;
+	public void setApplyBeginDate(String applyBeginDate) {
+		this.applyBeginDate = applyBeginDate;
+	}
+	public String getApplyEndDate() {
+		return applyEndDate;
+	}
+	public void setApplyEndDate(String applyEndDate) {
+		this.applyEndDate = applyEndDate;
 	}
 	public String getComDate() {
 		return comDate;
 	}
 	public void setComDate(String comDate) {
 		this.comDate = comDate;
+	}
+	public Double getCost() {
+		return cost;
+	}
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	public int getIsPublish() {
 		return isPublish;
