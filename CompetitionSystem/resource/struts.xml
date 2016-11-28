@@ -7,9 +7,12 @@
 	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="true" />	
 	<include file="struts_student.xml"></include>
 	<include file="struts_teacher.xml"></include>
+	<include file="struts_admin.xml"></include>
+	<include file="admin_pro.xml"></include>
+	
 </struts>
 
 <!-- END SNIPPET: xworkSample -->

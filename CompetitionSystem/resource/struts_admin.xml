@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="admin" namespace="/admin" extends="json-default">
+		<!--跳转到管理员首页列表页 -->
+		<action name="toIndex" class="com.cs.action.admin.AdminAction"
+			method="toIndex">
+			<result name="success">
+				/WEB-INF/jsp/admin/adminIndex.jsp
+			</result>
+		</action>
+
+
+
+		<!--跳转到优秀作品列表页 -->
+		<action name="toPro" class="com.cs.action.admin.AdminAction"
+			method="toPro">
+			<result name="success">
+				/WEB-INF/jsp/admin/admin_pro.jsp
+			</result>
+		</action>
+		<!--跳转到发布获奖 -->
+		<action name="toAwards" class="com.cs.action.admin.AdminAction"
+			method="toAwards">
+			<result name="success">
+				/WEB-INF/jsp/admin/admin_awards.jsp
+			</result>
+		</action>
+		<!--跳转到发布动态 -->
+		<action name="toNew" class="com.cs.action.admin.AdminAction"
+			method="toNew">
+			<result name="success">
+				/WEB-INF/jsp/admin/admin_new.jsp
+			</result>
+		</action>
+		
+
+
+		<!--跳转到竞赛列表页 -->
+		<action name="toCom" class="com.cs.action.admin.AdminAction"
+			method="toCom">
+			<result name="success">
+				/WEB-INF/jsp/admin/admin_com.jsp
+			</result>
+		</action>
+
+	<!--跳转到近期比赛 -->
+		<action name="toRecCom" class="com.cs.action.admin.AdminAction"
+			method="toRecCom">
+			<result name="success">
+				/WEB-INF/jsp/admin/rec_com.jsp
+			</result>
+		</action>
+
+
+
+	<!--跳转到近期获奖 -->
+		<action name="toRecAwards" class="com.cs.action.admin.AdminAction"
+			method="toRecAwards">
+			<result name="success">
+				/WEB-INF/jsp/admin/rec_award.jsp
+			</result>
+		</action>
+
+
+
+
+
+
+
+
+	</package>
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+
