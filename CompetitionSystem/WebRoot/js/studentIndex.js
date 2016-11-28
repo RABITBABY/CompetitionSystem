@@ -13,7 +13,7 @@ function messagePage(){
 function awardPage(){
 	location.href="student/toAward";
 }
-function downloadPage(){
-	location.href="#";
+/*function downloadPage(){
+	location.href="";
 }
-
+*/
