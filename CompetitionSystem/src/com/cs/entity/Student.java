@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,8 +23,9 @@ public class Student implements Serializable{
 	private String studentName;
 	@Column
 	private String gender;
-	@Column
-	private String department;
+	@ManyToOne
+	@JoinColumn(name="departmentId")
+	private Department department;
 	@Column
 	private String profession;
 	@Column
@@ -59,10 +61,10 @@ public class Student implements Serializable{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
-	public void setDepartment(String department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 	public String getProfession() {

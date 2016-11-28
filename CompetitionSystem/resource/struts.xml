@@ -10,6 +10,7 @@
 	<constant name="struts.devMode" value="true" />	
 	<include file="struts_student.xml"></include>
 	<include file="struts_teacher.xml"></include>
+	<include file="struts_auditor.xml"></include>
 	<include file="struts_admin.xml"></include>
 	<include file="admin_pro.xml"></include>
 	

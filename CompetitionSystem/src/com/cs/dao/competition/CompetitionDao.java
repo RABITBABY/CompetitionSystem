@@ -8,4 +8,5 @@ import com.cs.entity.Groups;
 public interface CompetitionDao {
 
 
+	//List<Competition> find
 }

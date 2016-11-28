@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
@@ -23,8 +24,9 @@ public class Teacher implements Serializable {
 	private String gender;
 	@Column
 	private Date birth;
-	@Column
-	private String department;//系别
+	@ManyToOne
+	@JoinColumn(name="departmentId")
+	private Department department;//系别
 	@Column
 	private String subject;
 	@Column
@@ -73,10 +75,10 @@ public class Teacher implements Serializable {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
-	public void setDepartment(String department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 	public String getSubject() {
