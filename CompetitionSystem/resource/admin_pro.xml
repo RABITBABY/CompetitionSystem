@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="pro" namespace="/pro" extends="json-default">
+
+		<!--ajax修改前获取数据 -->
+		<action name="beforeEdit" class="com.cs.action.admin.ProductionAction"
+			method="beforeEdit">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					pro.*
+				</param>
+			</result>
+		</action>
+
+		<!--ajax获取所有数据 -->
+		<action name="all" class="com.cs.action.admin.ProductionAction"
+			method="searchAll">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^productions\[\d+\]\.proId,
+					^productions\[\d+\]\.award,
+					^productions\[\d+\]\.membersName,
+					^productions\[\d+\]\.proName,
+					^productions\[\d+\]\.pic,
+					^productions\[\d+\]\.introduction
+				</param>
+			</result>
+		</action>
+
+
+		<action name="edit" class="com.cs.action.admin.ProductionAction"
+			method="proEdit">
+			<result name="success" type="redirectAction">
+				<param name="actionName">toPro</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+
+		<!-- 上传作品 -->
+		<action name="savePro" class="com.cs.action.admin.ProductionAction"
+			method="savePro">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5242880</param>
+				<param name="allowedExtensions">gif,png,jpg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="redirectAction">
+				<param name="actionName">toPro</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result name="input">/WEB-INF/jsp/admin/adminIndex.jsp</result>
+		</action>
+
+
+		<action name="delPro" class="com.cs.action.admin.ProductionAction"
+			method="delPro">
+			<result name="success" type="redirectAction">
+				<param name="actionName">toPro</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result name="input">/WEB-INF/jsp/admin/adminIndex.jsp</result>
+
+		</action>
+	</package>
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+

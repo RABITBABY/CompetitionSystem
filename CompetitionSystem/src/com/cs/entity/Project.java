@@ -40,6 +40,8 @@ public class Project implements Serializable{
 	private Integer status;
 	@Column
 	private int isPublish;
+	
+	
 	public int getComId() {
 		return comId;
 	}

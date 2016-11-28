@@ -14,6 +14,15 @@ import com.cs.util.HibernateUtil;
 
 public class ProjectDaoImpl implements ProjectDao{
 
+	@Override
+	public List<Project> findAll() {
+		Session session=HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		List<Project> projects=session.createQuery("from Project").list();
+		tr.commit();
+		return projects;
+	}
+
 
    
 }

@@ -21,5 +21,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="WebRoot/ueditor/jsp/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/ueditor/jsp/lib/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/ueditor/jsp/lib/json.jar"/>
+	<classpathentry kind="lib" path="WebRoot/ueditor/jsp/lib/ueditor-1.1.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
