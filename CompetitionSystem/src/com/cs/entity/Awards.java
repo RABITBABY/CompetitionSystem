@@ -32,6 +32,10 @@ public class Awards implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="prizeId")
 	private Prize  prize;//获奖等级
+	
+	@ManyToOne
+	@JoinColumn(name="levelId")
+	private Level level;//竞赛等级
 	@ManyToOne
 	@JoinColumn(name="groupsNo")
 	private Groups groups;
@@ -80,7 +84,13 @@ public class Awards implements Serializable {
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
+	public Level getLevel() {
+		return level;
+	}
 	
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 	
 	
 }

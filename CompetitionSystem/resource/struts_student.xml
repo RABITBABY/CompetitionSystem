@@ -23,6 +23,30 @@
             </result>
         </action>
         
+         <action name="toInfo" class="com.cs.action.student.StudentManagement" method="toInfo">
+            <result name="success">
+                /WEB-INF/jsp/student/studentInfo.jsp
+            </result>
+        </action>
+        
+         <action name="toMessage" class="com.cs.action.student.StudentManagement" method="toMessage">
+            <result name="success">
+                /WEB-INF/jsp/student/studentMessage.jsp
+            </result>
+        </action>
+        
+         <action name="toAward" class="com.cs.action.student.StudentManagement" method="toAward">
+            <result name="success">
+                /WEB-INF/jsp/student/studentAward.jsp
+            </result>
+        </action>
+        
+        <action name="toDownload" class="com.cs.action.student.StudentManagement" method="toDownload">
+            <result name="success">
+                /WEB-INF/jsp/student/studentDownload.jsp
+            </result>
+        </action>
+        
 	</package>
 	
 

@@ -14,6 +14,8 @@ import com.cs.dao.groupsDetail.GroupsDetailDao;
 import com.cs.dao.groupsDetail.GroupsDetailDaoImpl;
 import com.cs.dao.project.ProjectDao;
 import com.cs.dao.project.ProjectDaoImpl;
+import com.cs.dao.student.StudentDao;
+import com.cs.dao.student.StudentDaoImpl;
 import com.cs.entity.Awards;
 import com.cs.entity.Competition;
 import com.cs.entity.Groups;
@@ -29,6 +31,7 @@ public class StudentService {
 	private CompetitionDao comDao=new CompetitionDaoImpl();
 	private ProjectDao proDao=new ProjectDaoImpl();
 	private GroupsDao groupsDao=new GroupsDaoImpl();
+	private StudentDao stuDao=new StudentDaoImpl();
 	/**
 	 * 查询某个学生参加竞赛获得的所有奖项
 	 * @return
@@ -88,6 +91,17 @@ public class StudentService {
 		}
 		
 		return groupsList.size();
+	}
+	
+	/**
+	 * 根据学号密码查询学生
+	 * 报名成功
+	 * @param student
+	 * @return
+	 */
+	public Student findStudentByNoAndPwd(Student student) {
+		Student getStudent = stuDao.findStudentByNo(student);
+		return getStudent;
 	}
 	
 }

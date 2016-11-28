@@ -6,6 +6,7 @@
 			+ path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -51,10 +52,10 @@
 						<ul class="list-group list-g">
 							<li class="list-group-item" onclick="indPage()">概况</li>
 							<li class="list-group-item change_left">竞赛管理</li>
-							<li class="list-group-item">我的消息</li>
-							<li class="list-group-item">获奖情况</li>
-							<li class="list-group-item">我的信息</li>
-							<li class="list-group-item">下载中心</li>
+							<li class="list-group-item" onclick="messagePage()">我的消息</li>
+							<li class="list-group-item" onclick="awardPage()">获奖情况</li>
+							<li class="list-group-item" onclick="infoPage()">我的信息</li>
+							<li class="list-group-item" onclick="downloadPage()">下载中心</li>
 							<li class="list-group-item"></li>
 						</ul>
 					</div>
@@ -64,7 +65,7 @@
 					<div class="row manage-head">
 					    <div class="combody">
 					       <div class="col-md-10">
-							<span>我的竞赛(<span>4</span>)
+							<span>我的竞赛(<span>${fn:length(awards)}</span>)
 							</span>
 							</div>
 							<div class="col-md-2 addbtn">

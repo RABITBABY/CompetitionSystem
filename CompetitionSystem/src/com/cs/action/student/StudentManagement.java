@@ -47,6 +47,34 @@ public class StudentManagement extends ActionSupport implements RequestAware,Ses
 		return SUCCESS;
 	}
 
+	public String toInfo(){		
+		Student student=new Student();
+		student.setStudentNo(1);
+		student.setPassword("123456");
+		Student studentInfo=stuService.findStudentByNoAndPwd(student);
+		request.put("studentInfo", studentInfo);
+		return SUCCESS;
+	}
+	
+	public String toMessage(){		
+
+		return SUCCESS;
+	}
+	
+	public String toAward(){	
+		Student student=new Student();
+		student.setStudentNo(1);
+		//学生获奖详情
+	    List<Awards> awards = stuService.findStudentAwards(student);
+	    request.put("awards", awards);
+		return SUCCESS;
+	}
+	
+	public String toDownload(){		
+
+		return SUCCESS;
+	}
+
 
 
 	@Override
