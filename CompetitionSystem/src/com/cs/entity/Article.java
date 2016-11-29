@@ -30,6 +30,10 @@ public class Article  implements Serializable{
 	@Column
 	private int articleType;
 	
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
+	
 	
 	public int getArticleId() {
 		return articleId;

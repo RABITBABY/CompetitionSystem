@@ -42,6 +42,9 @@ public class Competition implements Serializable{
 	private String phone;
 	@Column
 	private String email;
+	@ManyToOne
+	@JoinColumn(name="departmentId")
+	private Department department;
 	@Column
 	private Date date;
 	@Column
@@ -105,6 +108,8 @@ public class Competition implements Serializable{
 	@OneToMany
 	@JoinColumn(name="comId")
 	private Set<Groups> groups;
+	
+
 
 	public int getComId() {
 		return comId;
@@ -370,7 +375,12 @@ public class Competition implements Serializable{
 		this.groups = groups;
 	}
 
-	
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	
 	
 }

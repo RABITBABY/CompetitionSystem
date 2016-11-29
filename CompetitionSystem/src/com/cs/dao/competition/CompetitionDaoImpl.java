@@ -13,5 +13,14 @@ import com.cs.util.HibernateUtil;
 
 public class CompetitionDaoImpl implements CompetitionDao{
 
+	@Override
+	public List<Competition> findCompetitionsByDeptId(Integer deptId) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("from Competition where department.departmentId=?");
+		List<Competition> list = query.list();
+		return list;
+	}
+
    
 }

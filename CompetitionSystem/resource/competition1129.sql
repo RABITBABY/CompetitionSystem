@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2016-11-28 15:14:30
+Date: 2016-11-29 19:42:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,6 +46,7 @@ CREATE TABLE `article` (
   `pubDate` date DEFAULT NULL COMMENT '发布日期',
   `pubUser` varchar(50) DEFAULT NULL COMMENT '发布用户',
   `articleType` int(30) DEFAULT NULL COMMENT '发布的类型（1--竞赛信息,2—动态,3—预告）\r\n',
+  `comId` int(11) DEFAULT NULL,
   PRIMARY KEY (`articleId`),
   KEY `pubUser` (`pubUser`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`pubUser`) REFERENCES `administer` (`adminNo`)
@@ -116,6 +117,7 @@ CREATE TABLE `competition` (
   `levelId` int(3) NOT NULL COMMENT '竞赛类别',
   `phone` varchar(11) DEFAULT NULL COMMENT '联系电话',
   `email` varchar(45) DEFAULT NULL COMMENT '电子邮箱',
+  `departmentId` int(11) DEFAULT NULL COMMENT '负责人所在系部',
   `date` date DEFAULT NULL COMMENT '填表日期',
   `host` varchar(45) DEFAULT NULL COMMENT '院级以上竞赛举办者',
   `time` date DEFAULT NULL COMMENT '竞赛时间',
@@ -149,9 +151,9 @@ CREATE TABLE `competition` (
 -- ----------------------------
 -- Records of competition
 -- ----------------------------
-INSERT INTO `competition` VALUES ('1', '甲骨文', '1', null, '1', null, null, null, null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `competition` VALUES ('2', '软件设计大赛', '2', null, '2', null, null, null, null, null, null, null, '2', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `competition` VALUES ('3', '美术杯', '1', null, '2', null, null, null, null, null, null, null, '1', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `competition` VALUES ('1', '甲骨文', '1', null, '1', null, null, null, null, null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `competition` VALUES ('2', '软件设计大赛', '2', null, '2', null, null, null, null, null, null, null, null, '2', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `competition` VALUES ('3', '美术杯', '1', null, '2', null, null, null, null, null, null, null, null, '1', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `department`
