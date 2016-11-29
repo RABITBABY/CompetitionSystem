@@ -12,4 +12,6 @@ public interface GroupsDetailDao {
 	 * @return
 	 */
 	List<GroupsDetail> findGroupsDetailsBySNo(Student student);
+
+	List<GroupsDetail> findGroupsDetailByGNo(int GroupsId);
 }

@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags"  prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -46,6 +48,7 @@
 </head>
 
 <body>
+<s:debug></s:debug>
 	<!--导航条-->
 	<div class="man_top">
 		<nav class="navbar navbar-default" role="navigation">
@@ -83,36 +86,44 @@
 					<th>序号</th>
 					<th>获奖比赛</th>
 					<th>主办单位</th>
+					<th>竞赛等级</th>
 					<th>组员</th>
 					<th>指导老师</th>
 					<th>奖项</th>
 					<th>获奖日期</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="col-lg-1">2013071654</td>
-					<td class="col-lg-4">App设计大赛名字坑你会很长，总之会很长</td>
-					<td class="col-lg-1">广东教育局</td>
-					<td class="col-lg-1">李大明、周崇光</td>
-					<td class="col-lg-1">郭敬明</td>
-					<td class="col-lg-1">一等奖</td>
-					<td class="col-lg-1">2016-5-12</td>
+			
+			<s:iterator value="awards" var="a">
+					<tr>
+					<td class="col-lg-1">${a.awardsId }</td>
+					 <td class="col-lg-2">${a.name }</td>
+					<td class="col-lg-2">${a.hunit }</td>
+					<td class="col-lg-1">${a.level.levelName }</td>
+					<td class="col-lg-1">
+					<s:iterator value="#a.groups.groupsDetails" var="ab">
+					${ab.student.studentName }
+					</s:iterator>
+					
+					</td>
+					<td class="col-lg-1">${a.groups.teacher.teacherName }</td>
+					<td class="col-lg-1">${a.prize.prizeName }</td>
 					<td class="col-lg-2">
-						<button class="btn btn-primary">发布征文</button>
+					<fmt:formatDate value="${a.date }" pattern="yyyy-MM-dd"/>
+					</td>
+					<td class="col-lg-1">
+						<s:if test="#a.isPublish eq 0">
+							<button class="btn btn-primary">发布征文</button>
+						</s:if>
+						<s:elseif test="#a.isPublish eq 1">
+						<button class="btn btn-success">查看征文</button>
+						</s:elseif>
+						 
 					</td>
 				</tr>
-				<tr>
-					<td class="col-lg-1">2013071654</td>
-					<td class="col-lg-4">App设计大赛名字坑你会很长，总之会很长</td>
-					<td class="col-lg-1">广东教育局</td>
-					<td class="col-lg-1">李大明、周崇光</td>
-					<td class="col-lg-1">郭敬明</td>
-					<td class="col-lg-1">一等奖</td>
-					<td class="col-lg-1">2016-5-12</td>
-					<td class="col-lg-2">
-						<button class="btn btn-primary">发布征文</button>
-					</td>
-				</tr>
+			 </s:iterator>
+				
+			
 			</table>
 
 		</div>

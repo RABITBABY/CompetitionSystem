@@ -1,10 +1,12 @@
 package com.cs.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,6 @@ public class Groups implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int groupsNo;//组ID
-
 	
 	@Column
 	private String groupsName;//组名
@@ -35,6 +36,20 @@ public class Groups implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="comId")
 	private Project project;
+
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="groupsNo")
+	private List<GroupsDetail> groupsDetails;
+
+	
+	
+	public List<GroupsDetail> getGroupsDetails() {
+		return groupsDetails;
+	}
+
+	public void setGroupsDetails(List<GroupsDetail> groupsDetails) {
+		this.groupsDetails = groupsDetails;
+	}
 
 	public int getGroupsNo() {
 		return groupsNo;
@@ -74,5 +89,8 @@ public class Groups implements Serializable {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+
+
+	
 	
 }

@@ -19,41 +19,30 @@
 <script type="text/javascript">
 	$(function() {
 		$(".list-group-item").click(function() {
-		//	$(this).css("font-size","25px");
+			//	$(this).css("font-size","25px");
 		});
 	})
 </script>
+
 </head>
 
 <body>
 	<div class="con_left">
-				<div class="list-group">
-					<a href="" class="list-group-item active">
-						竞赛资讯
-					</a>
-					<a href="admin/toRecCom" class="list-group-item">近期比赛</a>
-					<a href="admin/toRecAwards" class="list-group-item">近期获奖</a>
+		<div class="list-group">
+			<a href="" class="list-group-item active"> 竞赛资讯 </a> <a
+				href="admin/toRecCom" class="list-group-item">近期比赛</a> <a
+				href="admin/toRecAwards" class="list-group-item">近期获奖</a> <a
+				class="list-group-item active"> 竞赛信息管理 </a> <a href="admin/toCom"
+				class="list-group-item">发布竞赛征文</a> <a href="admin/toNew"
+				class="list-group-item">发布竞赛动态</a> <a href="admin/toAwards"
+				class="list-group-item">发布获奖信息</a> <a href="admin/toPro"
+				class="list-group-item">发布优秀作品</a> <a href=""
+				class="list-group-item active"> 账号管理 </a> <a href=""
+				class="list-group-item">添加用户</a> <a href="" class="list-group-item">权限管理</a>
+			<a href="" class="list-group-item active"> 上传文件 </a> <a href=""
+				style="height: 300px;" class="list-group-item "> </a>
+		</div>
 
-					<a  class="list-group-item active">
-						竞赛信息管理
-					</a>
-					<a href="admin/toCom" class="list-group-item">发布竞赛征文</a>
-					<a href="admin/toNew" class="list-group-item">发布竞赛动态</a>
-					<a href="admin/toAwards" class="list-group-item">发布获奖信息</a>
-					<a href="admin/toPro" class="list-group-item">发布优秀作品</a>
-					<a href="" class="list-group-item active">
-						账号管理
-					</a>
-					<a href="" class="list-group-item">添加用户</a>
-					<a href="" class="list-group-item">权限管理</a>
-					<a href="" class="list-group-item active">
-						上传文件
-					</a>
-					<a href="" style="height: 300px;" class="list-group-item ">
-
-					</a>
-				</div>
-
-			</div>
+	</div>
 </body>
 </html>

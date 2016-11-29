@@ -16,10 +16,13 @@ public class ProjectDaoImpl implements ProjectDao{
 
 	@Override
 	public List<Project> findAll() {
+		
 		Session session=HibernateUtil.getSession();
 		Transaction tr = session.beginTransaction();
 		List<Project> projects=session.createQuery("from Project").list();
+		System.out.println(projects.size()+"impl");
 		tr.commit();
+		
 		return projects;
 	}
 

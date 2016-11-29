@@ -39,6 +39,7 @@ public class Awards implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="groupsNo")
 	private Groups groups;
+	
 	@Column
 	private int isPublish;
 	//-----------------------------
@@ -90,6 +91,13 @@ public class Awards implements Serializable {
 	
 	public void setLevel(Level level) {
 		this.level = level;
+	}
+	@Override
+	public String toString() {
+		return "Awards [awardsId=" + awardsId + ", name=" + name + ", date="
+				+ date + ", hunit=" + hunit + ", prize=" + prize + ", level="
+				+ level + ", groups=" + groups + ", isPublish=" + isPublish
+				+ "]";
 	}
 	
 	

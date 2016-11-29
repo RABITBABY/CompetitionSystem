@@ -39,7 +39,7 @@ public class Student implements Serializable{
 	
 	@OneToMany
 	@JoinColumn(name="studentNo")
-	private Set<GroupsDetail> groupsDetails;
+	private List<GroupsDetail> groupsDetails;
 	
 	public int getStudentNo() {
 		return studentNo;
@@ -101,13 +101,12 @@ public class Student implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Set<GroupsDetail> getGroupsDetails() {
+	public List<GroupsDetail> getGroupsDetails() {
 		return groupsDetails;
 	}
-	
-	public void setGroupsDetails(Set<GroupsDetail> groupsDetails) {
+	public void setGroupsDetails(List<GroupsDetail> groupsDetails) {
 		this.groupsDetails = groupsDetails;
 	}
+	
 	
 }
