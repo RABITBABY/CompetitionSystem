@@ -11,37 +11,37 @@
 	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
 	<constant name="struts.devMode" value="true" />
 	<package name="student" namespace="/student" extends="struts-default">
-        <action name="toIndex" class="com.cs.action.student.StudentManagement" method="toIndex">
+        <action name="toIndex" class="com.cs.action.student.StudentAction" method="toIndex">
             <result name="success">
                 /WEB-INF/jsp/student/studentIndex.jsp
             </result>
         </action>
         
-        <action name="toCompManage" class="com.cs.action.student.StudentManagement" method="toCompManage">
+        <action name="toCompManage" class="com.cs.action.student.StudentAction" method="toCompManage">
             <result name="success">
                 /WEB-INF/jsp/student/studentComManage.jsp
             </result>
         </action>
         
-         <action name="toInfo" class="com.cs.action.student.StudentManagement" method="toInfo">
+         <action name="toInfo" class="com.cs.action.student.StudentAction" method="toInfo">
             <result name="success">
                 /WEB-INF/jsp/student/studentInfo.jsp
             </result>
         </action>
         
-         <action name="toMessage" class="com.cs.action.student.StudentManagement" method="toMessage">
+         <action name="toMessage" class="com.cs.action.student.StudentAction" method="toMessage">
             <result name="success">
                 /WEB-INF/jsp/student/studentMessage.jsp
             </result>
         </action>
         
-         <action name="toAward" class="com.cs.action.student.StudentManagement" method="toAward">
+         <action name="toAward" class="com.cs.action.student.StudentAction" method="toAward">
             <result name="success">
                 /WEB-INF/jsp/student/studentAward.jsp
             </result>
         </action>
         
-        <action name="toDownload" class="com.cs.action.student.StudentManagement" method="toDownload">
+        <action name="toDownload" class="com.cs.action.student.StudentAction" method="toDownload">
             <result name="success">
                 /WEB-INF/jsp/student/studentDownload.jsp
             </result>

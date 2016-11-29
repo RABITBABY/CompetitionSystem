@@ -49,7 +49,7 @@
 	<mapping class="com.cs.entity.Standard" />
 	<mapping class="com.cs.entity.Student" />
 	<mapping class="com.cs.entity.Teacher" />
-
+    <mapping class="com.cs.entity.Department" />
 
 </session-factory>
 </hibernate-configuration>

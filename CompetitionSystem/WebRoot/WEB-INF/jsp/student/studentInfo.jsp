@@ -86,7 +86,7 @@
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">系部</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="name" value="${studentInfo.department}"
+									<input type="text" class="form-control" id="name" value="${studentInfo.department.departmentName}"
 										disabled="disabled">
 								</div>
 							</div>

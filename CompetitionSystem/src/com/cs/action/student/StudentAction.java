@@ -16,7 +16,7 @@ import com.cs.entity.Student;
 import com.cs.service.student.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class StudentManagement extends ActionSupport implements RequestAware,SessionAware{
+public class StudentAction extends ActionSupport implements RequestAware,SessionAware{
 
 	private Map<String, Object> request;
 	
