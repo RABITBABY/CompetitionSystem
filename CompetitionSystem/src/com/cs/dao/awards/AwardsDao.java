@@ -14,4 +14,7 @@ public interface AwardsDao {
 	 * @return
 	 */
 	Awards findStudentAwardByGNo(Groups groups);
+	
+	List<Awards> allAwards();
+	
 }

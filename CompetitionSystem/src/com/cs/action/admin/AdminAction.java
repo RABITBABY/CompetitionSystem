@@ -1,22 +1,26 @@
 package com.cs.action.admin;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.List;
-import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
-
+import com.cs.entity.Awards;
 import com.cs.entity.Production;
-import com.cs.service.production.ProductionService;
+import com.cs.entity.Project;
+import com.cs.service.admin.AdminService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminAction extends ActionSupport {
 
-	private ProductionService proService = new ProductionService();
+	//private ProductionService proService = new ProductionService();
+	//private ProjectService projectService=new ProjectService();
+	
+	private AdminService adminService =new AdminService();
 	// 加载的时候的作品列表
 	private List<Production> productions;
+	
+	//加载时竞赛项目列表
+	private List<Project> projects;
+	//加载时竞赛项目列表
+	private List<Awards> awards;
 	/**
 	 * 跳转到管理员首页
 	 * @return
@@ -27,10 +31,12 @@ public class AdminAction extends ActionSupport {
 	
 	public String toRecCom(){
 		//获取所欲的近期比赛资料
+		projects=adminService.AllProject();
 		return SUCCESS;
 	}
 	public String toRecAwards(){
 		//获取所欲的近期比赛资料
+		awards=adminService.AllAwards();
 		return SUCCESS;
 	}
 	
@@ -39,7 +45,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String toPro() {
-		productions = proService.selectAll();
+		productions = adminService.allPro();
 		return SUCCESS;
 	}
 	/***
@@ -61,6 +67,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String toCom() {
+	
 		return SUCCESS;
 	}
 	
@@ -70,7 +77,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String searchAll(){
-		productions=proService.selectAll();
+		productions=adminService.allPro();
 		return SUCCESS;
 	}
 
@@ -87,6 +94,22 @@ public class AdminAction extends ActionSupport {
 
 	public void setProductions(List<Production> productions) {
 		this.productions = productions;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
+	public List<Awards> getAwards() {
+		return awards;
+	}
+
+	public void setAwards(List<Awards> awards) {
+		this.awards = awards;
 	}
 
 

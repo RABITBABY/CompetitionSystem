@@ -23,6 +23,18 @@ public class AwardsDaoImpl implements AwardsDao{
 		return awards;
 	}
 
+	@Override
+	public List<Awards> allAwards() {
+		Session session = HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		List<Awards> awards=session.createQuery("from Awards").list();
+		for (Awards awards2 : awards) {
+			System.out.println(awards);
+		}
+		tr.commit();
+		return awards;
+	}
+
 	
 	
 

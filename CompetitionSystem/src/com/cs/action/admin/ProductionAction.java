@@ -8,13 +8,13 @@ import java.util.UUID;
 import org.apache.commons.io.IOUtils;
 
 import com.cs.entity.Production;
-import com.cs.service.production.ProductionService;
+import com.cs.service.admin.AdminService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProductionAction extends ActionSupport {
 
-	private ProductionService proService = new ProductionService();
-
+//	private ProductionService proService = new ProductionService();
+	private AdminService adminService =new AdminService();
 	// 上传文件需要的变量
 	private File upload;// 文件
 	private String uploadContentType;// 文件类型
@@ -34,7 +34,7 @@ public class ProductionAction extends ActionSupport {
  */
 	public String beforeEdit() {
 		//后台获取数据
-		pro=proService.findById(proID);
+		pro=adminService.findProById(proID);
 		
 		return SUCCESS;
 	}
@@ -54,7 +54,7 @@ public class ProductionAction extends ActionSupport {
 		//对象获取数据
 		System.out.println("这里---------\n"+pro);
 		//整理修改后的数据
-		proService.update(pro);
+		adminService.updatePro(pro);
 		//对数据对象进行修改
 		return SUCCESS;
 	}
@@ -91,7 +91,7 @@ public class ProductionAction extends ActionSupport {
 		// 根据拿到的文件名、对象信息保存到数据库
 		System.out.println(pro);
 		pro.setPic(fn);
-		if (proService.savePro(pro) > 0) {
+		if (adminService.savePro(pro) > 0) {
 			return SUCCESS;
 		}
 		return "input";
@@ -104,7 +104,7 @@ public class ProductionAction extends ActionSupport {
 	public String delPro() {
 		// proServiceproID
 		System.out.println(proID + "fdfgd");
-		proService.delectPro(proID);
+		adminService.delectPro(proID);
 
 		return SUCCESS;
 	}

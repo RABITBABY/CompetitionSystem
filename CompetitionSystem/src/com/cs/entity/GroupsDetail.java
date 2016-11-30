@@ -3,6 +3,7 @@ package com.cs.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,10 +23,12 @@ public class GroupsDetail implements Serializable{
 	@JoinColumn(name="groupsNo")
 	private Groups  groups;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="studentNo")
 	private Student student;
 
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -49,7 +52,6 @@ public class GroupsDetail implements Serializable{
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	
 	
 	
 }

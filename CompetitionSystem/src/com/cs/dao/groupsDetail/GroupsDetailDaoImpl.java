@@ -20,6 +20,18 @@ public class GroupsDetailDaoImpl implements GroupsDetailDao{
 		Query query = session.createQuery("from GroupsDetail where student.studentNo=?");
 		query.setInteger(0, student.getStudentNo());
 		List<GroupsDetail> groupsDetails = query.list();
+		beginTransaction.commit();
+		return groupsDetails;
+	}
+
+	@Override
+	public List<GroupsDetail> findGroupsDetailByGNo(int GroupsId) {
+		Session session = HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		Query query = session.createQuery("from GroupsDetail where groups.groupsNo=?");
+		query.setInteger(0, GroupsId);
+		List<GroupsDetail> groupsDetails = query.list();
+		tr.commit();
 		return groupsDetails;
 	}
 
