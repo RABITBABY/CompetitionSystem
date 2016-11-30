@@ -26,13 +26,12 @@
 	<property name="hibernate.hbm2ddl.auto">update</property>
 	<!-- 在控制台显示Hibernate生成的SQL语句 -->
 	<property name="show_sql">true</property>
-    <!-- format_sql:格式化sql语句 -->
+	<!-- format_sql:格式化sql语句 -->
 	<property name="format_sql">true</property>
 
 	<!-- 映射实体类配置文件 -->
 	<!-- 映射实体类   class：类的权限名 -->
 	<mapping class="com.cs.entity.Adminster" />
-	<mapping class="com.cs.entity.Article" />
 	<mapping class="com.cs.entity.Awards" />
 	<mapping class="com.cs.entity.Budget" />
 	<mapping class="com.cs.entity.Competition" />
@@ -49,7 +48,8 @@
 	<mapping class="com.cs.entity.Standard" />
 	<mapping class="com.cs.entity.Student" />
 	<mapping class="com.cs.entity.Teacher" />
-    <mapping class="com.cs.entity.Department" />
+	<mapping class="com.cs.entity.Department" />
+	<mapping class="com.cs.entity.Article" />
 
 </session-factory>
 </hibernate-configuration>

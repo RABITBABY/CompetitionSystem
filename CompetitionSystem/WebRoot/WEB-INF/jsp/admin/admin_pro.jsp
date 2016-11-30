@@ -316,8 +316,7 @@ function test() {
 
 	<!-- 修改弹出框 -->
 	<div class="modal fade" id="editModel" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true"
-		data-backdrop="false">
+		aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">

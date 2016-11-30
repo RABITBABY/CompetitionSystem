@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
@@ -78,14 +79,14 @@
 
 		<div class="con_middle">
 			<label class="_title">近期比赛</label>
-			<c:forEach var="p" items="${projects }">
+			<s:iterator value="projects" var="p">
 				<div class="panel panel-primary">
 
 					<div class="panel-heading">${p.comName }</div>
 					<div class="panel-body">
 						<div>
 							<h4 class="col-lg-4">竞赛编号：${p.comId }</h4>
-							<h4 class="col-lg-4">竞赛级别：${p.level.levelId }</h4>
+							<h4 class="col-lg-4">竞赛级别：${p.level.levelName}</h4>
 							<h4 class="col-lg-4">校承办单位：${p.sOrganizer }</h4>
 							<h4 class="col-lg-4">主办单位：${p.hunit }</h4>
 							<h4 class="col-lg-4">报名开始时间：${p.applyBeginDate }</h4>
@@ -96,16 +97,21 @@
 						</div>
 
 						<div class="col-lg-12">
-							<button class="btn btn-primary "
-								style="float: right;margin-right: 50px;">发布征文</button>
+							<s:if test="#p.isPublish eq 0 ">
+								<button class="btn btn-primary " onclick="location='article/toPublic?type=1&comId=${p.comId}'"
+									style="float: right;margin-right: 50px;">发布征文</button>
+							</s:if>
+							<s:else>
+								<button class="btn btn-success "
+									style="float: right;margin-right: 50px;">查看征文</button>
+							</s:else>
 						</div>
 					</div>
 				</div>
 
+			</s:iterator>
 
-			</c:forEach>
 
-			
 		</div>
 
 	</div>

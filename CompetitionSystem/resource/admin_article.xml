@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="article" namespace="/article" extends="json-default">
+		<action name="toPublic" class="com.cs.action.admin.ArticleAction"
+			method="toPublic">
+			<result>/WEB-INF/jsp/admin/article_pub.jsp</result>
+		</action>
+		<action name="pubArticl" class="com.cs.action.admin.ArticleAction"
+			method="pubArticl">
+			<result type="redirectAction" name="success">
+				<param name="actionName">toCom</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result type="redirectAction" name="input">
+				<param name="actionName">toCom</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+
+		<action name="delectArticle" class="com.cs.action.admin.ArticleAction"
+			method="delectArticle">
+			<result type="redirectAction" name="success">
+				<param name="actionName">toCom</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+
+	</package>
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+

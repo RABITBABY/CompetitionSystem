@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -47,9 +48,19 @@
 	margin-right: 30px;
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		$(".com_art a").hover(function() {
+			$(this).addClass("active");
+		}, function() {
+			$(this).removeClass("active");
+		});
+	})
+</script>
 </head>
 
 <body>
+	<s:debug></s:debug>
 	<!--导航条-->
 	<div class="man_top">
 		<nav class="navbar navbar-default" role="navigation">
@@ -81,108 +92,80 @@
 		</div>
 		<!--右边  -->
 		<div class="con_middle">
-				<ol class="breadcrumb">
-				<li>
-					<a href="">管理员</a>
-				</li>
-				<li>
-					<a href="">竞赛信息</a>
-				</li>
+			<ol class="breadcrumb">
+				<li><a href="">管理员</a></li>
+				<li><a href="">竞赛信息</a></li>
 				<li class="active">竞赛列表</li>
 			</ol>
 
 			<div>
 				<div>
 					<label class="_title">竞赛列表</label>
+					<!--  -->
+					<button type="button" class="btn btn-primary add"
+						onclick="location='admin/toRecCom'">
+						<span class="glyphicon glyphicon-plus-sign"></span> 添加竞赛信息
+					</button>
+				</div>
 
-					<button type="button" class="btn btn-primary add">
-						<span class="glyphicon glyphicon-plus-sign"></span>
-						添加竞赛信息</button>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item active ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
+				<s:iterator value="articles" var="c">
+					<div class="list-group com_art _center">
+						<a  class="list-group-item  " style="height:65px">
+							<div style="width:700px;heigth:65px;float:left">
+								<h4 class="list-group-item-heading">${c.title }</h4>
+								<div  style="height:18px;overflow: hidden;" class="list-group-item-text">
+									<%-- ${c.content } --%>
+									<s:property value="#c.content" escape="false"/>
+								</div>
+							</div>
+							<div style="float: right">
+								<button class="btn btn-info ">修改</button>
+								<button class="btn btn-danger" 
+								onclick="location='article/delectArticle?articleId=${c.articleId}'">删除</button>
+							</div>
+						</a>
+					</div>
+				</s:iterator>
 			</div>
 
 		</div>
 
 	</div>
 
-	<!-- 添加弹出框 -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+
+
+	<div class="modal fade" id="pubModel" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		data-backdrop="false">
+
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">上传优秀作品</h4>
+					<h4 class="modal-title">选择要发布的竞赛</h4>
 				</div>
+
 				<div class="modal-body">
-					<form class="form-horizontal" role="form"
-						enctype="multipart/form-data" action="admin/savePro" method="post">
-						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-2 control-label">作品图片</label>
-							<div class="col-sm-9">
-								<input type="file" name="upload" id="exampleInputFile">
-							</div>
 
-						</div>
-						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-2 control-label">作品名称</label>
-							<div class="col-sm-9">
-								<input type="text" name="pro.proName" class="form-control" id="inputEmail3">
-							</div>
-						</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<s:iterator value="projects" var="p">
 
-						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">获得奖项</label>
-							<div class="col-sm-9">
-								<input type="text" name="pro.award" class="form-control" id="inputPassword3">
-							</div>
+								<%-- <input type="radio" id="comName">
+								<label for="comName" class="">${p.comName}</label>
+								<br /> --%>
+							</s:iterator>
 						</div>
-						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">作品作者</label>
-							<div class="col-sm-9">
-								<input type="text" name="pro.membersName" class="form-control" id="inputPassword3">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">作品简介</label>
-							<div class="col-sm-9">
-								<textarea class="form-control" name="pro.introduction" rows="3"></textarea>
-							</div>
+					</div>
+				</div>
 
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">取消</button>
-							<button type="submit" class="btn btn-primary">上传</button>
-						</div>
-					</form>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						onclick="initInput()">取消</button>
+					<button type="submit" class="btn btn-primary">保存</button>
 				</div>
 
 			</div>

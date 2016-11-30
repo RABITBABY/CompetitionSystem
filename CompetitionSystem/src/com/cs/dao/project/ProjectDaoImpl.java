@@ -20,12 +20,29 @@ public class ProjectDaoImpl implements ProjectDao{
 		Session session=HibernateUtil.getSession();
 		Transaction tr = session.beginTransaction();
 		List<Project> projects=session.createQuery("from Project").list();
-		System.out.println(projects.size()+"impl");
 		tr.commit();
-		
 		return projects;
 	}
 
+	@Override
+	public List<Project> needPub() {
+		
+		Session session=HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		List<Project> projects=session.createQuery("from Project where isPublish = 0").list();
+		tr.commit();
+		return projects;
+	}
 
+	@Override
+	public void pubChange(int comId,int isPub) {
+		
+		Session session=HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		Project p=(Project) session.get(Project.class, comId);
+		p.setIsPublish(isPub);
+		session.update(p);
+		tr.commit();
+	}
    
 }

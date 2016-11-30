@@ -42,7 +42,7 @@
 
 		<action name="edit" class="com.cs.action.admin.ProductionAction"
 			method="proEdit">
-			<result name="success" type="redirectAction">
+			<result name="success" type="redirectAction" >
 				<param name="actionName">toPro</param>
 				<param name="namespace">/admin</param>
 			</result>
