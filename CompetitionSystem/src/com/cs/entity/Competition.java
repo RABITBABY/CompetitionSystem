@@ -88,7 +88,7 @@ public class Competition implements Serializable{
 	@Column
 	private Date lsdate;
 	@Column
-	private Integer status;
+	private Integer status;//0等待系主任审批 1.等待教学处审批 2申报成功3申报失败
 
 	// 外键一对一 预算
 	@OneToMany
