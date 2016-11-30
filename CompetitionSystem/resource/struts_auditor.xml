@@ -16,7 +16,16 @@
                 /WEB-INF/jsp/auditor/auditorIndex.jsp
             </result>
         </action>
-        
+        <action name="toHistory" class="com.cs.action.auditor.AuditorAction" method="toHistory">
+            <result name="success">
+                /WEB-INF/jsp/auditor/auditorHistoryComp.jsp
+            </result>
+        </action>
+        <action name="toCompetition" class="com.cs.action.auditor.AuditorAction" method="toCompetition">
+            <result name="success">
+                /WEB-INF/jsp/auditor/competition.jsp
+            </result>
+        </action>
         
 	</package>
 	
