@@ -55,7 +55,16 @@
 		}, function() {
 			$(this).removeClass("active");
 		});
+		
+		
 	})
+	
+	function delectArticle(id) {
+		if(confirm("确定要删除？")){
+			
+		location="article/delectArticle?articleId="+id;
+		}
+	}
 </script>
 </head>
 
@@ -120,8 +129,7 @@
 							</div>
 							<div style="float: right">
 								<button class="btn btn-info ">修改</button>
-								<button class="btn btn-danger" 
-								onclick="location='article/delectArticle?articleId=${c.articleId}'">删除</button>
+								<button class="btn btn-danger"  onclick="delectArticle(<s:property value="#c.articleId" />)">删除</button>
 							</div>
 						</a>
 					</div>

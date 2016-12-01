@@ -39,9 +39,13 @@ public class ProjectDaoImpl implements ProjectDao{
 		
 		Session session=HibernateUtil.getSession();
 		Transaction tr = session.beginTransaction();
+		
 		Project p=(Project) session.get(Project.class, comId);
+		
 		p.setIsPublish(isPub);
+		
 		session.update(p);
+		
 		tr.commit();
 	}
    
