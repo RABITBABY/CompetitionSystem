@@ -15,6 +15,7 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 
 	private Map<String, Object> request;
 	private AuditorService auditorService=new AuditorService();
+	private Integer comId;
 	/**
 	 * 审批人员首页
 	 * @return
@@ -45,6 +46,8 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 	}
 	public String toCompetition(){
 		
+		Competition competition = auditorService.getCompetitionsById(comId);
+		request.put("competition", competition);
 		return SUCCESS;
 	}
 	
@@ -53,5 +56,13 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 	public void setRequest(Map<String, Object> request) {
 		// TODO Auto-generated method stub
 		this.request=request;
+	}
+	
+	public Integer getComId() {
+		return comId;
+	}
+	
+	public void setComId(Integer comId) {
+		this.comId = comId;
 	}
 }

@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<tbody>
 							    <c:forEach items="${comList}" var="com">
 							        <tr>
-										<td><input type="hidden" value="${com.comId}"/>${com.comName}</td>
+										<td>${com.comName}</td>
 										<td>${com.teacher.teacherName}</td>
 										<td>${com.time}</td>
 										<c:choose>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										        <td>等待教学处审批</td>
 										    </c:when>										   
 										</c:choose>
-										<td><button type="button" class="btn btn-success" onclick="competPage()">审批</button>
+										<td><button type="button" class="btn btn-success" onclick="competPage(${com.comId})">审批</button>
 										</td>
 								    </tr>
 							    </c:forEach>								

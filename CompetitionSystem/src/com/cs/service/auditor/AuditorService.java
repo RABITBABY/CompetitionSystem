@@ -26,4 +26,14 @@ public class AuditorService {
 		List<Competition> comList = comDao.findPassCompetitionsByDeptId(deptId);
 		return comList;
 	}
+	
+	/**
+	 * 根据id查找申报表
+	 * @param deptId
+	 * @return
+	 */
+	public Competition getCompetitionsById(Integer comId) {
+		Competition com = comDao.findCompetitionsById(comId);
+		return com;
+	}
 }

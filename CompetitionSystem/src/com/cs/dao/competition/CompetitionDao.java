@@ -21,4 +21,10 @@ public interface CompetitionDao {
      */
 	List<Competition> findPassCompetitionsByDeptId(Integer deptId);
 	
+	/**
+     * 根据申报表id查找申报表
+     * @param deptId
+     * @return
+     */
+	Competition findCompetitionsById(Integer comId);
 }

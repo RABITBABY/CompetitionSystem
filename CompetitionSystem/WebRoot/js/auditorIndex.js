@@ -4,8 +4,7 @@ function indexPage(){
 function historyPage(){
 	location.href="auditor/toHistory";
 }
-function competPage() {
-	
-	location.href="auditor/toCompetition";
+function competPage(value) {
+	location.href="auditor/toCompetition?comId="+value;
 }
 
