@@ -72,10 +72,10 @@ public class AdminService {
 	
 	//删除文章
 	public void delectArticle(int id) {
-		artiImpl.delectArticle(id);
 		Article article=artiImpl.getArticleById(id);
+		artiImpl.delectArticle(id);
 		System.out.println(article);
-	//	projectImpl.pubChange(article.getProject().getComId(),0);
+		projectImpl.pubChange(article.getProject().getComId(),0);
 	}
 	
 }

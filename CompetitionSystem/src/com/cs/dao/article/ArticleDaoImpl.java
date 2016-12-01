@@ -45,15 +45,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	public Article getArticleById(int id) {
 		Session session=HibernateUtil.getSession();
 		Transaction tr=session.beginTransaction();
-//		Article article=(Article)session.get(Article.class,id);
-		Query q=session.createQuery("from Article where articleId=:id  ");
-		q.setParameter("id", id);
-		List<Article> articles=q.list();
-		Article article=null;
-		if(articles.size()>0){
-			article=articles.get(0);
-		}
-		System.out.println(article+"-----------------------"+id);
+		Article article=(Article)session.get(Article.class,id);
 		tr.commit();
 		return article;
 	}
