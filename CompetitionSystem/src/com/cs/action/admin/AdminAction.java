@@ -28,8 +28,12 @@ public class AdminAction extends ActionSupport {
 	//加载文章时用到的文章列表
 	private List<Article> articles;
 	
-	//
+	//文章类型
 	private int type;
+	//竞赛筛选的条件
+	private String level;
+	private String isPub;
+	
 	/**
 	 * 跳转到管理员首页
 	 * @return
@@ -40,7 +44,16 @@ public class AdminAction extends ActionSupport {
 	
 	//获取所欲的近期比赛资料
 	public String toRecCom(){
-		projects=adminService.AllProject();
+		projects=adminService.SignableProject("","");
+		return SUCCESS;
+	}
+	/**
+	 * 查询符合条件的近期竞赛
+	 * @return
+	 */
+	public String selectCom(){
+		System.out.println(level+"--"+isPub);
+		projects=adminService.SignableProject(level,isPub);
 		return SUCCESS;
 	}
 	//获取所欲的近期比赛资料
@@ -48,7 +61,6 @@ public class AdminAction extends ActionSupport {
 		awards=adminService.AllAwards();
 		return SUCCESS;
 	}
-	
 	/**
 	 * 跳转到作品首页
 	 * @return
@@ -95,8 +107,7 @@ public class AdminAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	
-	
+
 	
 	
 
@@ -140,6 +151,22 @@ public class AdminAction extends ActionSupport {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getIsPub() {
+		return isPub;
+	}
+
+	public void setIsPub(String isPub) {
+		this.isPub = isPub;
 	}
 
 

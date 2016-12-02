@@ -13,6 +13,7 @@
 
 
 	<package name="admin" namespace="/admin" extends="json-default">
+	
 		<!--跳转到管理员首页列表页 -->
 		<action name="toIndex" class="com.cs.action.admin.AdminAction"
 			method="toIndex">
@@ -74,7 +75,26 @@
 		</action>
 
 
-
+<!--ajax获取所有符合筛选条件的竞赛数据 -->
+		<action name="selectCom" class="com.cs.action.admin.AdminAction"
+			method="selectCom">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^projects\[\d+\]\.comId,
+					^projects\[\d+\]\.comName,
+					^projects\[\d+\]\.level,
+					^projects\[\d+\]\.hunit,
+					^projects\[\d+\]\.sOrganizer,
+					^projects\[\d+\]\.introduction,
+					^projects\[\d+\]\.applyBeginDate,
+					^projects\[\d+\]\.applyEndDate,
+					^projects\[\d+\]\.comDate,
+					^projects\[\d+\]\.cost,
+					^projects\[\d+\]\.status,
+					^projects\[\d+\]\.isPublish
+				</param>
+			</result>
+		</action>
 
 
 

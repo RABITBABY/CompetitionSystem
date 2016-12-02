@@ -40,6 +40,7 @@ public class ArticleAction extends ActionSupport {
 		article.setPubUser(admin);
 		
 		System.out.println(article);
+		
 		//添加到数据库//修改这个竞赛的发布状态
 		if(aService.PubArticle(article)>0){
 			return SUCCESS;

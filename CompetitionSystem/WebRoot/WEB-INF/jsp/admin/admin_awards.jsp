@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -93,36 +94,31 @@
 
 			<div>
 				<div>
-					<label class="_title">竞赛列表</label>
+					<label class="_title">竞赛获奖通告列表</label>
 
-					<button type="button" class="btn btn-primary add">
+					<button type="button" class="btn btn-primary add" onclick="location='article/toPublic?type=3'">
 						<span class="glyphicon glyphicon-plus-sign"></span>
-						添加竞赛信息</button>
+						添加竞赛获奖通告</button>
 				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item active ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
-				<div class="list-group _center">
-					<a href="#" class="list-group-item ">
-						<h4 class="list-group-item-heading">第五届甲骨文大赛</h4>
-						<p class="list-group-item-text">全国大学生，java相关技术的比赛....</p>
-					</a>
-				</div>
+					<s:iterator value="articles" var="c">
+					<div class="list-group com_art _center">
+						<a  class="list-group-item" style="height:65px">
+							<div style="width:700px;heigth:65px;float:left">
+								<h4 class="list-group-item-heading">${c.title }</h4>
+								<div  style="height:18px;overflow: hidden;" class="list-group-item-text">
+									<%-- ${c.content } --%>
+									<s:property value="#c.content" escape="false"/>
+								</div>
+							</div>
+							<div style="float: right">
+								<button class="btn btn-info ">修改</button>
+								
+								<button  onclick="delectArticle(<s:property value="#c.articleId"/>)"  class="btn btn-danger"> 删除</button>
+							</div>
+						</a>
+					</div>
+				</s:iterator>
+				
 			</div>
 
 		</div>

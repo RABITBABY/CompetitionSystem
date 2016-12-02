@@ -30,11 +30,12 @@
 			<result name="success" type="json">
 				<param name="includeProperties">
 					^productions\[\d+\]\.proId,
+					^productions\[\d+\]\.proName,
 					^productions\[\d+\]\.award,
 					^productions\[\d+\]\.membersName,
-					^productions\[\d+\]\.proName,
-					^productions\[\d+\]\.pic,
-					^productions\[\d+\]\.introduction
+					^productions\[\d+\]\.introduction,
+					^productions\[\d+\]\.pic
+					
 				</param>
 			</result>
 		</action>

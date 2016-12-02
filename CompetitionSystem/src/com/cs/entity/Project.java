@@ -1,12 +1,12 @@
 package com.cs.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,11 +31,11 @@ public class Project implements Serializable{
 	@Column
 	private String introduction;
 	@Column
-	private String applyBeginDate;
+	private Date applyBeginDate;
 	@Column
-	private String applyEndDate;
+	private Date applyEndDate;
 	@Column
-	private String comDate;
+	private Date comDate;
 	@Column
 	private Double cost;
 	@Column
@@ -90,24 +90,6 @@ public class Project implements Serializable{
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	public String getApplyBeginDate() {
-		return applyBeginDate;
-	}
-	public void setApplyBeginDate(String applyBeginDate) {
-		this.applyBeginDate = applyBeginDate;
-	}
-	public String getApplyEndDate() {
-		return applyEndDate;
-	}
-	public void setApplyEndDate(String applyEndDate) {
-		this.applyEndDate = applyEndDate;
-	}
-	public String getComDate() {
-		return comDate;
-	}
-	public void setComDate(String comDate) {
-		this.comDate = comDate;
-	}
 	public Double getCost() {
 		return cost;
 	}
@@ -126,7 +108,29 @@ public class Project implements Serializable{
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
+	public String getApplyBeginDate() {
+		return dateForm( applyBeginDate);
+	}
+	public void setApplyBeginDate(Date applyBeginDate) {
+		this.applyBeginDate = applyBeginDate;
+	}
+	public String getApplyEndDate() {
+		return dateForm(applyEndDate);
+	}
+	public void setApplyEndDate(Date applyEndDate) {
+		this.applyEndDate = applyEndDate;
+	}
+	public String getComDate() {
+		return dateForm(comDate);
+	}
+	public void setComDate(Date comDate) {
+		this.comDate = comDate;
+	}
 	
-	
+	public String dateForm(Date d){
+		SimpleDateFormat spl=new SimpleDateFormat("yyyy年MM月dd日");
+		String dString=spl.format(d);
+		return dString;
+	}
 	
 }

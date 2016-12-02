@@ -39,9 +39,13 @@ public class AdminService {
 		proImpl.update(pro);
 	}
 	
-	//近期比赛
+	//全部比赛
 	public List<Project> AllProject(){
 		return projectImpl.findAll();
+	}
+	//近期可报名比赛
+	public List<Project> SignableProject(String level,String isPub){
+		return projectImpl.SignableProject(level,isPub);
 	}
 	//近期获奖
 	public List<Awards> AllAwards(){
