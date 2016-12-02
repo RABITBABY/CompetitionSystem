@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
+	<constant name="struts.devMode" value="true" />
+	<package name="teachDepart" namespace="/teachDepart" extends="struts-default">
+        <action name="toTeachDepartIndex" class="com.cs.action.auditor.TeachDepartAction" method="toTeachDepartIndex">
+            <result name="success">
+                /WEB-INF/jsp/auditor/teachDepartIndex.jsp
+            </result>
+        </action>
+        <action name="toHistory" class="com.cs.action.auditor.TeachDepartAction" method="toHistory">
+            <result name="success">
+                /WEB-INF/jsp/auditor/teachDepartHistoryComp.jsp
+            </result>
+        </action>
+        <action name="toCompetition" class="com.cs.action.auditor.TeachDepartAction" method="toCompetition">
+            <result name="success">
+                /WEB-INF/jsp/auditor/teachDepartCompetition.jsp
+            </result>
+        </action>
+        
+        <action name="doAudit" class="com.cs.action.auditor.TeachDepartAction" method="doAudit">
+            <result name="success" type="redirectAction">
+                toTeachDepartIndex
+            </result>
+        </action>
+        
+	</package>
+	
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+

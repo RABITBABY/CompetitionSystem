@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>教学处审核人员中心-学科竞赛</title>
+    <title>审核人员中心-学科竞赛</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -46,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-heading"><i class="glyphicon glyphicon-home"></i>个人中心</div>
 						<!-- List group -->
 						<ul class="list-group list-g">
-							<li class="list-group-item change_left">审批申报表</li>
-							<li class="list-group-item" onclick="historyPage()">查看历史申报表</li>
+							<li class="list-group-item " onclick="indexPage()">审批申报表</li>
+							<li class="list-group-item change_left" >查看历史申报表</li>
 						</ul>
 					</div>
 				</div>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="row manage-head">
 					    <div class="combody">
 					       <div class="col-md-10">
-							<span>审批申报表(<span>${fn:length(comList)}</span>)
+							<span>历史申报表(<span>${fn:length(passComList)}</span>)
 							</span>
 							</div>
 					    </div>						
@@ -74,18 +74,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</tr>
 							</thead>
 							<tbody>
-							    <c:forEach items="${comList}" var="com">
+							    <c:forEach items="${passComList}" var="pass">
 							        <tr>
-										<td>${com.comName}</td>
-										<td>${com.teacher.teacherName}</td>
-										<td>${com.time}</td>
+										<td><input type="hidden" value="${pass.comId}"/>${pass.comName}</td>
+										<td>${pass.teacher.teacherName}</td>
+										<td>${pass.time}</td>
 										<c:choose>
-										    <c:when test="${com.status==1}">
-										        <td>等待教学处审批</td>
-										    </c:when>										   
+										    <c:when test="${pass.status==2}">
+										        <td>申报成功</td>
+										    </c:when>
 										</c:choose>
-										<td><button type="button" class="btn btn-success" onclick="competPage(${com.comId})">审批</button>
-										</td>
+										<th>
+										<button type="button" class="btn btn-info">查看</button>
+										<button type="button" class="btn btn-success">导出</button>
+										</th>
 								    </tr>
 							    </c:forEach>								
 							</tbody>
@@ -96,8 +98,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		
-		
-		
   </body>
 </html>

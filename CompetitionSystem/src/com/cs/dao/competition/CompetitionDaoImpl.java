@@ -18,21 +18,12 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		
-		Query query = session.createQuery("from Competition where department.departmentId=? and status in(0,1)");
+		Query query = session.createQuery("from Competition where department.departmentId=?");
 		query.setInteger(0, deptId);
 		List<Competition> list = query.list();
 		return list;
 	}
-
-	@Override
-	public List<Competition> findPassCompetitionsByDeptId(Integer deptId) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = session.beginTransaction();
-		Query query = session.createQuery("from Competition where department.departmentId=? and status=2");
-		query.setInteger(0, deptId);
-		List<Competition> list = query.list();
-		return list;
-	}
+	
 
 	@Override
 	public Competition findCompetitionsById(Integer comId) {

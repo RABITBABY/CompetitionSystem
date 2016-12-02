@@ -80,17 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<td>${pass.teacher.teacherName}</td>
 										<td>${pass.time}</td>
 										<c:choose>
-										    <c:when test="${pass.status==0}">
-										       <td>等待系主任审批</td>
-										    </c:when>
-										    <c:when test="${pass.status==1}">
-										        <td>等待教学处审批</td>
-										    </c:when>
 										    <c:when test="${pass.status==2}">
 										        <td>申报成功</td>
-										    </c:when>
-										    <c:when test="${pass.status==3}">
-										        <td>申报失败</td>
 										    </c:when>
 										</c:choose>
 										<th>

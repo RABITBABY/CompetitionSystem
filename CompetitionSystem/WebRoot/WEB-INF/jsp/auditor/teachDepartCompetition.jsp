@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <div class="main">
        <h1>申报书</h1>
-       <form class="form-horizontal" role="form" style="width:65%;">
+       <form class="form-horizontal" role="form" style="width:80%;">
            <input class="form-control" type="hidden" value="${competition.comId}">
           <!-- 申报人信息 -->
           <div class="panel panel-info">
@@ -342,7 +342,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>  
 				  
 				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">资助单位负责人：</label>
+				    <label for="input1" class="col-sm-2 control-label">资助单位负责人</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="input1" readonly value="${competition.slsign}">
 				    </div>
@@ -358,21 +358,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛组织实施单位意见</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.sopinion}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.uopinion}</textarea>
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">系部签字：</label>
+				    <label for="input1" class="col-sm-2 control-label">系部签字</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input1" readonly value="${competition.slsign}">
+				      <input type="text" class="form-control" id="input1" readonly value="${competition.dsign}">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="input2" class="col-sm-2 control-label">日期</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.slsdate}" pattern="yyy-MM-dd"/>">
+				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.dsdate}" pattern="yyy-MM-dd"/>">
 				    </div>
 				  </div>
 				    
