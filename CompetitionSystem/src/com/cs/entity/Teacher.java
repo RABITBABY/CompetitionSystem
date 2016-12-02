@@ -32,9 +32,9 @@ public class Teacher implements Serializable {
 	@Column
 	private String phone;
 	@Column
-	private String title;
+	private String title;//职称
 	@Column
-	private String post;
+	private String post;//职位
 	@Column
 	private String email;
 	@Column

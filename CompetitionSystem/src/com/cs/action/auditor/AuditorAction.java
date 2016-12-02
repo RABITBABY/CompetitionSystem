@@ -48,6 +48,7 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 		
 		Competition competition = auditorService.getCompetitionsById(comId);
 		request.put("competition", competition);
+		System.out.println("指导老师"+competition.getGuideTeachers());
 		return SUCCESS;
 	}
 	

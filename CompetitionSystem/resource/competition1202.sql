@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2016-12-02 12:42:49
+Date: 2016-12-02 14:21:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -252,19 +252,26 @@ INSERT INTO `groupsdetail` VALUES ('3', '2', '1');
 INSERT INTO `groupsdetail` VALUES ('4', '3', '1');
 
 -- ----------------------------
--- Table structure for `guideteaher`
+-- Table structure for `guideteacher`
 -- ----------------------------
-DROP TABLE IF EXISTS `guideteaher`;
-CREATE TABLE `guideteaher` (
+DROP TABLE IF EXISTS `guideteacher`;
+CREATE TABLE `guideteacher` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `teacherNo` int(11) DEFAULT NULL,
   `comId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `teacherNo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKE7E27D66EDBA9C01` (`comId`),
+  KEY `FKE7E27D666741EFEB` (`teacherNo`),
+  CONSTRAINT `FKE7E27D666741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
+  CONSTRAINT `FKE7E27D66EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of guideteaher
+-- Records of guideteacher
 -- ----------------------------
+INSERT INTO `guideteacher` VALUES ('1', '1', '1');
+INSERT INTO `guideteacher` VALUES ('2', '1', '2');
+INSERT INTO `guideteacher` VALUES ('3', '2', '1');
 
 -- ----------------------------
 -- Table structure for `hours`
@@ -481,7 +488,6 @@ CREATE TABLE `teacher` (
   `lab` int(11) DEFAULT '0' COMMENT '是否实验人员',
   `password` varchar(45) NOT NULL COMMENT '密码',
   `examiner` int(11) DEFAULT '0' COMMENT '是否审批人员',
-  `department` tinyblob,
   PRIMARY KEY (`teacherNo`),
   KEY `no` (`teacherNo`),
   KEY `FKAA31CBE277CD9A99` (`departmentId`),
@@ -491,5 +497,5 @@ CREATE TABLE `teacher` (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES ('1', 'max', null, null, null, null, null, null, null, null, null, null, null, '0', '123456', '0', null);
-INSERT INTO `teacher` VALUES ('2', 'admin', null, null, null, null, null, null, null, null, null, null, null, '0', '000000', '0', null);
+INSERT INTO `teacher` VALUES ('1', 'max', null, null, '1', null, null, '外聘老师', '助教', null, null, null, null, '0', '123456', '0');
+INSERT INTO `teacher` VALUES ('2', 'admin', null, null, '1', null, null, '', '助教', null, null, null, null, '0', '000000', '0');

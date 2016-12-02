@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <!-- 指导老师 -->
           <div class="panel panel-info">
 	          <div class="panel-heading">
-			         指导老师
+			         指导老师${competition.guideTeachers}
 			  </div>
 			  <div class="panel-body">
 				  <table class="table">
@@ -165,25 +165,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
-				       <c:forEach items="${competition.groups}" var="comGroups"></c:forEach>
+				       <c:forEach items="${competition.guideTeachers}" var="comTeacher">
 				       <tr>
-				           <td>${comTeacher.}</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
+				           <td>${comTeacher.teacher.teacherName}</td>
+				           <td>${comTeacher.teacher.title}</td>
+				           <td>${comTeacher.teacher.post}</td>
+				           <td>${comTeacher.teacher.department.departmentName}</td>
 				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				       </c:forEach>
 				    </tbody>
 				  </table>
 			  </div>
