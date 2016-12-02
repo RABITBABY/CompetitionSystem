@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛简介</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.introduce}</textarea>
 				    </div>
 				  </div>  
 				  
@@ -165,8 +165,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
+				       <c:forEach items="${competition.groups}" var="comGroups"></c:forEach>
 				       <tr>
-				           <td>xxx</td>
+				           <td>${comTeacher.}</td>
 				           <td>xxx</td>
 				           <td>xxx</td>
 				           <td>xxx</td>

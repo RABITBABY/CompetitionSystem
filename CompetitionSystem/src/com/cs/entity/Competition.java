@@ -54,6 +54,8 @@ public class Competition implements Serializable{
 	@Column
 	private String place;
 	@Column
+	private String introduce;
+	@Column
 	private String object;
 	@Column
 	private int people;
@@ -108,6 +110,10 @@ public class Competition implements Serializable{
 	@OneToMany
 	@JoinColumn(name="comId")
 	private Set<Groups> groups;
+	
+	@OneToMany
+	@JoinColumn(name="comId")
+	private Set<GuideTeacher> guideTeachers;
 	
 
 
@@ -380,6 +386,22 @@ public class Competition implements Serializable{
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	
+	public Set<GuideTeacher> getGuideTeachers() {
+		return guideTeachers;
+	}
+	
+	public void setGuideTeachers(Set<GuideTeacher> guideTeachers) {
+		this.guideTeachers = guideTeachers;
+	}
+	
+	public String getIntroduce() {
+		return introduce;
+	}
+	
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
 	}
 	
 	

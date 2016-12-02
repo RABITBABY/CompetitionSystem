@@ -1,6 +1,7 @@
 package com.cs.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -31,11 +32,11 @@ public class Project implements Serializable{
 	@Column
 	private String introduction;
 	@Column
-	private String applyBeginDate;
+	private Date applyBeginDate;
 	@Column
-	private String applyEndDate;
+	private Date applyEndDate;
 	@Column
-	private String comDate;
+	private Date comDate;
 	@Column
 	private Double cost;
 	@Column
@@ -90,22 +91,23 @@ public class Project implements Serializable{
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-	public String getApplyBeginDate() {
+	
+	public Date getApplyBeginDate() {
 		return applyBeginDate;
 	}
-	public void setApplyBeginDate(String applyBeginDate) {
+	public void setApplyBeginDate(Date applyBeginDate) {
 		this.applyBeginDate = applyBeginDate;
 	}
-	public String getApplyEndDate() {
+	public Date getApplyEndDate() {
 		return applyEndDate;
 	}
-	public void setApplyEndDate(String applyEndDate) {
+	public void setApplyEndDate(Date applyEndDate) {
 		this.applyEndDate = applyEndDate;
 	}
-	public String getComDate() {
+	public Date getComDate() {
 		return comDate;
 	}
-	public void setComDate(String comDate) {
+	public void setComDate(Date comDate) {
 		this.comDate = comDate;
 	}
 	public Double getCost() {

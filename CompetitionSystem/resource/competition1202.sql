@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2016-11-29 19:42:06
+Date: 2016-12-02 12:42:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,11 @@ CREATE TABLE `article` (
   `comId` int(11) DEFAULT NULL,
   PRIMARY KEY (`articleId`),
   KEY `pubUser` (`pubUser`),
-  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`pubUser`) REFERENCES `administer` (`adminNo`)
+  KEY `FKD458CCF6EDBA9C01` (`comId`),
+  KEY `FKD458CCF6CB59385B` (`comId`),
+  CONSTRAINT `FKD458CCF6CB59385B` FOREIGN KEY (`comId`) REFERENCES `project` (`comId`),
+  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`pubUser`) REFERENCES `administer` (`adminNo`),
+  CONSTRAINT `FKD458CCF6EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -122,6 +126,7 @@ CREATE TABLE `competition` (
   `host` varchar(45) DEFAULT NULL COMMENT '院级以上竞赛举办者',
   `time` date DEFAULT NULL COMMENT '竞赛时间',
   `place` varchar(45) DEFAULT NULL COMMENT '竞赛地点',
+  `introduce` varchar(255) DEFAULT NULL COMMENT '注释',
   `object` varchar(12) DEFAULT NULL COMMENT '参赛对象',
   `people` int(11) DEFAULT NULL COMMENT '人数',
   `sponsor` varchar(45) DEFAULT NULL COMMENT '校外资助单位',
@@ -144,16 +149,18 @@ CREATE TABLE `competition` (
   KEY `level_com` (`levelId`),
   KEY `tno` (`teacherNo`),
   KEY `FKBEB591BF6741EFEB` (`teacherNo`),
+  KEY `FKBEB591BF77CD9A99` (`departmentId`),
   CONSTRAINT `FKBEB591BF6741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
+  CONSTRAINT `FKBEB591BF77CD9A99` FOREIGN KEY (`departmentId`) REFERENCES `department` (`departmentId`),
   CONSTRAINT `level_com` FOREIGN KEY (`levelId`) REFERENCES `level` (`levelId`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of competition
 -- ----------------------------
-INSERT INTO `competition` VALUES ('1', '甲骨文', '1', null, '1', null, null, null, null, null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `competition` VALUES ('2', '软件设计大赛', '2', null, '2', null, null, null, null, null, null, null, null, '2', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `competition` VALUES ('3', '美术杯', '1', null, '2', null, null, null, null, null, null, null, null, '1', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `competition` VALUES ('1', '甲骨文', '1', '广州商学院', '1', '111222', 'a@qq.com', '1', '2016-11-06', '甲骨文', '2016-11-30', '华农', '好玩的比赛', '全国大学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-14', '', '', '2016-11-23', null, null, null, null, null, '0');
+INSERT INTO `competition` VALUES ('2', '软件设计大赛', '2', '信息技术与工程学院', '2', '111222', 'b@qq.com', '1', '2016-11-06', '小马哥', '2016-11-29', '华农', '好玩的比赛', '计算机系学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-15', '', '', '2016-11-11', null, null, null, null, null, '0');
+INSERT INTO `competition` VALUES ('3', '美术杯', '1', '艺术系', '2', '2321323', 'c@qq.com', '1', '2016-11-06', '广州商学院', '2016-11-29', '华农', '好玩的比赛', '全院学生', '1', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-09', '系主任同意', '林主任', null, null, null, null, null, null, '2');
 
 -- ----------------------------
 -- Table structure for `department`
@@ -243,6 +250,21 @@ INSERT INTO `groupsdetail` VALUES ('1', '1', '1');
 INSERT INTO `groupsdetail` VALUES ('2', '1', '2');
 INSERT INTO `groupsdetail` VALUES ('3', '2', '1');
 INSERT INTO `groupsdetail` VALUES ('4', '3', '1');
+
+-- ----------------------------
+-- Table structure for `guideteaher`
+-- ----------------------------
+DROP TABLE IF EXISTS `guideteaher`;
+CREATE TABLE `guideteaher` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `teacherNo` int(11) DEFAULT NULL,
+  `comId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of guideteaher
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `hours`
@@ -348,9 +370,9 @@ CREATE TABLE `project` (
   `hunit` varchar(45) DEFAULT NULL COMMENT '主办单位',
   `sOrganizer` varchar(45) DEFAULT NULL COMMENT '校承办单位',
   `introduction` text COMMENT '竞赛简介',
-  `applyBeginDate` varchar(45) DEFAULT NULL COMMENT '报名开始时间',
-  `applyEndDate` varchar(45) DEFAULT NULL COMMENT '报名结束时间',
-  `comDate` varchar(45) DEFAULT NULL COMMENT '比赛时间',
+  `applyBeginDate` date DEFAULT NULL COMMENT '报名开始时间',
+  `applyEndDate` date DEFAULT NULL COMMENT '报名结束时间',
+  `comDate` date DEFAULT NULL COMMENT '比赛时间',
   `cost` decimal(10,2) DEFAULT NULL COMMENT '报名费',
   `status` int(11) DEFAULT NULL COMMENT '比赛状态(0.赛前准备 1比赛结束)',
   `isPublish` int(11) NOT NULL DEFAULT '0' COMMENT '发布状态',
