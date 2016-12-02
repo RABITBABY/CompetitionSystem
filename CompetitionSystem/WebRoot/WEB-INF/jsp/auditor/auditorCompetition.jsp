@@ -333,8 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="panel-heading">
 			         审批意见
 			  </div>
-			  <div class="panel-body">	
-			     <!-- 校外资助单位意见 -->	  
+			  <div class="panel-body">		  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">校外资助单位意见</label>
 				    <div class="col-sm-10">
@@ -355,55 +354,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.slsdate}" pattern="yyy-MM-dd"/>">
 				    </div>
 				  </div>
-				  <!-- 竞赛实施单位意见 -->	  
-				   <div class="form-group form-group-lg">
-				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛实施单位意见</label>
-				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.uopinion}</textarea>
-				    </div>
-				  </div>  
-				  
-				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">系部签字：</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input1" readonly value="${competition.dsign}">
-				    </div>
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="input2" class="col-sm-2 control-label">日期</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.dsdate}" pattern="yyy-MM-dd"/>">
-				    </div>
-				  </div>
-				  <!-- 教学处意见 -->	  
-				   <div class="form-group form-group-lg">
-				    <label class="col-sm-2 control-label" for="formGroupInputLarge">教学处意见</label>
-				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.tdopinion}</textarea>
-				    </div>
-				  </div>  
-				  
-				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">竞赛办公室负责人：</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input1" readonly value="${competition.olsign}">
-				    </div>
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="input2" class="col-sm-2 control-label">日期</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.olsdate}" pattern="yyy-MM-dd"/>">
-				    </div>
-				  </div>
 				    
 			  </div> 
-			  
           </div>
-          		  
+          <h3>请审批：</h3>
+          <div class="form-group" style="padding: 20px">
+			<label for="exampleInputEmail1" style="margin-left: 10px">竞赛组织实施单位意见:</label>
+			    <div class="radio"  onclick="agree()">
+				  <label>
+				    <input type="radio" name="status" id="agree" value="1">
+				          同意
+				  </label>
+				</div>
+				<div class="radio" onclick="disagree()">
+				  <label>
+				    <input type="radio" name="status" id="disagree" value="3">
+				          不同意
+				  </label>
+				</div>				
+		  </div>
+	      
+		  <div id="doCompOppion" style="display: none;" >
+		     <div class="form-group form-group-lg" >
+				<label class="col-sm-2 control-label" for="formGroupInputLarge">意见：</label>				    
+				<div class="col-sm-10">
+				   <textarea class="form-control" rows="3" cols="3" name="opinion"  style="height: 200px;" ></textarea>
+				</div>
+			 </div>
+			 
+		  </div>
 		  <div align="center" >
-		     <button type="button" class="btn btn-primary">返回</button>
+		     <button type="submit" class="btn btn-primary">提交</button>
 		  </div>
            
 		</form>

@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>审核人员中心-学科竞赛</title>
+    <title>教学处审核人员中心-学科竞赛</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="head">
 					<div class="head-right">
 						<a href="#">退出</a>
-						<a href="#" id="helloUser">林老师，欢迎您</a>
+						<a href="#" id="helloUser">教学处林老师，欢迎您</a>
 					</div>
 				</div>	
 		   </div>
@@ -87,16 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										        <td>等待教学处审批</td>
 										    </c:when>										   
 										</c:choose>
-										<td>
-										<c:choose>
-										    <c:when test="${com.status==0}">
-										      <button type="button" class="btn btn-success" onclick="competPage(${com.comId})">审批</button>
-										    </c:when>
-										    <c:when test="${com.status==1}">
-										      <!-- 跳到查看申报表详情。 -->
-										      <button type="button" class="btn btn-info" onclick="">查看</button>
-										    </c:when>										   
-										</c:choose>
+										<td><button type="button" class="btn btn-success" onclick="competPage(${com.comId})">审批</button>
 										</td>
 								    </tr>
 							    </c:forEach>								

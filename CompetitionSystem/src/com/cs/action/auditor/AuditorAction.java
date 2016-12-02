@@ -16,8 +16,10 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 	private Map<String, Object> request;
 	private AuditorService auditorService=new AuditorService();
 	private Integer comId;
+	private Integer status;
+	private String opinion;//系主任意见
 	/**
-	 * 审批人员首页
+	 * 审批人员首页:系主任
 	 * @return
 	 */
 	public String toAuditorIndex(){
@@ -44,11 +46,35 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 		request.put("passComList", passComList);
 		return SUCCESS;
 	}
+    /**
+     * 获取申报表
+     * @return
+     */
 	public String toCompetition(){
 		
 		Competition competition = auditorService.getCompetitionsById(comId);
 		request.put("competition", competition);
-		System.out.println("指导老师"+competition.getGuideTeachers());
+		return SUCCESS;
+	}
+	
+	 /**
+     * 系主任审批
+     * @return
+     */
+	public String doAudit(){
+		System.out.println("--------------"+status);
+		System.out.println(opinion);
+		Competition competition=auditorService.getCompetitionsById(comId);
+		if (opinion.equals("")) {
+			competition.setUopinion("同意");
+		}else{
+			competition.setUopinion(opinion);
+		}		
+		competition.setStatus(status);
+		Boolean doAudit = auditorService.doAudit(competition);
+		if (!doAudit) {
+			return ERROR;
+		}
 		return SUCCESS;
 	}
 	
@@ -65,5 +91,19 @@ public class AuditorAction extends ActionSupport implements RequestAware{
 	
 	public void setComId(Integer comId) {
 		this.comId = comId;
+	}
+	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	
+	public String getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
 	}
 }

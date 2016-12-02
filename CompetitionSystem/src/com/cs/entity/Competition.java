@@ -68,41 +68,41 @@ public class Competition implements Serializable{
 	@Column
 	private String wgoal;
 	@Column
-	private String sopinion;
+	private String sopinion;//校外资助单位意见
 	@Column
-	private String slsign;
+	private String slsign;//校外资助单位意见签名
 	@Column
-	private Date slsdate;
+	private Date slsdate;//校外资助单位意见日期
 	@Column
-	private String uopinion;
+	private String uopinion;//竞赛实施单位意见
 	@Column
-	private String dsign;
+	private String dsign;//竞赛实施单位签名
 	@Column
-	private Date dsdate;
+	private Date dsdate;//竞赛实施单位日期
 	@Column
-	private String tdopinion;
+	private String tdopinion;//教学处意见
 	@Column
-	private String olsign;
+	private String olsign;//教学处签名
 	@Column
-	private Date olsdate;
+	private Date olsdate;//教学处日期
 	@Column
-	private String lsign;
+	private String lsign;//负责人签名
 	@Column
-	private Date lsdate;
+	private Date lsdate;//负责人签名日期
 	@Column
 	private Integer status;//0等待系主任审批 1.等待教学处审批 2申报成功3申报失败
 
-	// 外键一对一 预算
+	// 外键一对多 预算
 	@OneToMany
     @JoinColumn(name="comId")
 	private Set<Budget> budget;
 
-	// 外键一对一 课时预算
+	// 外键一对多课时预算
 	@OneToMany
 	@JoinColumn(name="comId")
 	private Set<Hour> hour;
 
-	// 外键一对一 培训工作安排
+	// 外键一对多 培训工作安排
 	@OneToMany
 	@JoinColumn(name="comId")
 	private Set<Schedule> schedule;

@@ -18,7 +18,7 @@ public class Budget implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer bugetId;
+	private Integer budgetId;
 	
 	@ManyToOne
 	@JoinColumn(name="comId")
@@ -31,11 +31,12 @@ public class Budget implements Serializable {
 	private String reasons;
 	
 	
-	public Integer getBugetId() {
-		return bugetId;
+	
+	public Integer getBudgetId() {
+		return budgetId;
 	}
-	public void setBugetId(Integer bugetId) {
-		this.bugetId = bugetId;
+	public void setBudgetId(Integer budgetId) {
+		this.budgetId = budgetId;
 	}
 	public Competition getCompetition() {
 		return competition;

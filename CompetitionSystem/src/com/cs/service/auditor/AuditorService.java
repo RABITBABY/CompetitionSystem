@@ -36,4 +36,13 @@ public class AuditorService {
 		Competition com = comDao.findCompetitionsById(comId);
 		return com;
 	}
+	
+	/**
+	 * 审批申报表
+	 */
+	public Boolean doAudit(Competition competition) {
+		Boolean result = comDao.updateCompetitionsById(competition);
+		return result;
+	}
+	
 }

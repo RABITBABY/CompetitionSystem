@@ -27,4 +27,11 @@ public interface CompetitionDao {
      * @return
      */
 	Competition findCompetitionsById(Integer comId);
+	
+	/**
+     * 根据申报表id审批申报表:修改状态
+     * @param deptId
+     * @return
+     */
+	Boolean updateCompetitionsById(Competition competition);
 }
