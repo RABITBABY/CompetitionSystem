@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										    </c:when>
 										</c:choose>
 										<th>
-										<button type="button" class="btn btn-info">查看</button>
+										<button type="button" class="btn btn-info" onclick="historyPageById(${pass.comId})">查看</button>
 										<button type="button" class="btn btn-success">导出</button>
 										</th>
 								    </tr>

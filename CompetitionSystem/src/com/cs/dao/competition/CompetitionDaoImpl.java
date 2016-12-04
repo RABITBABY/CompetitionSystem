@@ -21,6 +21,7 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		Query query = session.createQuery("from Competition where department.departmentId=?");
 		query.setInteger(0, deptId);
 		List<Competition> list = query.list();
+		tx.commit();
 		return list;
 	}
 	
@@ -29,7 +30,15 @@ public class CompetitionDaoImpl implements CompetitionDao{
 	public Competition findCompetitionsById(Integer comId) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-		Competition competition = (Competition) session.get(Competition.class, comId);
+		Competition competition =null;
+		try {
+			competition= (Competition) session.get(Competition.class, comId);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+		}
+		
 		return competition;
 	}
 
@@ -38,7 +47,7 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			session.update(competition);		
+			session.update(competition);	
 			tx.commit();
 			return true;
 		} catch (Exception e) {
@@ -46,6 +55,20 @@ public class CompetitionDaoImpl implements CompetitionDao{
 			return false;
 		}
 		
+		
+	}
+
+
+	@Override
+	public List<Competition> findCompetitions() {
+		Session session = HibernateUtil.getSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		Query query = session.createQuery("from Competition");
+		List<Competition> list = query.list();
+		tx.commit();
+		return list;
 	}
 
    

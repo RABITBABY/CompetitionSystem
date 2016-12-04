@@ -14,6 +14,13 @@ public interface CompetitionDao {
      */
 	List<Competition> findCompetitionsByDeptId(Integer deptId);
 	
+	/**
+     * 查找所有的申报表：教学处审批员，可以看到所有申报表
+     * @param deptId
+     * @return
+     */
+	List<Competition> findCompetitions();
+	
 	
 	/**
      * 根据申报表id查找申报表

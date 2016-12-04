@@ -26,6 +26,38 @@ public class AuditorService {
 	}
 	
 	/**
+	 * 获取所有的申报表:给教学处审批员
+	 * @param deptId
+	 * @return
+	 */
+	public List<Competition> getCompetitions() {
+		List<Competition> comList = comDao.findCompetitions();
+		List<Competition> lists=new ArrayList<Competition>();
+		for (Competition com:comList) {
+			if (com.getStatus()==1) {
+				lists.add(com);
+			}
+		}
+		return lists;
+	}
+	
+	/**
+	 * 获取通过的所有的申报表:给教学处审批员
+	 * @param deptId
+	 * @return
+	 */
+	public List<Competition> getPassCompetitions() {
+		List<Competition> comList = comDao.findCompetitions();
+		List<Competition> lists=new ArrayList<Competition>();
+		for (Competition com:comList) {
+			if (com.getStatus()==2) {
+				lists.add(com);
+			}
+		}
+		return lists;
+	}
+	
+	/**
 	 * 根据系部id查找申报表：已经过系部主人审批
 	 * @param deptId
 	 * @return

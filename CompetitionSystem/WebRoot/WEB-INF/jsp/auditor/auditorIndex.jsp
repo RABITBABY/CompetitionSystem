@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										    </c:when>
 										    <c:when test="${com.status==1}">
 										      <!-- 跳到查看申报表详情。 -->
-										      <button type="button" class="btn btn-info" onclick="">查看</button>
+										      <button type="button" class="btn btn-info" onclick="seeComPage(${com.comId})">查看</button>
 										    </c:when>										   
 										</c:choose>
 										</td>

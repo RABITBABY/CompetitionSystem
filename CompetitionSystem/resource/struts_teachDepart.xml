@@ -33,6 +33,12 @@
             </result>
         </action>
         
+        <action name="toHistoryCompetition" class="com.cs.action.auditor.TeachDepartAction" method="toCompetition">
+            <result name="success" >
+                /WEB-INF/jsp/auditor/competition.jsp
+            </result>
+        </action>
+            
 	</package>
 	
 

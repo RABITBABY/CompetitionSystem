@@ -20,6 +20,7 @@ public class TeachDepartAction extends ActionSupport implements RequestAware{
 	private String opinion;//教学处意见
 	/**
 	 * 教学处审批人员首页:
+	 * 查找所有
 	 * @return
 	 */
 	public String toTeachDepartIndex(){
@@ -28,24 +29,20 @@ public class TeachDepartAction extends ActionSupport implements RequestAware{
 		department.setDepartmentId(1);
 		teacher.setDepartment(department);
 		
-		List<Competition> comList = auditorService.getAuditorCompetitionsByDeptId(teacher.getDepartment().getDepartmentId());
+		List<Competition> comList = auditorService.getCompetitions();
 		request.put("comList", comList);
 		return SUCCESS;
 	}
 	/**
-	 * 查看历史申报
+	 * 查看历史申报list
 	 * @return
 	 */
-    public String toHistory(){
-		Teacher teacher=new Teacher();
-		Department department=new Department();
-		department.setDepartmentId(1);
-		teacher.setDepartment(department);
-		
-		List<Competition> passComList = auditorService.getPassCompetitionsByDeptId(teacher.getDepartment().getDepartmentId());
+    public String toHistory(){		
+		List<Competition> passComList = auditorService.getPassCompetitions();
 		request.put("passComList", passComList);
 		return SUCCESS;
 	}
+    
     /**
      * 获取申报表
      * @return
@@ -56,9 +53,10 @@ public class TeachDepartAction extends ActionSupport implements RequestAware{
 		request.put("competition", competition);
 		return SUCCESS;
 	}
+
 	
 	 /**
-     * 系教学处审批
+     * 教学处审批
      * @return
      */
 	public String doAudit(){
@@ -68,6 +66,7 @@ public class TeachDepartAction extends ActionSupport implements RequestAware{
 		}else{
 			competition.setTdopinion(opinion);
 		}		
+		//登录后写签名，以及日期。
 		competition.setStatus(status);
 		Boolean doAudit = auditorService.doAudit(competition);
 		if (!doAudit) {
@@ -75,7 +74,6 @@ public class TeachDepartAction extends ActionSupport implements RequestAware{
 		}
 		return SUCCESS;
 	}
-	
 	
 	@Override
 	public void setRequest(Map<String, Object> request) {

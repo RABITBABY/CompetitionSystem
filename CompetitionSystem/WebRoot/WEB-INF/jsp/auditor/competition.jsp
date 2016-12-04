@@ -1,3 +1,4 @@
+<%@page import="com.cs.entity.Teacher"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -24,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<!--JavaScript插件都是依赖与jQuery库-->
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/js/competition.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/teachDepartIndex.js"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -403,7 +404,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           		  
 		  <div align="center" >
-		     <button type="button" class="btn btn-primary">返回</button>
+		       <!-- 做完登录再做。 系主任，（跳会首页，或者跳到历史页用session判断。）-->   
+		       <button type="button" class="btn btn-primary" onclick="toReturn()">返回</button>
 		  </div>
            
 		</form>

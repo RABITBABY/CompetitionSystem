@@ -34,8 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <div class="main">
        <h1>申报书</h1>
-       <form class="form-horizontal" role="form" style="width:80%;">
-           <input class="form-control" type="hidden" value="${competition.comId}">
+       <form class="form-horizontal" role="form" style="width:80%;" method="post" action="<%=path %>/teachDepart/doAudit">
+           <input class="form-control" type="hidden" value="${competition.comId}" name="comId">
           <!-- 申报人信息 -->
           <div class="panel panel-info">
 	          <div class="panel-heading">
@@ -379,22 +379,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  </div> 
           </div>
           
+          <h3>请审批：</h3>
           <div class="form-group" style="padding: 20px">
-			<label for="exampleInputEmail1" style="margin-left: 10px">教学处意见:</label>
-				<button type="button" class="btn btn-success" onclick="" style="margin-left: 20px;margin-right: 30px">同意</button>
-				<button type="button" class="btn btn-danger" onclick="disagree()">不同意</button>
+			<label for="exampleInputEmail1" style="margin-left: 10px">教学处审批意见:</label>
+			    <div class="radio"  onclick="agree()">
+				  <label>
+				    <input type="radio" name="status" id="agree" value="2">
+				          同意
+				  </label>
+				</div>
+				<div class="radio" onclick="disagree()">
+				  <label>
+				    <input type="radio" name="status" id="disagree" value="3">
+				          不同意
+				  </label>
+				</div>				
 		  </div>
-				  
-		  <div id="doCompOppion" style="display: none;" align="center" >
+	      
+		  <div id="doCompOppion" style="display: none;" >
 		     <div class="form-group form-group-lg" >
-				<label class="col-sm-2 control-label" for="formGroupInputLarge">教学处意见</label>				    
+				<label class="col-sm-2 control-label" for="formGroupInputLarge">意见：</label>				    
 				<div class="col-sm-10">
-				   <textarea class="form-control" rows="3" cols="3"  style="height: 200px;"></textarea>
+				   <textarea class="form-control" rows="3" cols="3" name="opinion"  style="height: 200px;" ></textarea>
 				</div>
 			 </div>
-			 <button type="submit" class="btn btn-primary">提交</button>
+			 
 		  </div>
-		  
+		  <div align="center" >
+		     <button type="submit" class="btn btn-primary">提交</button>
+		  </div>
 
 		</form>
 		

@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -93,26 +94,21 @@ public class Competition implements Serializable{
 	private Integer status;//0等待系主任审批 1.等待教学处审批 2申报成功3申报失败
 
 	// 外键一对多 预算
-	@OneToMany
-    @JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "budgetId", cascade = CascadeType.ALL)
 	private Set<Budget> budget;
 
 	// 外键一对多课时预算
-	@OneToMany
-	@JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "hoursId", cascade = CascadeType.ALL)
 	private Set<Hour> hour;
 
 	// 外键一对多 培训工作安排
-	@OneToMany
-	@JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "scheduleId", cascade = CascadeType.ALL)
 	private Set<Schedule> schedule;
 	
-	@OneToMany
-	@JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "groupsNo", cascade = CascadeType.ALL)
 	private Set<Groups> groups;
 	
-	@OneToMany
-	@JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id", cascade = CascadeType.ALL)
 	private Set<GuideTeacher> guideTeachers;
 	
 
