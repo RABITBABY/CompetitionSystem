@@ -10,7 +10,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>管理——商品</title>
+<title>修改文章</title>
 <base href="<%=basePath%>">
 <script type="text/javascript" src="${base }js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript"
@@ -60,47 +60,14 @@
 
 .editor_con {
 	width: 1024px;
-	height: 620px;
+	height: 700px;
 }
 </style>
-<script type="text/javascript">
-	var ue = UE.getEditor('editor');
-	var text = "";
-	//获取富文本编辑器内容  
-	function getContent() {
-		text = UE.getEditor('editor').getContent();
-		console.log(text);
-		return text;
-	}
-	//设置编辑器内容  
-	function setContent() {
-		UE.getEditor('editor').setContent(text);
-	}
 
-	function pubArticle() {
-		var title = $("#article_title").val();
-		var content = getContent();
-		alert(content);
-		var type = $("#article_type").val();
-		var comId = $("#article_comId").val();
-		console.log(comId);
-		var url = "article/pubArticl?article.title=" + title
-				+ "&article.content=" + content + "&article.articleType="
-				+ type + "&article.project.comId=" + comId;
-		location = url;
-		//pubArticl
-
-	}
-
-	function subButton() {
-		var content = getContent();
-		$("#article_content").val(content);
-		return true;
-	}
-</script>
 </head>
 
 <body>
+
 	<s:debug></s:debug>
 	<!--导航条-->
 	<div class="man_top">
@@ -135,35 +102,41 @@
 		<!--右边  -->
 		<div class="con_middle">
 			<s:if test="type eq 1">
-				<h2>竞赛征文发布</h2>
+				<h2>竞赛征文修改</h2>
 			</s:if>
 			<s:elseif test="type eq 2">
-				<h2>动态公告发布</h2>
+				<h2>动态公告修改</h2>
 			</s:elseif>
 			<s:elseif test="type eq 3">
-				<h2>获奖公告发布</h2>
+				<h2>获奖公告修改</h2>
 			</s:elseif>
 
-			<form action="article/pubArticl" method="post" onsubmit="return subButton()">
-				<div class="input-group">
-					<span class="input-group-addon">文章标题</span> 
-					<input type="text" class="form-control" placeholder="标题" name="article.title" id="article_title">
-					<input value="${type }" type="hidden" id="article_type" name="article.articleType"> 
-					<input type="hidden" value="${comId }" id="article_comId" name="article.project.comId" >
-					<input type="hidden"  id="article_content" name="article.content" >
-				</div>
+			<div class="input-group">
+				<span class="input-group-addon">文章标题</span> <input type="text"
+					class="form-control" placeholder="标题" id="article_title"
+					name="article.title" value="${article.title }"> <input
+					value="${type }" type="hidden" id="article_type">
 
-				<div class="editor_con">
-					<script id="editor" type="text/plain" class="ueditor"></script>
-				</div>
+				<%-- 	<input type="hidden" value="${articleId }" name=""
+					id="article_comId"> --%>
 
-				<div class="">
-					<button class="btn con_btn btn-primary">退出编辑</button>
-					<input class="btn con_btn btn-primary" type="submit" value="发布文章">
-					&nbsp;
+				<input type="hidden" value='${article.content}'
+					name="article.content" id="article_content">
 
-				</div>
-			</form>
+			</div>
+
+			<div class="editor_con">
+				<button class="btn  btn-primary" style="margin-top: 15px"
+					onclick="setContent()">继续上次内容</button>
+				<script id="editor" type="text/plain" class="ueditor"></script>
+			</div>
+
+			<div class="">
+				<button class="btn con_btn btn-primary" >退出编辑</button>
+				<button class="btn con_btn btn-primary" onclick="pubArticle()">发布文章</button>
+				&nbsp;
+
+			</div>
 
 		</div>
 
@@ -171,4 +144,25 @@
 
 
 </body>
+<script>
+	//初始化富文本框
+	var ue = UE.getEditor('editor');
+	var text = "sdfsdf";
+	//获取富文本编辑器内容  
+	function getContent() {
+		text = UE.getEditor('editor').getContent();
+		console.log(text);
+		return text;
+	}
+	//设置编辑器内容  
+	function setContent() {
+		UE.getEditor('editor').setContent(text);
+	}
+
+	ue.addListener('ready', function(editor) {
+		text = $("#article_content").val();
+		text.replace(/"/, "'");
+		setContent();
+	});
+</script>
 </html>

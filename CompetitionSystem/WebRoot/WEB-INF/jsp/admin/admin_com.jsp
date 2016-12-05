@@ -128,7 +128,7 @@
 								</div>
 							</div>
 							<div style="float: right">
-								<button class="btn btn-info ">修改</button>
+								<button class="btn btn-info " onclick="location='article/toUpdate?articleId=${c.articleId}'">修改</button>
 								<button class="btn btn-danger"  onclick="delectArticle(<s:property value="#c.articleId" />)">删除</button>
 							</div>
 						</a>

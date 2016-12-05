@@ -27,7 +27,7 @@ public class Article  implements Serializable{
 	@Column
 	private Date pubDate;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="pubUser")
 	private Adminster pubUser;
 	
@@ -93,6 +93,14 @@ public class Article  implements Serializable{
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [articleId=" + articleId + ", title=" + title
+				+ ", content=" + content + ", pubDate=" + pubDate
+				+ ", pubUser=" + pubUser + ", articleType=" + articleType
+				+ ", project=" + project + "]";
 	}
 	
 	

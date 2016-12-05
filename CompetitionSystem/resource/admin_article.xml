@@ -13,10 +13,12 @@
 
 
 	<package name="article" namespace="/article" extends="json-default">
+		<!--跳转到发布页面 -->
 		<action name="toPublic" class="com.cs.action.admin.ArticleAction"
 			method="toPublic">
 			<result>/WEB-INF/jsp/admin/article_pub.jsp</result>
 		</action>
+		<!--发布文章内容 -->
 		<action name="pubArticl" class="com.cs.action.admin.ArticleAction"
 			method="pubArticl">
 			<result type="redirectAction" name="success">
@@ -28,7 +30,7 @@
 				<param name="namespace">/admin</param>
 			</result>
 		</action>
-
+		<!--删除文章 -->
 		<action name="delectArticle" class="com.cs.action.admin.ArticleAction"
 			method="delectArticle">
 			<result type="redirectAction" name="success">
@@ -36,7 +38,22 @@
 				<param name="namespace">/admin</param>
 			</result>
 		</action>
-
+		
+		<!-- 跳转到修改页面中 -->
+		<action name="toUpdate" class="com.cs.action.admin.ArticleAction"
+			method="toUpdate">
+		<result name="success">/WEB-INF/jsp/admin/article_update.jsp</result>
+		</action>
+		
+		<!--ajax获取文章 -->
+		<action name="findComarti" class="com.cs.action.admin.ArticleAction"
+			method="findComarti">
+			<result type="json">
+				 <param name="includeProperties">
+					article.*
+				</param>
+			</result>
+		</action>
 	</package>
 
 
