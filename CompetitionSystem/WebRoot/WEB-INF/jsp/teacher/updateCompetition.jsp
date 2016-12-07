@@ -1,4 +1,3 @@
-<%@page import="com.cs.entity.Teacher"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -25,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<!--JavaScript插件都是依赖与jQuery库-->
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/js/teachDepartIndex.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/updateComp.js"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -35,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <div class="main">
        <h1>申报书</h1>
-       <form class="form-horizontal" role="form" style="width:65%;" method="post" action="<%=path %>/auditor/doAudit">
+       <form class="form-horizontal" role="form" style="width:80%;" >
            <input class="form-control" type="hidden" value="${competition.comId}" name="comId">
           <!-- 申报人信息 -->
           <div class="panel panel-info">
@@ -53,21 +52,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">所在单位</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.unit}" readonly>
+				      <input class="form-control" type="text" value="${competition.unit}">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">联系电话</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.phone}" readonly>
+				      <input class="form-control" type="text" value="${competition.phone}">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">电子邮箱</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.email}" readonly>
+				      <input class="form-control" type="text" value="${competition.email}">
 				    </div>
 				  </div>
 				  
@@ -89,63 +88,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			      <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛名称</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.comName}" readonly>
+				      <input class="form-control" type="text" value="${competition.comName}" >
 				    </div>
 				  </div>
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛类别</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.level.levelName}" readonly>
+				      <input class="form-control" type="text" value="${competition.level.levelName}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">院级以上竞赛举办者</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.host}" readonly>
+				      <input class="form-control" type="text" value="${competition.host}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛时间</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.time}" readonly>
+				      <input class="form-control" type="text" value="${competition.time}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛地点</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.place}" readonly>
+				      <input class="form-control" type="text" value="${competition.place}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">参赛对象</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.object}" readonly>
+				      <input class="form-control" type="text" value="${competition.object}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">人数</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.people}" readonly>
+				      <input class="form-control" type="text" value="${competition.people}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">校外资助单位</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.sponsor}" readonly>
+				      <input class="form-control" type="text" value="${competition.sponsor}">
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛简介</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.introduce}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" style="height: 200px;">${competition.introduce}</textarea>
 				    </div>
 				  </div>  
 				  
@@ -154,9 +153,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <!-- 指导老师 -->
           <div class="panel panel-info">
 	          <div class="panel-heading">
-			         指导老师
+	             <div class="row">
+				  <div class="col-md-10"> 指导老师</div>
+				  <div class="col-md-2"><button type="button" class="btn btn-success" onclick="addGuide()">添加</button></div>
+				</div>
 			  </div>
+			  
 			  <div class="panel-body">
+			  
 				  <table class="table">
 				    <thead>
 				       <tr>
@@ -166,13 +170,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				           <td>专业</td>
 				       </tr>
 				    </thead>
-				    <tbody>
+				    <tbody id="guide">
 				       <c:forEach items="${competition.guideTeachers}" var="comTeacher">
 				       <tr>
-				           <td>${comTeacher.teacherName}</td>
-				           <td>${comTeacher.title}</td>
-				           <td>${comTeacher.post}</td>
-				           <td>${comTeacher.department.departmentName}</td>
+				           <td><input class='form-control' type='text'  value="${comTeacher.teacherName}"></td>
+				           <td><input class='form-control' type='text'  value="${comTeacher.title}"></td>
+				           <td><input class='form-control' type='text'  value="${comTeacher.post}"></td>
+				           <td><input class='form-control' type='text'  value="${comTeacher.department.departmentName}"></td>
 				       </tr>
 				       </c:forEach>
 				    </tbody>
@@ -224,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div class="panel-body">
 			      <div class="form-group form-group-lg">
 				    <div class="col-sm-12">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.plan}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" style="height: 200px;">${competition.plan}</textarea>
 				    </div>
 				  </div> 
 				  <h4>附：培训工作安排表</h4>
@@ -261,14 +265,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">能力训练目标</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.tgoal}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" style="height: 200px;">${competition.tgoal}</textarea>
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛获奖目标</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.wgoal}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" style="height: 200px;">${competition.wgoal}</textarea>
 				    </div>
 				  </div>  
 				  
@@ -334,8 +338,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="panel-heading">
 			         审批意见
 			  </div>
-			  <div class="panel-body">	
-			     <!-- 校外资助单位意见 -->	  
+			  <div class="panel-body">		  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">校外资助单位意见</label>
 				    <div class="col-sm-10">
@@ -344,7 +347,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>  
 				  
 				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">资助单位负责人：</label>
+				    <label for="input1" class="col-sm-2 control-label">资助单位负责人</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="input1" readonly value="${competition.slsign}">
 				    </div>
@@ -356,16 +359,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.slsdate}" pattern="yyy-MM-dd"/>">
 				    </div>
 				  </div>
-				  <!-- 竞赛实施单位意见 -->	  
-				   <div class="form-group form-group-lg">
-				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛实施单位意见</label>
+				  
+				  <div class="form-group form-group-lg">
+				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛组织实施单位意见</label>
 				    <div class="col-sm-10">
 				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.uopinion}</textarea>
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">系部签字：</label>
+				    <label for="input1" class="col-sm-2 control-label">系部签字</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="input1" readonly value="${competition.dsign}">
 				    </div>
@@ -377,16 +380,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.dsdate}" pattern="yyy-MM-dd"/>">
 				    </div>
 				  </div>
-				  <!-- 教学处意见 -->	  
-				   <div class="form-group form-group-lg">
-				    <label class="col-sm-2 control-label" for="formGroupInputLarge">教学处意见</label>
+				  
+				  
+				  <div class="form-group form-group-lg">
+				    <label class="col-sm-2 control-label" for="formGroupInputLarge">教学处审批意见</label>
 				    <div class="col-sm-10">
 				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.tdopinion}</textarea>
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group">
-				    <label for="input1" class="col-sm-2 control-label">竞赛办公室负责人：</label>
+				    <label for="input1" class="col-sm-2 control-label">教学处签字</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="input1" readonly value="${competition.olsign}">
 				    </div>
@@ -400,14 +404,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>
 				    
 			  </div> 
-			  
-          </div>
-          		  
+          </div>      
+		  
 		  <div align="center" >
-		       <!-- 做完登录再做。 系主任，（跳会首页，或者跳到历史页用session判断。）-->   
-		       <button type="button" class="btn btn-primary" onclick="toReturn()">返回</button>
+		     <button type="button" class="btn btn-primary" onclick="submitForm()">提交</button>
 		  </div>
-           
+
 		</form>
 		
      </div>

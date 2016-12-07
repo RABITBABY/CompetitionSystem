@@ -168,10 +168,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <tbody>
 				       <c:forEach items="${competition.guideTeachers}" var="comTeacher">
 				       <tr>
-				           <td>${comTeacher.teacher.teacherName}</td>
-				           <td>${comTeacher.teacher.title}</td>
-				           <td>${comTeacher.teacher.post}</td>
-				           <td>${comTeacher.teacher.department.departmentName}</td>
+				           <td>${comTeacher.teacherName}</td>
+				           <td>${comTeacher.title}</td>
+				           <td>${comTeacher.post}</td>
+				           <td>${comTeacher.department.departmentName}</td>
 				       </tr>
 				       </c:forEach>
 				    </tbody>

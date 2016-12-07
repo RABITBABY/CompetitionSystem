@@ -50,7 +50,6 @@
 	<mapping class="com.cs.entity.Teacher" />
 	<mapping class="com.cs.entity.Department" />
 	<mapping class="com.cs.entity.Article" />
-	<mapping class="com.cs.entity.GuideTeacher"  />
 
 </session-factory>
 </hibernate-configuration>

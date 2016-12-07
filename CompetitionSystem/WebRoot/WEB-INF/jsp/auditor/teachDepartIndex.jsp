@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -62,11 +63,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    </div>						
 					</div>
 					<div>
+					<!--选择-->
+						<div class="row range">
+							<div class="col-md-1 range-title">显示：</div>
+							<div class="col-md-11">
+							   <div style="margin-top: 12px">
+							     <select >
+									  <option>全部</option>
+									  <option>计算机系</option>
+									  <option>外语系</option>
+									  <option>会计系</option>
+									  
+								  </select>
+							   </div>
+								
+							</div>
+						</div>
 						<!--列表-->
 						<table class="table table-hover table-bordered comp-table">
 							<thead>
 								<tr>
 									<th>竞赛名称</th>
+									<th>申报部门</th>
 									<th>申报老师</th>
 									<th>竞赛时间</th>
 									<th>申报状态</th>
@@ -77,8 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    <c:forEach items="${comList}" var="com">
 							        <tr>
 										<td>${com.comName}</td>
+										<td>${com.department.departmentName}</td>
 										<td>${com.teacher.teacherName}</td>
-										<td>${com.time}</td>
+										<td><fmt:formatDate value="${com.time}" pattern="yyyy-MM-dd"/></td>
 										<c:choose>
 										    <c:when test="${com.status==1}">
 										        <td>等待教学处审批</td>

@@ -8,11 +8,18 @@ import com.cs.entity.Groups;
 public interface CompetitionDao {
 
     /**
-     * 根据系id找到竞赛审批表未审批的申报表
+     * 根据系id找到竞赛审批表
      * @param deptId
      * @return
      */
 	List<Competition> findCompetitionsByDeptId(Integer deptId);
+	
+	/**
+     * 根据教师id找到竞赛审批表
+     * @param deptId
+     * @return
+     */
+	List<Competition> findCompetitionsByTeachId(Integer teacherId);
 	
 	/**
      * 查找所有的申报表：教学处审批员，可以看到所有申报表

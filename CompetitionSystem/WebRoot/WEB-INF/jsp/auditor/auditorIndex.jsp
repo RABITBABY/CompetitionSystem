@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -78,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							        <tr>
 										<td>${com.comName}</td>
 										<td>${com.teacher.teacherName}</td>
-										<td>${com.time}</td>
+										<td><fmt:formatDate value="${com.time}" pattern="yyyy-MM-dd"/></td>
 										<c:choose>
 										    <c:when test="${com.status==0}">
 										       <td>等待系主任审批</td>

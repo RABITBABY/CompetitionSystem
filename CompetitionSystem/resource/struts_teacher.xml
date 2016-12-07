@@ -17,6 +17,37 @@
             </result>
         </action>
         
+        <action name="toTeacherResult" class="com.cs.action.teacher.TeacherAction" method="toTeacherResult">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherResult.jsp
+            </result>
+        </action>
+        
+        <action name="toUpdateComp" class="com.cs.action.teacher.TeacherAction" method="toUpdateComp">
+            <result name="success">
+                /WEB-INF/jsp/teacher/updateCompetition.jsp
+            </result>
+        </action>
+        
+        <action name="updateComp" class="com.cs.action.teacher.TeacherAction" method="updateComp">
+            <result name="success" type="redirectAction">
+                toTeacherResult
+            </result>
+        </action>
+        
+        <action name="toManageStudent" class="com.cs.action.teacher.TeacherAction" method="toManageStudent">
+            <result name="success">
+                /WEB-INF/jsp/teacher/manageStudent.jsp
+            </result>
+        </action>
+       
+        
+        <action name="toManageComp" class="com.cs.action.teacher.TeacherAction" method="toManageComp">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherIndex.jsp
+            </result>
+        </action>
+        
         
 	</package>
 	

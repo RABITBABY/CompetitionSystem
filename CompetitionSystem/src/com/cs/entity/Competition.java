@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -108,8 +110,11 @@ public class Competition implements Serializable{
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "groupsNo", cascade = CascadeType.ALL)
 	private Set<Groups> groups;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id", cascade = CascadeType.ALL)
-	private Set<GuideTeacher> guideTeachers;
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name = "guideteacher",
+	joinColumns = {@JoinColumn(name = "comId", referencedColumnName = "comId")},
+	inverseJoinColumns = {@JoinColumn(name = "teacherNo", referencedColumnName ="teacherNo")})
+	private Set<Teacher> guideTeachers;
 	
 
 
@@ -383,12 +388,11 @@ public class Competition implements Serializable{
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
-	public Set<GuideTeacher> getGuideTeachers() {
+	public Set<Teacher> getGuideTeachers() {
 		return guideTeachers;
 	}
 	
-	public void setGuideTeachers(Set<GuideTeacher> guideTeachers) {
+	public void setGuideTeachers(Set<Teacher> guideTeachers) {
 		this.guideTeachers = guideTeachers;
 	}
 	

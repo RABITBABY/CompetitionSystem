@@ -71,5 +71,18 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		return list;
 	}
 
+
+	@Override
+	public List<Competition> findCompetitionsByTeachId(Integer teacherId) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		Query query = session.createQuery("from Competition where teacher.teacherNo=?");
+		query.setInteger(0, teacherId);
+		List<Competition> list = query.list();
+		tx.commit();
+		return list;
+	}
+
    
 }
