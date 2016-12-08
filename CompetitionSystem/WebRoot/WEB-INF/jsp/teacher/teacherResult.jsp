@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/teacherResult.js"></script>
- 
+    <script type="text/javascript" src="<%=path%>/js/teacherCommon.js"></script>
   </head>
   
   <body>
@@ -47,10 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-heading"><i class="glyphicon glyphicon-home"></i>个人中心</div>
 						<!-- List group -->
 						<ul class="list-group list-g">
-							<li class="list-group-item">竞赛申报</li>
+							<li class="list-group-item" onclick="applyCom()">竞赛申报</li>
 							<li class="list-group-item  change_left">查看审批结果</li>
-							<li class="list-group-item">管理报名学生</li>
-							<li class="list-group-item">竞赛管理</li>
+							<li class="list-group-item" onclick="managerStudent()">管理报名学生</li>
+							<li class="list-group-item" onclick="compResult()">竞赛反馈</li>
 							<li class="list-group-item"></li>
 						</ul>
 					</div>
@@ -102,10 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										   <c:choose>
 										    <c:when test="${comList.status==3}">
 										        <button type="button" class="btn btn-info" onclick="updateCom(${comList.comId})">修改</button>
-										        <button type="button" class="btn btn-danger" onclick="">删除</button>
+										        <button type="button" class="btn btn-danger" onclick="deleteCom(${comList.comId})">删除</button>
 										    </c:when>
 										    <c:otherwise>
-										        <button type="button" class="btn btn-info" onclick="">查看</button>
+										        <button type="button" class="btn btn-info" onclick="look(${comList.comId})">查看</button>
 											    <button type="button" class="btn btn-success">导出</button>
 										    </c:otherwise>
 									      </c:choose>

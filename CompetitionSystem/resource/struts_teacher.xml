@@ -35,16 +35,28 @@
             </result>
         </action>
         
+        <action name="deleteComp" class="com.cs.action.teacher.TeacherAction" method="deleteComp">
+            <result name="success" type="redirectAction">
+                toTeacherResult
+            </result>
+        </action>
+        
+        <action name="toWatchComp" class="com.cs.action.teacher.TeacherAction" method="toWatchComp">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherCompetition.jsp
+            </result>
+        </action>
+        
         <action name="toManageStudent" class="com.cs.action.teacher.TeacherAction" method="toManageStudent">
             <result name="success">
-                /WEB-INF/jsp/teacher/manageStudent.jsp
+                /WEB-INF/jsp/teacher/managerStudent.jsp
             </result>
         </action>
        
         
         <action name="toManageComp" class="com.cs.action.teacher.TeacherAction" method="toManageComp">
             <result name="success">
-                /WEB-INF/jsp/teacher/teacherIndex.jsp
+                /WEB-INF/jsp/teacher/managerComp.jsp
             </result>
         </action>
         

@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-validator.Checked=WebRoot/WEB-INF/jsp/auditor/Index.jsp,WebRoot/WEB-INF/jsp/auditor/teachDepartHistoryComp.jsp,WebRoot/js/jquery-2.1.3.min.js,WebRoot/WEB-INF/jsp/auditor/auditorComp.jsp,WebRoot/WEB-INF/jsp/teacher/teacherResult.jsp,WebRoot/WEB-INF/jsp/auditor/teachDepartIndex.jsp,WebRoot/WEB-INF/jsp/auditor/auditorIndex.jsp,WebRoot/ueditor
+validator.Checked=WebRoot/WEB-INF/jsp/teacher/managerStudent.jsp,WebRoot/WEB-INF/jsp/auditor/Index.jsp,WebRoot/WEB-INF/jsp/auditor/teachDepartHistoryComp.jsp,WebRoot/js/jquery-2.1.3.min.js,WebRoot/WEB-INF/jsp/teacher/managerComp.jsp,WebRoot/WEB-INF/jsp/auditor/auditorComp.jsp,WebRoot/WEB-INF/jsp/teacher/teacherResult.jsp,WebRoot/WEB-INF/jsp/auditor/teachDepartIndex.jsp,WebRoot/WEB-INF/jsp/auditor/auditorIndex.jsp,WebRoot/ueditor
 validator.Unchecked=

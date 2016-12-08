@@ -55,7 +55,7 @@ public class Teacher implements Serializable {
 	@Column
 	private int examiner;//是否审批人员
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinTable(name = "Teacher_Student",
+	@JoinTable(name = "guideteacher",
 	joinColumns = {@JoinColumn(name = "teacherNo", referencedColumnName = "teacherNo")},
 	inverseJoinColumns = {@JoinColumn(name = "comId", referencedColumnName ="comId")})
 	private Set<Competition> competitions;

@@ -19,5 +19,20 @@ public class GroupsDaoImpl implements GroupsDao{
 		return getGroup;
 	}
 
+	@Override
+	public Boolean uodateGroups(Groups groups) {
+		Session session = HibernateUtil.getSession();
+		Transaction beginTransaction = session.beginTransaction();
+		try {
+			session.update(groups);
+			beginTransaction.commit();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
+
 	
 }

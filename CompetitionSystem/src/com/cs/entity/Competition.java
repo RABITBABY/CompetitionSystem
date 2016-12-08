@@ -403,6 +403,25 @@ public class Competition implements Serializable{
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+
+	@Override
+	public String toString() {
+		return "Competition [comId=" + comId + ", comName=" + comName
+				+ ", teacher=" + teacher + ", unit=" + unit + ", level="
+				+ level + ", phone=" + phone + ", email=" + email
+				+ ", department=" + department + ", date=" + date + ", host="
+				+ host + ", time=" + time + ", place=" + place + ", introduce="
+				+ introduce + ", object=" + object + ", people=" + people
+				+ ", sponsor=" + sponsor + ", plan=" + plan + ", tgoal="
+				+ tgoal + ", wgoal=" + wgoal + ", sopinion=" + sopinion
+				+ ", slsign=" + slsign + ", slsdate=" + slsdate + ", uopinion="
+				+ uopinion + ", dsign=" + dsign + ", dsdate=" + dsdate
+				+ ", tdopinion=" + tdopinion + ", olsign=" + olsign
+				+ ", olsdate=" + olsdate + ", lsign=" + lsign + ", lsdate="
+				+ lsdate + ", status=" + status + ", budget=" + budget
+				+ ", hour=" + hour + ", schedule=" + schedule + ", groups="
+				+ groups + ", guideTeachers=" + guideTeachers + "]";
+	}
 	
 	
 }

@@ -46,11 +46,15 @@ public class CompetitionDaoImpl implements CompetitionDao{
 	public Boolean updateCompetitionsById(Competition competition) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
+		System.out.println("dao==="+competition);
 		try {
 			session.update(competition);	
+			
 			tx.commit();
 			return true;
+			
 		} catch (Exception e) {
+			System.out.println("Exception:"+e.getMessage());
 			tx.rollback();
 			return false;
 		}
@@ -82,6 +86,25 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		List<Competition> list = query.list();
 		tx.commit();
 		return list;
+	}
+
+
+	@Override
+	public Boolean deleteCompetitionsById(Integer comId) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			Query query = session.createQuery("delete from Competition where comId=?");
+			query.setInteger(0, comId);
+			query.executeUpdate();
+			tx.commit();
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+			return false;
+		}
 	}
 
    

@@ -42,4 +42,12 @@ public interface CompetitionDao {
      * @return
      */
 	Boolean updateCompetitionsById(Competition competition);
+	
+	/**
+     * 根据申报表id删除申报表
+     * @param deptId
+     * @return
+     */
+	Boolean deleteCompetitionsById(Integer comId);
+	
 }

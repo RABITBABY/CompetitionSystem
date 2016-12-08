@@ -9,4 +9,10 @@ public interface GroupsDao {
     * @return
     */
    Groups findGroupsByGNo(Groups groups);
+   
+   /**
+    * 更新groups
+    */
+   Boolean uodateGroups(Groups groups);
+   
 }

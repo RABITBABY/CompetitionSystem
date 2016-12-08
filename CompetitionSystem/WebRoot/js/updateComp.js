@@ -1,16 +1,16 @@
 function addGuide(){
 	//创建<tr>标签
     var $tr=$("<tr>"+
-				 "<td><input class='form-control' type='text' name='teacher.teacherName'></td>"+
-				 "<td><input class='form-control' type='text' name='teacher.title'></td>"+
-				 "<td><input class='form-control' type='text' name='teacher.post'></td>"+
-				 "<td><input class='form-control' type='text' name='teacher.department.departmentName'></td>"+
+				 "<td><input class='form-control' type='text' name='guideTeachers.teacherName'></td>"+
+				 "<td><input class='form-control' type='text' name='guideTeachers.title'></td>"+
+				 "<td><input class='form-control' type='text' name='guideTeachers.post'></td>"+
+				 "<td><input class='form-control' type='text' name='guideTeachers.department.departmentName'></td>"+
 			   "</tr>");
     //让父亲追加
    $("#guide").append($tr);
 }
 
-function submitForm(){
+/*function submitForm(){
 	var row=$("#guide tr").length;
 	//var col=$("#guide tr:first td").length;
 	var teacherName;
@@ -41,4 +41,4 @@ function submitForm(){
             alert("成功！");
           }
     });
-}
+}*/
