@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.cs.entity.Awards;
 import com.cs.entity.Budget;
@@ -23,15 +24,30 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	private TeacherService teacherService=new TeacherService();
 	private Competition competition;
 	private Groups groups;
+	private Teacher teacher;
 	private List<Groups> findGroups;
 	private List<Awards> awards ;
 	/**
 	 * 指导老师首页
 	 * @return
 	 */
-	public  String  toTeacherIndex() {
+	public  String  toTeacherIndex() {	
 		return SUCCESS;
 	}
+	
+	/**
+	 * 指导老师：申报表1保存
+	 * @return
+	 */
+	public  String  saveOne() {
+		competition.setTeacher(teacher);
+		boolean addCompetition = teacherService.addCompetition(competition);
+		if (!addCompetition) {
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
 	/**
 	 * 指导老师：申报结果
 	 * @return
@@ -110,13 +126,7 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	 */
 	public  String  toManageStudent() {
 		List<Competition> teacher = teacherService.findPassCompetitions(1);
-		/*for (Competition competition : teacher) {
-			Set<Groups> groups = competition.getGroups();
-			System.out.println("下一组");
-			for (Groups groups2 : groups) {
-				System.out.println(groups2.getGroupsName()+"++++++++++++");
-			}
-		}*/
+		
 		
 		request.put("teacherComList", teacher);	
 		return SUCCESS;
@@ -170,6 +180,9 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	}
 	
 	
+	
+	
+	
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request=request;
@@ -213,6 +226,13 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 		this.awards = awards;
 	}
    
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 	
 	
 }

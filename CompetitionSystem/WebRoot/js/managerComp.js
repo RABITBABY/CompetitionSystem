@@ -77,7 +77,7 @@ function seeResult(value) {
 							+ "<span aria-hidden='true'>&times;</span>"
 							+ "<span class='sr-only'>Close</span>"
 							+ "</button>"
-							+ "<h4 class='modal-title' id='myModalLabel'>反馈比赛结果</h4>"
+							+ "<h4 class='modal-title' id='myModalLabel'>查看比赛结果</h4>"
 							+ "</div>"
 							+ "<div class='modal-body'>"
 							+ "<h3>"+obj[0].competition.comName+"</h3>"
@@ -101,7 +101,7 @@ function seeResult(value) {
 							+ "</div>"
 							+ "<div class='modal-footer'>"
 							+ "<button type='button' class='btn btn-default' data-dismiss='modal'>取消</button>"
-							+ "<button type='button' class='btn btn-primary'>保存</button>"
+				
 							+ "</div>" + "</div>" + "</div>" + "</div>";
 
 					$("#theModel").html(model);

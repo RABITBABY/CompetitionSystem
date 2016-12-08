@@ -107,5 +107,24 @@ public class CompetitionDaoImpl implements CompetitionDao{
 		}
 	}
 
+
+	@Override
+	public Boolean addCompetition(Competition competition) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.save(competition);
+			tx.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+			tx.rollback();
+			return false;
+		}
+
+		
+	}
+
    
 }

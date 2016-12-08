@@ -65,7 +65,7 @@
 					<div class="row manage-head">
 					    <div class="combody">
 					       <div class="col-md-10">
-							<span>我的竞赛(<span>${fn:length(awards)}</span>)
+							<span>我的竞赛(<span>${fn:length(groupsList)}</span>)
 							</span>
 							</div>
 							<div class="col-md-2 addbtn">

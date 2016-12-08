@@ -53,6 +53,14 @@ public class TeacherService {
 			return false;
 		}
 	}
+	
+	/**
+	 * 保存申报表
+	 */
+	public boolean addCompetition(Competition competition) {
+		Boolean addCompetition = cDao.addCompetition(competition);
+		return addCompetition;
+	}
 
 	/**
 	 * 删除申报表

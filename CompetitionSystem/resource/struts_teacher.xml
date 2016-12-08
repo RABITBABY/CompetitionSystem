@@ -17,6 +17,30 @@
             </result>
         </action>
         
+        <action name="saveOne" class="com.cs.action.teacher.TeacherAction" method="saveOne">
+            <result name="success" type="redirectAction">
+               toTeacherIndexTwo 
+            </result>
+        </action>
+        
+        <action name="toTeacherIndexTwo" class="com.cs.action.teacher.TeacherAction" method="toTeacherIndex">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherIndexTwo.jsp
+            </result>
+        </action>
+        
+        <action name="toTeacherIndexThree" class="com.cs.action.teacher.TeacherAction" method="toTeacherIndex">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherIndexThree.jsp
+            </result>
+        </action>
+        
+         <action name="toTeacherIndexFour" class="com.cs.action.teacher.TeacherAction" method="toTeacherIndex">
+            <result name="success">
+                /WEB-INF/jsp/teacher/teacherIndexFour.jsp
+            </result>
+        </action>
+        
         <action name="toTeacherResult" class="com.cs.action.teacher.TeacherAction" method="toTeacherResult">
             <result name="success">
                 /WEB-INF/jsp/teacher/teacherResult.jsp

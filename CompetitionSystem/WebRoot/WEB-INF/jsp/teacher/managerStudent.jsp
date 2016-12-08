@@ -106,7 +106,7 @@
 													<c:when test="${comGroup.status==0}">
 														<td>等待审核</td>
 													</c:when>
-													<c:when test="${comGroupcomGroup.status==1}">
+													<c:when test="${comGroup.status==1}">
 														<td>审核不通过</td>
 													</c:when>
 													<c:when test="${comGroup.status==2}">

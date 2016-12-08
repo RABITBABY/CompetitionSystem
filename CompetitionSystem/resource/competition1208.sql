@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2016-12-08 08:45:22
+Date: 2016-12-08 13:34:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,6 +66,7 @@ CREATE TABLE `article` (
 DROP TABLE IF EXISTS `awards`;
 CREATE TABLE `awards` (
   `awardsId` int(11) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `comId` int(11) DEFAULT NULL,
   `name` varchar(23) DEFAULT NULL COMMENT '竞赛名称',
   `date` date DEFAULT NULL COMMENT '竞赛时间',
   `hunit` varchar(45) DEFAULT NULL COMMENT '主办单位',
@@ -78,6 +79,8 @@ CREATE TABLE `awards` (
   KEY `FKAC40D1B69954ECC3` (`groupsNo`),
   KEY `FKAC40D1B68EA1F525` (`prizeId`),
   KEY `FKAC40D1B6A549AF89` (`levelId`),
+  KEY `FKAC40D1B6EDBA9C01` (`comId`),
+  CONSTRAINT `FKAC40D1B6EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`),
   CONSTRAINT `FKAC40D1B68EA1F525` FOREIGN KEY (`prizeId`) REFERENCES `prize` (`prizeId`),
   CONSTRAINT `FKAC40D1B69954ECC3` FOREIGN KEY (`groupsNo`) REFERENCES `groups` (`groupsNo`),
   CONSTRAINT `FKAC40D1B6A549AF89` FOREIGN KEY (`levelId`) REFERENCES `level` (`levelId`)
@@ -86,8 +89,8 @@ CREATE TABLE `awards` (
 -- ----------------------------
 -- Records of awards
 -- ----------------------------
-INSERT INTO `awards` VALUES ('1', '甲骨文java程序设计', '2016-11-15', '甲骨文公司', '3', '1', '1', '0');
-INSERT INTO `awards` VALUES ('2', '蓝桥杯', '2016-11-21', '蓝桥杯公司', '1', '2', '2', '0');
+INSERT INTO `awards` VALUES ('1', '3', '美术杯', '2016-11-15', '甲骨文公司', '3', '1', '1', '0');
+INSERT INTO `awards` VALUES ('2', '3', '美术杯', '2016-11-21', '蓝桥杯公司', '1', '2', '2', '0');
 
 -- ----------------------------
 -- Table structure for `budget`
@@ -102,9 +105,9 @@ CREATE TABLE `budget` (
   PRIMARY KEY (`budgetId`),
   KEY `decl_bud` (`comId`),
   KEY `FKADDAAF4589FF68C5` (`budgetId`),
-  CONSTRAINT `FKADDAAF4589FF68C5` FOREIGN KEY (`budgetId`) REFERENCES `competition` (`comId`),
-  CONSTRAINT `com_bud` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  CONSTRAINT `com_bud` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`),
+  CONSTRAINT `FKADDAAF4589FF68C5` FOREIGN KEY (`budgetId`) REFERENCES `competition` (`comId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of budget
@@ -120,7 +123,7 @@ CREATE TABLE `competition` (
   `comName` varchar(23) DEFAULT NULL COMMENT '竞赛名称',
   `teacherNo` int(14) NOT NULL COMMENT '竞赛负责人',
   `unit` varchar(45) DEFAULT NULL COMMENT '所在单位',
-  `levelId` int(3) NOT NULL COMMENT '竞赛类别',
+  `levelId` int(3) DEFAULT NULL COMMENT '竞赛类别',
   `phone` varchar(11) DEFAULT NULL COMMENT '联系电话',
   `email` varchar(45) DEFAULT NULL COMMENT '电子邮箱',
   `departmentId` int(11) DEFAULT NULL COMMENT '负责人所在系部',
@@ -155,14 +158,17 @@ CREATE TABLE `competition` (
   CONSTRAINT `FKBEB591BF6741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
   CONSTRAINT `FKBEB591BF77CD9A99` FOREIGN KEY (`departmentId`) REFERENCES `department` (`departmentId`),
   CONSTRAINT `level_com` FOREIGN KEY (`levelId`) REFERENCES `level` (`levelId`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of competition
 -- ----------------------------
-INSERT INTO `competition` VALUES ('1', '甲骨文', '1', '广州商学院', '1', '111222', 'a@qq.com', '1', '2016-11-06', '甲骨文', '2016-11-30', '华农', '好玩的比赛', '全国大学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-14', '同意', '', '2016-11-23', null, null, null, null, null, '2');
+INSERT INTO `competition` VALUES ('1', '甲骨文', '1', '信息技术与工程学院', '1', '111222', 'a@qq.com', '1', '2016-11-06', '甲骨文', '2016-11-30', '华农', '好玩的比赛', '全国大学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-14', '同意', '', '2016-11-23', null, null, null, null, null, '2');
 INSERT INTO `competition` VALUES ('2', '软件设计大赛', '1', '信息技术与工程学院', '2', '111222', 'b@qq.com', '1', '2016-11-06', '小马哥', '2016-11-29', '华农', '好玩的比赛', '计算机系学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-15', '同意', '', '2016-11-11', '', null, null, null, null, '2');
-INSERT INTO `competition` VALUES ('3', '美术杯', '1', '艺术系', '2', '2321323', 'c@qq.com', '1', '2016-11-06', '广州商学院', '2016-11-29', '华农', '好玩的比赛', '全院学生', '1', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-09', '同意', '林主任', null, null, null, null, null, null, '2');
+INSERT INTO `competition` VALUES ('3', '美术杯', '1', '信息技术与工程学院', '2', '2321323', 'c@qq.com', '1', '2016-11-06', '广州商学院', '2016-11-29', '华农', '好玩的比赛', '全院学生', '1', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', '校外资助单位说我同意', '冯', '2016-11-09', '同意', '林主任', null, null, null, null, null, null, '2');
+INSERT INTO `competition` VALUES ('4', '小马哥杯', '1', '信息技术与工程学院', '2', '111222', 'b@qq.com', '1', '2016-11-06', '小马哥', '2016-11-29', '华农', '好玩的比赛', '计算机系学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', null, null, null, null, null, null, null, null, null, null, null, '0');
+INSERT INTO `competition` VALUES ('5', '大数据比赛', '1', '信息技术与工程学院', '2', '111222', 'b@qq.com', '1', '2016-11-06', '小马哥', '2016-11-29', '华农', '好玩的比赛', '计算机系学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', null, null, null, null, null, null, null, null, null, null, null, '0');
+INSERT INTO `competition` VALUES ('6', '小数据比赛', '1', '信息技术与工程学院', '1', '111222', 'b@qq.com', '1', '2016-11-06', '小马哥', '2016-11-29', '华农', '好玩的比赛', '计算机系学生', '2', '娇兰佳人', '就这么干吧', '就这么干吧', '要达到这个目标', null, null, null, null, null, null, null, null, null, null, null, '0');
 
 -- ----------------------------
 -- Table structure for `department`
@@ -210,7 +216,7 @@ CREATE TABLE `groups` (
   `comId` int(11) DEFAULT NULL,
   `groupsName` varchar(45) DEFAULT NULL COMMENT '组名',
   `teacherNo` int(11) DEFAULT NULL,
-  `status` int(2) DEFAULT NULL COMMENT '报名状态（0.正在审核2.审核未通过 3.等待缴费4报名成功 5比赛结束）',
+  `status` int(2) DEFAULT NULL COMMENT '报名状态（0.正在审核1.审核未通过 2.等待缴费3报名成功 4比赛结束）',
   PRIMARY KEY (`groupsNo`),
   KEY `com_id` (`comId`),
   KEY `FK_2klbi1qhox9yt1b0j5ovl5lbe` (`teacherNo`),
@@ -218,18 +224,19 @@ CREATE TABLE `groups` (
   KEY `FKB63DD9D46741EFEB` (`teacherNo`),
   KEY `FKB63DD9D4CB59385B` (`comId`),
   KEY `FKB63DD9D46422C3A` (`groupsNo`),
-  CONSTRAINT `FKB63DD9D46422C3A` FOREIGN KEY (`groupsNo`) REFERENCES `competition` (`comId`),
   CONSTRAINT `FKB63DD9D46741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
   CONSTRAINT `FKB63DD9D4CB59385B` FOREIGN KEY (`comId`) REFERENCES `project` (`comId`),
   CONSTRAINT `FKB63DD9D4EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of groups
 -- ----------------------------
-INSERT INTO `groups` VALUES ('1', '1', '三剑侠', '1', '0');
-INSERT INTO `groups` VALUES ('2', '2', '一剑侠', '1', '4');
-INSERT INTO `groups` VALUES ('3', '3', 'xxx', '1', '4');
+INSERT INTO `groups` VALUES ('1', '1', '1111', '1', '3');
+INSERT INTO `groups` VALUES ('2', '2', '一剑侠', '1', '3');
+INSERT INTO `groups` VALUES ('3', '3', 'xxx', '1', '3');
+INSERT INTO `groups` VALUES ('4', '2', '二货', '1', '3');
+INSERT INTO `groups` VALUES ('5', '3', '无敌', '1', '0');
 
 -- ----------------------------
 -- Table structure for `groupsdetail`
@@ -246,7 +253,7 @@ CREATE TABLE `groupsdetail` (
   KEY `FKC52F2F45F2872A5D` (`studentNo`),
   CONSTRAINT `FKC52F2F459954ECC3` FOREIGN KEY (`groupsNo`) REFERENCES `groups` (`groupsNo`),
   CONSTRAINT `FKC52F2F45F2872A5D` FOREIGN KEY (`studentNo`) REFERENCES `student` (`studentNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of groupsdetail
@@ -255,6 +262,8 @@ INSERT INTO `groupsdetail` VALUES ('1', '1', '1');
 INSERT INTO `groupsdetail` VALUES ('2', '1', '2');
 INSERT INTO `groupsdetail` VALUES ('3', '2', '1');
 INSERT INTO `groupsdetail` VALUES ('4', '3', '1');
+INSERT INTO `groupsdetail` VALUES ('5', '4', '1');
+INSERT INTO `groupsdetail` VALUES ('6', '4', '2');
 
 -- ----------------------------
 -- Table structure for `guideteacher`
@@ -268,8 +277,8 @@ CREATE TABLE `guideteacher` (
   KEY `FKE7E27D66EDBA9C01` (`comId`),
   KEY `FKE7E27D666741EFEB` (`teacherNo`),
   KEY `FKE7E27D66E81376C0` (`id`),
-  CONSTRAINT `FKE7E27D66E81376C0` FOREIGN KEY (`id`) REFERENCES `competition` (`comId`),
   CONSTRAINT `FKE7E27D666741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
+  CONSTRAINT `FKE7E27D66E81376C0` FOREIGN KEY (`id`) REFERENCES `competition` (`comId`),
   CONSTRAINT `FKE7E27D66EDBA9C01` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -293,8 +302,8 @@ CREATE TABLE `hours` (
   PRIMARY KEY (`hoursId`),
   KEY `decl_hour` (`comId`),
   KEY `FK5EDC70F29ABB60F` (`hoursId`),
-  CONSTRAINT `FK5EDC70F29ABB60F` FOREIGN KEY (`hoursId`) REFERENCES `competition` (`comId`),
-  CONSTRAINT `com_hour` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`)
+  CONSTRAINT `com_hour` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`),
+  CONSTRAINT `FK5EDC70F29ABB60F` FOREIGN KEY (`hoursId`) REFERENCES `competition` (`comId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -391,7 +400,7 @@ CREATE TABLE `project` (
   `applyEndDate` date DEFAULT NULL COMMENT '报名结束时间',
   `comDate` date DEFAULT NULL COMMENT '比赛时间',
   `cost` decimal(10,2) DEFAULT NULL COMMENT '报名费',
-  `status` int(11) DEFAULT NULL COMMENT '比赛状态(0.赛前准备 1比赛结束)',
+  `status` int(11) DEFAULT NULL COMMENT '比赛状态(0.赛前准备 1比赛结束 2.已反馈)',
   `isPublish` int(11) NOT NULL DEFAULT '0' COMMENT '发布状态',
   PRIMARY KEY (`comId`),
   KEY `pro_gra` (`levelId`),
@@ -401,9 +410,10 @@ CREATE TABLE `project` (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
-INSERT INTO `project` VALUES ('1', '甲骨文', '1', null, null, null, '2016-10-01', '2016-10-03', '2016-10-11', '300.00', '0', '0');
-INSERT INTO `project` VALUES ('2', '软件设计比赛', '2', null, null, null, '2016-11-01', '2016-11-02', '2016-11-22', '200.00', '0', '0');
-INSERT INTO `project` VALUES ('3', '美术杯', '2', null, null, null, '2016-01-01', '2016-01-10', '2016-03-10', '0.00', '0', '0');
+INSERT INTO `project` VALUES ('1', '甲骨文', '1', null, null, null, '2016-10-01', '2016-10-03', '2016-10-11', '300.00', '1', '0');
+INSERT INTO `project` VALUES ('2', '软件设计比赛', '2', null, null, null, '2016-11-01', '2016-11-02', '2016-11-22', '200.00', '1', '0');
+INSERT INTO `project` VALUES ('3', '美术杯', '2', null, null, null, '2016-01-01', '2016-01-10', '2016-03-10', '0.00', '2', '0');
+INSERT INTO `project` VALUES ('4', '小马哥杯', '1', null, null, null, null, null, '2016-07-08', '200.00', '1', '0');
 
 -- ----------------------------
 -- Table structure for `schedule`
@@ -422,9 +432,9 @@ CREATE TABLE `schedule` (
   KEY `decl_no` (`teacherNo`),
   KEY `FKD66692976741EFEB` (`teacherNo`),
   KEY `FKD6669297BF1FBF97` (`scheduleId`),
-  CONSTRAINT `FKD6669297BF1FBF97` FOREIGN KEY (`scheduleId`) REFERENCES `competition` (`comId`),
   CONSTRAINT `com_sch` FOREIGN KEY (`comId`) REFERENCES `competition` (`comId`),
-  CONSTRAINT `FKD66692976741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`)
+  CONSTRAINT `FKD66692976741EFEB` FOREIGN KEY (`teacherNo`) REFERENCES `teacher` (`teacherNo`),
+  CONSTRAINT `FKD6669297BF1FBF97` FOREIGN KEY (`scheduleId`) REFERENCES `competition` (`comId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
