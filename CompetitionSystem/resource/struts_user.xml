@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- constant 这是Struts2的常量配置，1、便是可以动态调用Action中的Method -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
+	<constant name="struts.devMode" value="true" />
+
+	<package name="user" namespace="/" extends="struts-default">
+	
+		<action name="login" class="com.cs.action.user.UserAction" method="login">
+			<result name="admin" type="redirectAction">
+				<param name="actionName">toCom</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result name="teach" type="redirectAction">
+				<param name="actionName">toTeacherIndex</param>
+				<param name="namespace">/teacher</param>
+			</result>
+			<result name="auditor" type="redirectAction">
+				<param name="actionName">toAuditorIndex</param>
+				<param name="namespace">/auditor</param>
+			</result>
+			
+			<result name="departAuditor" type="redirectAction">
+				<param name="actionName">toTeachDepartIndex</param>
+				<param name="namespace">/teachDepart</param>
+			</result>
+			<result name="stu" type="redirectAction">
+				<param name="actionName">toIndex</param>
+				<param name="namespace">/student</param>
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+	</package>
+
+
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+

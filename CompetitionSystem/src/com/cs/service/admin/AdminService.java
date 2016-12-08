@@ -12,6 +12,7 @@ import com.cs.entity.Awards;
 import com.cs.entity.FileUpload;
 import com.cs.entity.Production;
 import com.cs.entity.Project;
+import com.cs.util.PageUtil;
 
 public class AdminService {
 
@@ -68,8 +69,9 @@ public class AdminService {
 	
 	//添加征文
 	public int PubArticle(Article article) {
-		int id=artiImpl.PubArticle(article);
-		if(article.getProject().getComId()>0){
+		int id=artiImpl.PubArticle(article);//发布
+		
+		if(article.getProject()!=null){
 			
 			projectImpl.pubChange(article.getProject().getComId(),1);
 		}
@@ -85,7 +87,7 @@ public class AdminService {
 		Article article=artiImpl.getArticleById(id);
 		artiImpl.delectArticle(id);
 		System.out.println(article);
-		if(article.getProject().getComId()>0){
+		if(article.getProject()!=null){
 			
 			projectImpl.pubChange(article.getProject().getComId(),0);
 		}
@@ -112,4 +114,9 @@ public class AdminService {
 		fileImpl.deletcFile(fileid);
 	}
 	
+	//分页文章
+	public PageUtil<Article> articlePage(int type,int index,int acount){
+		return artiImpl.Articlepage(type, index, acount);
+		
+	}
 }

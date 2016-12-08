@@ -98,7 +98,7 @@
 					</button>
 				</div>
 
-				<s:iterator value="articles" var="c">
+				<s:iterator value="page.list" var="c">
 					<div class="list-group com_art _center">
 						<a  class="list-group-item  " style="height:65px">
 							<div style="width:700px;heigth:65px;float:left">
@@ -115,6 +115,28 @@
 						</a>
 					</div>
 				</s:iterator>
+				<nav>
+						<ul class="pagination"  style="float: right">
+							<s:if test="page.pageIndex eq 1">
+								<li><a href="admin/toPageChange?type=1&index=1">&laquo;</a></li>
+							</s:if>
+							<s:else>
+								<li><a href="admin/toPageChange?type=1&index=${page.pageIndex -1 }">&laquo;</a></li>
+							</s:else>
+							
+							<s:iterator begin="1" end="page.pageCount" var="p" step="1">
+								<li><a href="admin/toPageChange?type=1&index=${p}">${p}</a></li>
+							</s:iterator>
+							
+							<s:if test="page.pageIndex eq page.pageCount ">
+							<li><a href="admin/toPageChange?type=1&index=${page.pageCount}">&raquo;</a></li>
+							</s:if>
+							<s:else>
+							
+							<li><a href="admin/toPageChange?type=1&index=${page.pageIndex + 1}">&raquo;</a></li>
+							</s:else>
+						</ul>
+						</nav>
 			</div>
 
 		</div>

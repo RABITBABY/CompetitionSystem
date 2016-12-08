@@ -9,6 +9,7 @@ import com.cs.entity.Level;
 import com.cs.entity.Production;
 import com.cs.entity.Project;
 import com.cs.service.admin.AdminService;
+import com.cs.util.PageUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminAction extends ActionSupport {
@@ -33,8 +34,11 @@ public class AdminAction extends ActionSupport {
 	//加载上传文件页面获取所有文件
 	private List<FileUpload> files;
 	
+	private PageUtil<Article> page;
+	
 	//文章类型
 	private int type;
+	private int index=1;
 	//竞赛筛选的条件
 	private String level;
 	private String isPub;
@@ -82,7 +86,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String toAwards() {
-		articles=adminService.allArticle(3);
+		page=adminService.articlePage(3, 1, 6);
 		return SUCCESS;
 	}
 	
@@ -91,7 +95,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String toNew() {
-		articles=adminService.allArticle(2);
+		page=adminService.articlePage(2, 1, 6);
 		return SUCCESS;
 	}
 	
@@ -100,11 +104,35 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String toCom() {
-		projects=adminService.needPub();
-		articles=adminService.allArticle(1);
+		if(index>1){
+			page=adminService.articlePage(1, index, 6);
+		}else{
+			page=adminService.articlePage(1, 1, 6);
+		}
+		
 		return SUCCESS;
 	}
 	
+	public String toPageChange(){
+		
+		System.out.println("type="+type+"---index="+index);
+		
+		if(index>=1){
+			page=adminService.articlePage(type, index, 6);
+		}else{
+			page=adminService.articlePage(type, 1, 6);
+		}
+		
+		
+		if(type==1){
+			return "com";
+		}else if(type==2){
+			return "new";
+		}else{
+			return "award";
+		}
+		
+	}
 	
 	/**
 	 * 查询全部的作品
@@ -124,77 +152,67 @@ public class AdminAction extends ActionSupport {
 		files=adminService.allFile();
 		return SUCCESS;
 	}
-	
-
 	public List<Production> getProductions() {
 		return productions;
 	}
-
-
-
 	public void setProductions(List<Production> productions) {
 		this.productions = productions;
 	}
-
 	public List<Project> getProjects() {
 		return projects;
 	}
-
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
-
 	public List<Awards> getAwards() {
 		return awards;
 	}
-
 	public void setAwards(List<Awards> awards) {
 		this.awards = awards;
 	}
-
 	public List<Article> getArticles() {
 		return articles;
 	}
-
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
-
 	public int getType() {
 		return type;
 	}
-
 	public void setType(int type) {
 		this.type = type;
 	}
-
 	public String getLevel() {
 		return level;
 	}
-
 	public void setLevel(String level) {
 		this.level = level;
 	}
-
 	public String getIsPub() {
 		return isPub;
 	}
-
 	public void setIsPub(String isPub) {
 		this.isPub = isPub;
 	}
-
 	public List<FileUpload> getFiles() {
 		return files;
 	}
-
 	public void setFiles(List<FileUpload> files) {
 		this.files = files;
 	}
+	public PageUtil<Article> getPage() {
+		return page;
+	}
+	public void setPage(PageUtil<Article> page) {
+		this.page = page;
+	}
 
+	public int getIndex() {
+		return index;
+	}
 
-	
-	
-
+	public void setIndex(int index) {
+		this.index = index;
+	}
 	
 }

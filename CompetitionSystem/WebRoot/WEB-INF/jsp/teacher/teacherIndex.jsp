@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=path%>/js/studentIndex.js" ></script>
+     <script type="text/javascript" src="<%=path%>/js/teacherCommon.js"></script>
  
   </head>
   
@@ -46,63 +47,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- List group -->
 						<ul class="list-group list-g">
 							<li class="list-group-item change_left">竞赛申报</li>
-							<li class="list-group-item">查看审批结果</li>
-							<li class="list-group-item">管理报名学生</li>
-							<li class="list-group-item">竞赛管理</li>
+							<li class="list-group-item" onclick="watchResult()">查看审批结果</li>
+							<li class="list-group-item"  onclick="managerStudent()">管理报名学生</li>
+							<li class="list-group-item" onclick="compResult()">竞赛反馈</li>
 							<li class="list-group-item"></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-10 right-part">
 					<div class="main">
-						<!--竞赛统计与获奖统计-->
-						<div class="row acconut-style" style="margin-left: 27px;">
-							<!--竞赛统计-->
-							<div class="col-md-3 comp-account" align="center">
-								<div class="icon-comp">
-									<i class="glyphicon glyphicon-book"></i>
-									<span>${comAccount}</span>
-								</div>
-								<div class="account">
-									竞赛次数
-								</div>
-							</div>
-							<!--获奖统计-->
-							<div class="col-md-3 award-account" align="center">
-								<div class="icon-comp">
-									<i class="glyphicon glyphicon-bookmark"></i>
-									<span>${awardsAccount}</span>
-								</div>
-								<div class="account">
-									获奖次数
-								</div>
-							</div>
+						
 
-						</div>
-						<!--我的消息-->
-						<div>
-							<div class="msghead">
-								<span>我的消息</span>
-							</div>
-							<!--消息内容-->
-							<div class="msg-part">
-								<div class="media">
-									<a class="media-left" href="#">
-										<img style="width:64px;height: 64px;" src="img/touxiang.png" class="img-rounded">
-
-									</a>
-									<div class="media-body mbody">
-										<span class="media-heading madia-msg">学生认证</span>
-										<div>
-											<p>林欢雯同学，这部分还没有完成，这部分还没有完成，这部分还没有完成，这部分还没有完成，</p>
-											<span>2016-09-18 10:17:02</span>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
+						
 					</div>
 
 				</div>

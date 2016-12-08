@@ -4,15 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="teacher")
 public class Teacher implements Serializable {
@@ -32,9 +37,9 @@ public class Teacher implements Serializable {
 	@Column
 	private String phone;
 	@Column
-	private String title;
+	private String title;//职称
 	@Column
-	private String post;
+	private String post;//职位
 	@Column
 	private String email;
 	@Column
@@ -49,6 +54,12 @@ public class Teacher implements Serializable {
 	private String password;
 	@Column
 	private int examiner;//是否审批人员
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinTable(name = "guideteacher",
+	joinColumns = {@JoinColumn(name = "teacherNo", referencedColumnName = "teacherNo")},
+	inverseJoinColumns = {@JoinColumn(name = "comId", referencedColumnName ="comId")})
+	private Set<Competition> competitions;
+	
 	
 	
 	public int getTeacherNo() {
@@ -146,6 +157,12 @@ public class Teacher implements Serializable {
 	}
 	public void setExaminer(int examiner) {
 		this.examiner = examiner;
+	}
+	public Set<Competition> getCompetitions() {
+		return competitions;
+	}
+	public void setCompetitions(Set<Competition> competitions) {
+		this.competitions = competitions;
 	}
 	
 	

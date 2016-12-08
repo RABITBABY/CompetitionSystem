@@ -7,10 +7,13 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -54,6 +57,8 @@ public class Competition implements Serializable{
 	@Column
 	private String place;
 	@Column
+	private String introduce;
+	@Column
 	private String object;
 	@Column
 	private int people;
@@ -66,48 +71,50 @@ public class Competition implements Serializable{
 	@Column
 	private String wgoal;
 	@Column
-	private String sopinion;
+	private String sopinion;//校外资助单位意见
 	@Column
-	private String slsign;
+	private String slsign;//校外资助单位意见签名
 	@Column
-	private Date slsdate;
+	private Date slsdate;//校外资助单位意见日期
 	@Column
-	private String uopinion;
+	private String uopinion;//竞赛实施单位意见
 	@Column
-	private String dsign;
+	private String dsign;//竞赛实施单位签名
 	@Column
-	private Date dsdate;
+	private Date dsdate;//竞赛实施单位日期
 	@Column
-	private String tdopinion;
+	private String tdopinion;//教学处意见
 	@Column
-	private String olsign;
+	private String olsign;//教学处签名
 	@Column
-	private Date olsdate;
+	private Date olsdate;//教学处日期
 	@Column
-	private String lsign;
+	private String lsign;//负责人签名
 	@Column
-	private Date lsdate;
+	private Date lsdate;//负责人签名日期
 	@Column
 	private Integer status;//0等待系主任审批 1.等待教学处审批 2申报成功3申报失败
 
-	// 外键一对一 预算
-	@OneToMany
-    @JoinColumn(name="comId")
+	// 外键一对多 预算
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "budgetId", cascade = CascadeType.ALL)
 	private Set<Budget> budget;
 
-	// 外键一对一 课时预算
-	@OneToMany
-	@JoinColumn(name="comId")
+	// 外键一对多课时预算
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "hoursId", cascade = CascadeType.ALL)
 	private Set<Hour> hour;
 
-	// 外键一对一 培训工作安排
-	@OneToMany
-	@JoinColumn(name="comId")
+	// 外键一对多 培训工作安排
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "scheduleId", cascade = CascadeType.ALL)
 	private Set<Schedule> schedule;
 	
-	@OneToMany
-	@JoinColumn(name="comId")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "groupsNo", cascade = CascadeType.ALL)
 	private Set<Groups> groups;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name = "guideteacher",
+	joinColumns = {@JoinColumn(name = "comId", referencedColumnName = "comId")},
+	inverseJoinColumns = {@JoinColumn(name = "teacherNo", referencedColumnName ="teacherNo")})
+	private Set<Teacher> guideTeachers;
 	
 
 
@@ -380,6 +387,40 @@ public class Competition implements Serializable{
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	public Set<Teacher> getGuideTeachers() {
+		return guideTeachers;
+	}
+	
+	public void setGuideTeachers(Set<Teacher> guideTeachers) {
+		this.guideTeachers = guideTeachers;
+	}
+	
+	public String getIntroduce() {
+		return introduce;
+	}
+	
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+
+	@Override
+	public String toString() {
+		return "Competition [comId=" + comId + ", comName=" + comName
+				+ ", teacher=" + teacher + ", unit=" + unit + ", level="
+				+ level + ", phone=" + phone + ", email=" + email
+				+ ", department=" + department + ", date=" + date + ", host="
+				+ host + ", time=" + time + ", place=" + place + ", introduce="
+				+ introduce + ", object=" + object + ", people=" + people
+				+ ", sponsor=" + sponsor + ", plan=" + plan + ", tgoal="
+				+ tgoal + ", wgoal=" + wgoal + ", sopinion=" + sopinion
+				+ ", slsign=" + slsign + ", slsdate=" + slsdate + ", uopinion="
+				+ uopinion + ", dsign=" + dsign + ", dsdate=" + dsdate
+				+ ", tdopinion=" + tdopinion + ", olsign=" + olsign
+				+ ", olsdate=" + olsdate + ", lsign=" + lsign + ", lsdate="
+				+ lsdate + ", status=" + status + ", budget=" + budget
+				+ ", hour=" + hour + ", schedule=" + schedule + ", groups="
+				+ groups + ", guideTeachers=" + guideTeachers + "]";
 	}
 	
 	

@@ -91,6 +91,7 @@ public class Project implements Serializable{
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
+
 	public Double getCost() {
 		return cost;
 	}
@@ -127,7 +128,6 @@ public class Project implements Serializable{
 	public void setComDate(Date comDate) {
 		this.comDate = comDate;
 	}
-	
 	public String dateForm(Date d){
 		SimpleDateFormat spl=new SimpleDateFormat("yyyy年MM月dd日");
 		String dString=spl.format(d);

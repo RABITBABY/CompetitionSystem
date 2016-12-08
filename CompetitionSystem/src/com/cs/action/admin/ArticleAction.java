@@ -48,6 +48,30 @@ public class ArticleAction extends ActionSupport {
 
 		return "input";
 	}
+	
+	
+	public String toOtherPublic() {
+		return SUCCESS;
+	}
+	public String pubOtherArticle(){
+		Adminster admin = new Adminster();
+		admin = new Adminster();
+		admin.setAdminNo("12345");
+		
+		article.setPubDate(new Date());
+		article.setPubUser(admin);
+		if (aService.PubArticle(article) > 0) {
+			if(article.getArticleType()==2){
+				
+				return "new";
+			}else{
+				return "award";
+			}
+		}
+
+		
+		return SUCCESS;
+	}
 
 	// 跳转到修改页面
 	public String toUpdate(){
@@ -59,16 +83,26 @@ public class ArticleAction extends ActionSupport {
 	// 删除文章
 	public String delectArticle() {
 		// 获取要删除的文章ID
+		int artiType=aService.getArticleById(articleId).getArticleType();
 		aService.delectArticle(articleId);
+		if(artiType==1){
+			return "com";
+		}else if(artiType==2){
+			return "new";
+		}else {
+			return "award";
+		}
 
-		return SUCCESS;
 	}
 
 	//修改文章方法
 	public String updateArticle(){
-		System.out.println("-----------"+article);
+		Article temp=aService.getArticleById(article.getArticleId());
+		temp.setTitle(article.getTitle());
+		temp.setContent(article.getContent());
+		
 		//保存进数据库
-		aService.updateArticle(article);
+		aService.updateArticle(temp);
 		return SUCCESS;
 	}
 	

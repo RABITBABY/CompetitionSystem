@@ -104,8 +104,11 @@
 					<input type="hidden"
 						value='${article.content}' name="article.content"
 						id="article_content">
-					<input type="hidden"
-					value='${article.project.comId}' name="article.project.comId">
+					<%-- <s:if test="#article.project.comId == null">
+						<input type="hidden"
+						value='${article.project.comId}' name="article.project.comId">
+					</s:if> --%>
+					
 					<input type="hidden"
 					value='${article.pubDate}' name="article.pubDate">
 					
@@ -120,8 +123,9 @@
 				</div>
 
 				<div>
-					<button class="btn con_btn btn-primary" onclick="admin/toCom">退出编辑</button>
-					<input type="submit" class="btn con_btn btn-primary" value="发布文章">
+				
+					<button class="btn con_btn btn-primary" onclick="cancelEdit(<s:property value="article.articleType" />)">退出编辑</button>
+					<input type="submit" class="btn con_btn btn-primary" value="修改完成">
 					&nbsp;
 				</div>
 			</form>
@@ -157,6 +161,19 @@
 		var content = getContent();
 		$("#article_content").val(content);
 		return true;
+	}
+	
+	function cancelEdit(type) {
+		alert(type);
+		location="admin/toNew";
+		/* if(type==1){
+			location="admin/toCom";
+		}else if(type==2){
+			alert(222222)
+			location="admin/toNew";
+		}else if(type==3){
+			location="admin/toAwards";
+		} */
 	}
 </script>
 </html>

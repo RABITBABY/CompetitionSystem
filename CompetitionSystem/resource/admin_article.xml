@@ -18,10 +18,17 @@
 			method="toPublic">
 			<result>/WEB-INF/jsp/admin/article_pub.jsp</result>
 		</action>
+		<action name="toOtherPublic" class="com.cs.action.admin.ArticleAction"
+			method="toOtherPublic">
+			<result>/WEB-INF/jsp/admin/article_pub2.jsp</result>
+		</action>
+		
+		
+		
 		<!--发布文章内容 -->
 		<action name="pubArticl" class="com.cs.action.admin.ArticleAction"
 			method="pubArticl">
-			<result name="success"> type="redirectAction" 
+			<result name="success" type="redirectAction" >
 				<param name="actionName">toCom</param>
 				<param name="namespace">/admin</param>
 			</result>
@@ -30,11 +37,38 @@
 				<param name="namespace">/admin</param>
 			</result>
 		</action>
+		
+		<!--发布文章内容 -->
+		<action name="pubOtherArticle" class="com.cs.action.admin.ArticleAction"
+			method="pubOtherArticle">
+			<result name="new" type="redirectAction" >
+				<param name="actionName">toNew</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result name="award" type="redirectAction" >
+				<param name="actionName">toAwards</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result  name="input" type="redirectAction">
+				<param name="actionName">toNew</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+		
+		
 		<!--删除文章 -->
 		<action name="delectArticle" class="com.cs.action.admin.ArticleAction"
 			method="delectArticle">
-			<result type="redirectAction" name="success">
+			<result type="redirectAction" name="com">
 				<param name="actionName" >toCom</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result type="redirectAction" name="new">
+				<param name="actionName" >toNew</param>
+				<param name="namespace">/admin</param>
+			</result>
+			<result type="redirectAction" name="award">
+				<param name="actionName" >toAwards</param>
 				<param name="namespace">/admin</param>
 			</result>
 		</action>

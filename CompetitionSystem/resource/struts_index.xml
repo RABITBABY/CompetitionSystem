@@ -17,9 +17,9 @@
 		<action name="indexPage" class="com.cs.action.IndexAction" method="indexPage">
 		<result>index.jsp</result>
 		</action>
+		
 		<action name="toListPage" class="com.cs.action.IndexAction" method="toListPage">
 			<result>showList.jsp</result>
-		
 		</action>
 		
 		<action name="toDetail" class="com.cs.action.IndexAction" method="toDetail">

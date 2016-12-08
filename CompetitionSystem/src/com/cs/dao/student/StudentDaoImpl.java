@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import com.cs.entity.GroupsDetail;
 import com.cs.entity.Student;
+import com.cs.entity.Teacher;
 import com.cs.util.HibernateUtil;
 
 public class StudentDaoImpl implements StudentDao{
@@ -22,6 +23,15 @@ public class StudentDaoImpl implements StudentDao{
 		query.setString(1, student.getPassword());
 		Student stu = (Student) query.uniqueResult();
 		return stu;
+	}
+
+	@Override
+	public Student findStudentByNo(int id) {
+		Session session=HibernateUtil.getSession();
+		Transaction tr=session.beginTransaction();
+		Student s=(Student) session.get(Student.class,id);
+		tr.commit();
+		return s;
 	}
 
 

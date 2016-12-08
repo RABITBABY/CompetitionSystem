@@ -36,8 +36,8 @@
 				class="list-group-item">发布竞赛征文</a> <a href="admin/toNew?type=2"
 				class="list-group-item">发布竞赛动态</a> <a href="admin/toAwards?type=3"
 				class="list-group-item">发布获奖信息</a> <a href="admin/toPro"
-				class="list-group-item">发布优秀作品</a> <a href=""
-				class="list-group-item active"> 账号管理 </a> <a href=""
+				class="list-group-item">发布优秀作品</a> <a 
+				class="list-group-item active"> 账号管理 </a> <a 
 				class="list-group-item">添加用户</a>
 				<!-- <a href="" class="list-group-item">权限管理</a> -->
 			<a href="admin/fileUpload" class="list-group-item active"> 上传文件 </a> <a href=""

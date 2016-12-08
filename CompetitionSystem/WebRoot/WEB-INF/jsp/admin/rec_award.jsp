@@ -94,7 +94,7 @@
 					</td>
 					<td class="col-lg-1">
 						<s:if test="#a.isPublish eq 0">
-							<button class="btn btn-primary" onclick="location='article/toPublic?type=3'">发布征文</button>
+							<button class="btn btn-primary" onclick="location='article/toOtherPublic?type=3'">发布征文</button>
 						</s:if>
 						<s:elseif test="#a.isPublish eq 1">
 						<button class="btn btn-success">查看征文</button>

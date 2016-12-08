@@ -23,10 +23,20 @@
         </action>
         <action name="toCompetition" class="com.cs.action.auditor.AuditorAction" method="toCompetition">
             <result name="success">
+                /WEB-INF/jsp/auditor/auditorCompetition.jsp
+            </result>
+        </action>
+        <action name="seeComPage" class="com.cs.action.auditor.AuditorAction" method="toCompetition">
+            <result name="success">
                 /WEB-INF/jsp/auditor/competition.jsp
             </result>
         </action>
-        
+        <action name="doAudit" class="com.cs.action.auditor.AuditorAction" method="doAudit">
+            <result name="success" type="redirectAction">
+                toAuditorIndex
+            </result>
+        </action>
+         
 	</package>
 	
 

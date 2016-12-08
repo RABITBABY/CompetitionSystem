@@ -14,11 +14,13 @@
 	<include file="struts_index.xml"></include>
 	<include file="struts_student.xml"></include>
 	<include file="struts_teacher.xml"></include>
+	<include file="struts_teachDepart.xml"></include>
 	<include file="struts_auditor.xml"></include>
 	<include file="struts_admin.xml"></include>
 	<include file="admin_pro.xml"></include>
 	<include file="admin_article.xml"></include>
 	<include file="admin_file.xml"></include>
+	<include file="struts_user.xml"></include>
 
 </struts>
 

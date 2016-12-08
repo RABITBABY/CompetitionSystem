@@ -1,9 +1,12 @@
 
 .man_content {
 	width: 1024px;
-	height:550px;
+	height:600px;
 	margin: auto;
 	background: white;
+	
+}
+.box1{
 }
 ul{
 	padding: 0px;

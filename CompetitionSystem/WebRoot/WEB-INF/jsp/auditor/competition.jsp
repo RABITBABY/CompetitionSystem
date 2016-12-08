@@ -1,3 +1,4 @@
+<%@page import="com.cs.entity.Teacher"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -5,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<!--JavaScript插件都是依赖与jQuery库-->
 	<script type="text/javascript" src="<%=path%>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/js/competition.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/teachDepartIndex.js"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -33,8 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <div class="main">
        <h1>申报书</h1>
-       <form class="form-horizontal" role="form" style="width:65%;">
-           <input class="form-control" type="hidden" value="${competition.comId}">
+       <form class="form-horizontal" role="form" style="width:65%;" method="post" action="<%=path %>/auditor/doAudit">
+           <input class="form-control" type="hidden" value="${competition.comId}" name="comId">
           <!-- 申报人信息 -->
           <div class="panel panel-info">
 	          <div class="panel-heading">
@@ -72,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">填表日期</label>
 				    <div class="col-sm-10">
-				      <input class="form-control" type="text" value="${competition.date}" readonly>
+				      <input class="form-control" type="text" value="<fmt:formatDate value='${competition.date}' pattern='yyyy-MM-dd'/>" readonly>
 				    </div>
 				  </div>
 				  
@@ -143,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛简介</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.introduce}</textarea>
 				    </div>
 				  </div>  
 				  
@@ -165,24 +167,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
+				       <c:forEach items="${competition.guideTeachers}" var="comTeacher">
 				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
+				           <td>${comTeacher.teacherName}</td>
+				           <td>${comTeacher.title}</td>
+				           <td>${comTeacher.post}</td>
+				           <td>${comTeacher.department.departmentName}</td>
 				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				       </c:forEach>
 				    </tbody>
 				  </table>
 			  </div>
@@ -206,28 +198,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
-				       <tr>
-				           <td rowspan="3">组一</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				    <c:forEach items="${competition.groups}" var="comGroup">
+				        <c:forEach items="${comGroup.groupsDetails}" var="groDetails" varStatus="n">
+				          <tr>
+					          <c:if test="${n.index==0}"> 
+					              <td rowspan="${fn:length(comGroup.groupsDetails)}">${comGroup.groupsName}组</td>
+					         </c:if> 
+					          <td>${groDetails.student.studentName}</td>
+					          <td>${groDetails.student.gender}</td>
+					          <td>${groDetails.student.profession}</td>
+				              <td>${groDetails.student.classNo}班</td>
+				              <td>${comGroup.teacher.teacherName}</td>			        
+				         </tr>
+				        </c:forEach>
+				    </c:forEach>
 				    </tbody>
 				  </table>
 			  </div>
@@ -240,7 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div class="panel-body">
 			      <div class="form-group form-group-lg">
 				    <div class="col-sm-12">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.plan}</textarea>
 				    </div>
 				  </div> 
 				  <h4>附：培训工作安排表</h4>
@@ -255,27 +239,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
+				       <c:forEach items="${competition.schedule}" var="comSch">
 				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
+				           <td>${comSch.teacher.teacherName}</td>
+				           <td>${comSch.content}</td>
+				           <td>${comSch.position}</td>				           
+				           <td><fmt:formatDate value="${comSch.date}" pattern="yyy-MM-dd"/></td>
+				           <td>${comSch.hours}</td>
 				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				       </c:forEach>
 				    </tbody>
 				  </table>
 			  </div>
@@ -289,14 +261,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">能力训练目标</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.tgoal}</textarea>
 				    </div>
 				  </div>  
 				  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛获奖目标</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.wgoal}</textarea>
 				    </div>
 				  </div>  
 				  
@@ -319,24 +291,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				       <c:set var="budSum" value="0" ></c:set>
+				       <c:forEach items="${competition.budget}" var="comBud">
+					       <tr>
+					           <td>${comBud.subject}</td>
+					           <td>${comBud.sum}</td>
+					           <td>${comBud.reasons}</td>
+					       </tr>
+					       <c:set var="budSum" value="${comBud.sum+budSum}" ></c:set>
+				       </c:forEach>
 				    </tbody>
 				  </table>
-				  <h5 style="margin-bottom: 30px">合计：</h5>
+				  <h5 style="margin-bottom: 30px">合计：${budSum}元</h5>
 				  <!-- 课时预算 -->
 				  <h4 style="font-weight: bold;">课时预算</h4>
 				  <table class="table">
@@ -348,25 +314,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       </tr>
 				    </thead>
 				    <tbody>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
-				       <tr>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				           <td>xxx</td>
-				       </tr>
+				       <c:set var="courseSum" value="0" ></c:set>
+				       <c:forEach items="${competition.hour}" var="comHour">
+					       <tr>
+					           <td>${comHour.type}</td>
+					           <td>${comHour.hours}</td>
+					           <td>${comHour.remarks}</td>
+					       </tr>
+					       <c:set var="courseSum" value="${comHour.hours+courseSum}" ></c:set>
+				       </c:forEach>
 				    </tbody>
 				  </table>
-				  <h5>合计：</h5>
-				  <h5 style="font-weight: bold;">总计：</h5>
+				  <h5>合计：${courseSum}小时</h5>
+				  <!-- <h5 style="font-weight: bold;">总计：</h5> -->
 			  </div>
           </div>
           <!-- 审批意见 -->
@@ -374,34 +334,80 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="panel-heading">
 			         审批意见
 			  </div>
-			  <div class="panel-body">		  
+			  <div class="panel-body">	
+			     <!-- 校外资助单位意见 -->	  
 				  <div class="form-group form-group-lg">
 				    <label class="col-sm-2 control-label" for="formGroupInputLarge">校外资助单位意见</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.comName}</textarea>
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.sopinion}</textarea>
 				    </div>
 				  </div>  
+				  
+				  <div class="form-group">
+				    <label for="input1" class="col-sm-2 control-label">资助单位负责人：</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input1" readonly value="${competition.slsign}">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="input2" class="col-sm-2 control-label">日期</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.slsdate}" pattern="yyy-MM-dd"/>">
+				    </div>
+				  </div>
+				  <!-- 竞赛实施单位意见 -->	  
+				   <div class="form-group form-group-lg">
+				    <label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛实施单位意见</label>
+				    <div class="col-sm-10">
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.uopinion}</textarea>
+				    </div>
+				  </div>  
+				  
+				  <div class="form-group">
+				    <label for="input1" class="col-sm-2 control-label">系部签字：</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input1" readonly value="${competition.dsign}">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="input2" class="col-sm-2 control-label">日期</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.dsdate}" pattern="yyy-MM-dd"/>">
+				    </div>
+				  </div>
+				  <!-- 教学处意见 -->	  
+				   <div class="form-group form-group-lg">
+				    <label class="col-sm-2 control-label" for="formGroupInputLarge">教学处意见</label>
+				    <div class="col-sm-10">
+				      <textarea class="form-control" rows="3" cols="3" readonly style="height: 200px;">${competition.tdopinion}</textarea>
+				    </div>
+				  </div>  
+				  
+				  <div class="form-group">
+				    <label for="input1" class="col-sm-2 control-label">竞赛办公室负责人：</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input1" readonly value="${competition.olsign}">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="input2" class="col-sm-2 control-label">日期</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="input2" readonly value="<fmt:formatDate value="${competition.olsdate}" pattern="yyy-MM-dd"/>">
+				    </div>
+				  </div>
 				    
 			  </div> 
+			  
           </div>
-          
-          <div class="form-group" style="padding: 20px">
-			<label for="exampleInputEmail1" style="margin-left: 10px">竞赛组织实施单位意见:</label>
-				<button type="button" class="btn btn-success" onclick="" style="margin-left: 20px;margin-right: 30px">同意</button>
-				<button type="button" class="btn btn-danger" onclick="disagree()">不同意</button>
+          		  
+		  <div align="center" >
+		       <!-- 做完登录再做。 系主任，（跳会首页，或者跳到历史页用session判断。）-->   
+		       <button type="button" class="btn btn-primary" onclick="toReturn()">返回</button>
 		  </div>
-				  
-		  <div id="doCompOppion" style="display: none;" align="center" >
-		     <div class="form-group form-group-lg" >
-				<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛组织实施单位意见</label>				    
-				<div class="col-sm-10">
-				   <textarea class="form-control" rows="3" cols="3"  style="height: 200px;"></textarea>
-				</div>
-			 </div>
-			 <button type="submit" class="btn btn-primary">提交</button>
-		  </div>
-		  
-
+           
 		</form>
 		
      </div>

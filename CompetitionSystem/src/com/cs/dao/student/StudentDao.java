@@ -11,4 +11,5 @@ public interface StudentDao {
      * @return
      */
 	Student findStudentByNo(Student student);
+	Student findStudentByNo(int id);
 }
