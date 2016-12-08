@@ -52,6 +52,11 @@
                 /WEB-INF/jsp/teacher/managerStudent.jsp
             </result>
         </action>
+        <action name="passStudent" class="com.cs.action.teacher.TeacherAction" method="passStudent">
+            <result name="success" type="redirectAction">
+                toManageStudent
+            </result>
+        </action>
        
         
         <action name="toManageComp" class="com.cs.action.teacher.TeacherAction" method="toManageComp">

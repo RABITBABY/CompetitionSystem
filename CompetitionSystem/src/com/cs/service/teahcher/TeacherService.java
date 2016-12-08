@@ -89,7 +89,8 @@ public class TeacherService {
 	 * 审核学生，修改状态
 	 */
 	public Boolean updateGroups(Groups groups){
-		Boolean result = groupDao.uodateGroups(groups);
+		groups.setStatus(2);
+		Boolean result = groupDao.uodateGroupsStatus(groups);
 		return result;
 	}
 	

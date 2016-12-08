@@ -34,5 +34,21 @@ public class GroupsDaoImpl implements GroupsDao{
 		
 	}
 
+	@Override
+	public Boolean uodateGroupsStatus(Groups groups) {
+		Session session = HibernateUtil.getSession();
+		Transaction beginTransaction = session.beginTransaction();
+		Query query = session.createQuery("update Groups set status=? where groupsNo=?");
+		query.setInteger(0, groups.getStatus());
+		query.setInteger(1, groups.getGroupsNo());
+		int executeUpdate = query.executeUpdate();
+		beginTransaction.commit();
+		if (executeUpdate>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	
 }

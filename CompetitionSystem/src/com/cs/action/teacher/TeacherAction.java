@@ -54,13 +54,7 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	 * @return
 	 */
 	public  String  updateComp() {
-		/*competition.setStatus(0);
-		competition.setUopinion("");
-		competition.setDsign("");
-		competition.setDsdate(null);
-		competition.setTdopinion("");
-		competition.setLsign("");
-		competition.setLsdate(null);*/
+
 		System.out.println("============================================================================"+competition);
 		Set<Budget> budget = competition.getBudget();
 		System.out.println(budget.size());
@@ -129,7 +123,6 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	 * @return
 	 */
 	public  String  passStudent() {
-		groups.setStatus(2);
 		Boolean updateGroups = teacherService.updateGroups(groups);
 		if (updateGroups) {
 			return SUCCESS;

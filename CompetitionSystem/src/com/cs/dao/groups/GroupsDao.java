@@ -15,4 +15,9 @@ public interface GroupsDao {
     */
    Boolean uodateGroups(Groups groups);
    
+   /**
+    * 更新groups
+    */
+   Boolean uodateGroupsStatus(Groups groups);
+   
 }
