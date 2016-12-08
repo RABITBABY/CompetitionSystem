@@ -82,15 +82,38 @@ height: 50px;
 				//清空
 				$("#projectList").empty();
 				console.log(data);
+				
+				
+				
+				
 				for(var i=0;i<data.projects.length;i++){
 					 
 					 if(data.projects[i].isPublish==0){
 						 $("#projectList").append(
+								 
 								 "<div class='panel panel-primary'>"
 									+"<div class='panel-heading panel_head head_heigth'  >"
 									+data.projects[i].comName
 									+"<button class='btn btn-default ' onclick='location=\"article/toPublic?type=1&comId="+data.projects[i].comId+"\"'"
-										+"style='float: right;margin-right: 50px;'>发布征文</button></div>");
+										+"style='float: right;margin-right: 50px;'>发布征文</button></div>"+
+										"<div class='panel-body panel1'>"
+										+"<div> <h4 class='col-lg-4'>竞赛编号："+data.projects[i].comId +"</h4>"
+											+"<h4 class='col-lg-4'>竞赛级别："+data.projects[i].level.levelName+"</h4>"
+											+"<h4 class='col-lg-4'>校承办单位："+data.projects[i].sOrganizer +"</h4>"
+											+"<h4 class='col-lg-4'>主办单位："+data.projects[i].hunit +"</h4>"
+											+"<h4 class='col-lg-4'> 报名开始时间："
+											+data.projects[i].applyBeginDate +"</h4>"
+											+"<h4 class='col-lg-4'> 报名结束时间："
+											+data.projects[i].applyEndDate 
+											+" </h4> <h4 class='col-lg-4'> 比赛时间："
+											+data.projects[i].comDate 
+											+"</h4> <h4 class='col-lg-4'>报名费："+data.projects[i].cost +"元</h4>"
+											+"<h4 class='col-lg-12'>竞赛简介："+data.projects[i].introduction +"</h4>"
+											+"</div> </div> </div>"	
+										
+						 
+						 
+						 );
 					 }else if(data.projects[i].isPublish==1){
 					 
 					 $("#projectList").append(
@@ -99,10 +122,7 @@ height: 50px;
 								+"<div class='panel-heading panel_head head_heigth'  >"
 								+data.projects[i].comName
 						+" <button class='btn btn-success '"
-						+"style='float: right;margin-right: 20px;'>查看征文</button></div>");
-					 }
-						
-					 $("#projectList").append(
+						+"style='float: right;margin-right: 20px;'>查看征文</button></div>"+
 						"<div class='panel-body panel1'>"
 						+"<div> <h4 class='col-lg-4'>竞赛编号："+data.projects[i].comId +"</h4>"
 							+"<h4 class='col-lg-4'>竞赛级别："+data.projects[i].level.levelName+"</h4>"
@@ -117,8 +137,12 @@ height: 50px;
 							+"</h4> <h4 class='col-lg-4'>报名费："+data.projects[i].cost +"元</h4>"
 							+"<h4 class='col-lg-12'>竞赛简介："+data.projects[i].introduction +"</h4>"
 							+"</div> </div> </div>"	
+						
+					 
+					 );
+					 }
+						
 					
-					); 
 				}
 			},
 			error : function() {
@@ -150,26 +174,7 @@ height: 50px;
 <body>
 	<!--导航条-->
 	<div class="man_top">
-		<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="">&nbsp;</a> <a class="navbar-brand"
-					href="">&nbsp;LOGO&nbsp;</a>
-			</div>
-
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-
-					<li class="active"><a href="">管理员页面</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">你好，MAX</a></li>
-					<li><a href="">退出</a></li>
-				</ul>
-			</div>
-		</div>
-		</nav>
+		<jsp:include page="admin_head.jsp" flush="true"></jsp:include>
 	</div>
 
 	<div class="man_content">

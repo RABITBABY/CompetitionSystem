@@ -10,14 +10,25 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
 	<constant name="struts.devMode" value="true" />
-	<package name="teacher" namespace="/teacher" extends="struts-default">
-        <action name="toTeacherIndex" class="com.cs.action.teacher.TeacherAction" method="toTeacherIndex">
-            <result name="success">
-                /WEB-INF/jsp/teacher/teacherIndex.jsp
-            </result>
-        </action>
-	</package>
+
+	<package name="default" namespace="/" extends="struts-default">
 	
+		<default-action-ref name="indexPage"></default-action-ref>
+		<action name="indexPage" class="com.cs.action.IndexAction" method="indexPage">
+		<result>index.jsp</result>
+		</action>
+		<action name="toListPage" class="com.cs.action.IndexAction" method="toListPage">
+			<result>showList.jsp</result>
+		
+		</action>
+		
+		<action name="toDetail" class="com.cs.action.IndexAction" method="toDetail">
+			<result>articleDetail.jsp</result>
+		</action>
+		
+		
+		
+	</package>
 
 
 </struts>

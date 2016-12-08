@@ -30,6 +30,7 @@ public class Production implements Serializable{
 	private String pic;//作品图片文件名
 	
 	
+	
 	public int getProId() {
 		return proId;
 	}

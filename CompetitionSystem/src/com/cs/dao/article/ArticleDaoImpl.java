@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import com.cs.entity.Article;
 import com.cs.util.HibernateUtil;
+import com.cs.util.PageUtil;
 
 public class ArticleDaoImpl implements ArticleDao {
 
@@ -49,5 +50,57 @@ public class ArticleDaoImpl implements ArticleDao {
 		tr.commit();
 		return article;
 	}
+
+	@Override
+	public void updateArticle(Article article) {
+		Session session=HibernateUtil.getSession();
+		Transaction tr=session.beginTransaction();
+		System.out.println(article+"DAO\n");
+		session.update(article);
+		tr.commit();
+	}
+
+	/**
+	 * 获取部分的文章
+	 */
+	@Override
+	public List<Article> partOfArticles(int type, int count) {
+		
+		Session session=HibernateUtil.getSession();
+		Transaction tr=session.beginTransaction();
+		
+		System.out.println("hql查询");
+		Query q=session.createQuery("from Article where articleType=:type  order by pubDate desc ");
+		q.setInteger("type", type);
+		if(count>0){
+			q.setMaxResults(count);
+		}
+		List<Article> articles=q.list();
+		tr.commit();
+		return articles;
+	}
+
+	@Override
+	public PageUtil<Article> Articlepage(int type, int index, int acount) {
+		Session session=HibernateUtil.getSession();
+		Transaction tr=session.beginTransaction();
+		Query q=session.createQuery("from Article where articleType = :type");
+		q.setInteger("type", type);
+		int total=q.list().size();//总记录数
+		q.setFirstResult((index-1)*acount);//设置当前的开始位置
+		q.setMaxResults(acount);//每次拿多少条
+		List<Article> articles=q.list();
+		//封装page对象
+		int pagetotal=(total%acount>0)?(total/acount+1):(total/acount);
+		PageUtil<Article> page=new PageUtil<Article>();
+		page.setList(articles);
+		page.setPageCount(pagetotal);
+		page.setPageIndex(index);
+		page.setPageSize(acount);
+		tr.commit();
+		return page;
+	}
+	
+	
 	
 }

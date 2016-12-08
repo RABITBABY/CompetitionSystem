@@ -21,11 +21,11 @@
 		<!--发布文章内容 -->
 		<action name="pubArticl" class="com.cs.action.admin.ArticleAction"
 			method="pubArticl">
-			<result type="redirectAction" name="success">
+			<result name="success"> type="redirectAction" 
 				<param name="actionName">toCom</param>
 				<param name="namespace">/admin</param>
 			</result>
-			<result type="redirectAction" name="input">
+			<result  name="input" type="redirectAction">
 				<param name="actionName">toCom</param>
 				<param name="namespace">/admin</param>
 			</result>
@@ -34,7 +34,7 @@
 		<action name="delectArticle" class="com.cs.action.admin.ArticleAction"
 			method="delectArticle">
 			<result type="redirectAction" name="success">
-				<param name="actionName">toCom</param>
+				<param name="actionName" >toCom</param>
 				<param name="namespace">/admin</param>
 			</result>
 		</action>
@@ -45,13 +45,11 @@
 		<result name="success">/WEB-INF/jsp/admin/article_update.jsp</result>
 		</action>
 		
-		<!--ajax获取文章 -->
-		<action name="findComarti" class="com.cs.action.admin.ArticleAction"
-			method="findComarti">
-			<result type="json">
-				 <param name="includeProperties">
-					article.*
-				</param>
+		<action name="updateArticle" class="com.cs.action.admin.ArticleAction"
+			method="updateArticle" >
+			<result type="redirectAction" name="success">
+				<param name="actionName">toCom</param>
+				<param name="namespace">/admin</param>
 			</result>
 		</action>
 	</package>

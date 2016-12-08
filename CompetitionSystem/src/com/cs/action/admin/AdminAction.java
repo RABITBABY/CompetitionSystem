@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.cs.entity.Article;
 import com.cs.entity.Awards;
+import com.cs.entity.FileUpload;
+import com.cs.entity.Level;
 import com.cs.entity.Production;
 import com.cs.entity.Project;
 import com.cs.service.admin.AdminService;
@@ -27,6 +29,9 @@ public class AdminAction extends ActionSupport {
 	
 	//加载文章时用到的文章列表
 	private List<Article> articles;
+	
+	//加载上传文件页面获取所有文件
+	private List<FileUpload> files;
 	
 	//文章类型
 	private int type;
@@ -54,6 +59,9 @@ public class AdminAction extends ActionSupport {
 	public String selectCom(){
 		System.out.println(level+"--"+isPub);
 		projects=adminService.SignableProject(level,isPub);
+		for (Project p : projects) {
+			System.out.println(p.getLevel().getLevelName()+"-----");
+		}
 		return SUCCESS;
 	}
 	//获取所欲的近期比赛资料
@@ -107,8 +115,15 @@ public class AdminAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-
-	
+	/**
+	 * 跳转到文件上传页面
+	 * @return
+	 */
+	public String fileUpload(){
+		//获取所有的文件列表
+		files=adminService.allFile();
+		return SUCCESS;
+	}
 	
 
 	public List<Production> getProductions() {
@@ -167,6 +182,14 @@ public class AdminAction extends ActionSupport {
 
 	public void setIsPub(String isPub) {
 		this.isPub = isPub;
+	}
+
+	public List<FileUpload> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<FileUpload> files) {
+		this.files = files;
 	}
 
 

@@ -6,13 +6,15 @@ import com.cs.entity.Production;
 
 public interface ProductionDao {
 
-	public int savePro(Production p);
+	public int savePro(Production p);//保存
 	
-	public void delect(int id);
+	public void delect(int id);//删除
 	
-	public List<Production> selectall();
+	public List<Production> selectall();//所有
 	
-	public  Production findById(int id);
+	public  Production findById(int id);//根据Id找
 	
-	public void update(Production pro);
+	public void update(Production pro);//更新
+	
+	public List<Production> recProduction(int acount);
 }

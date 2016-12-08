@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ public class Project implements Serializable{
 	@Column
 	private String comName;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="levelId")
 	private Level level;
 	
@@ -43,7 +44,7 @@ public class Project implements Serializable{
 	@Column
 	private int isPublish;
 	
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name="comId")
 	private Set<Groups> groups;
 	

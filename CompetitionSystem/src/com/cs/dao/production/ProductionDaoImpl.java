@@ -2,6 +2,7 @@ package com.cs.dao.production;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -56,6 +57,17 @@ public class ProductionDaoImpl extends HibernateUtil implements ProductionDao{
 		Transaction tr = session.beginTransaction();
 		session.update(pro);
 		tr.commit();
+	}
+
+	@Override
+	public List<Production> recProduction(int acount) {
+		Session session=getSession();
+		Transaction tr = session.beginTransaction();
+		Query q =session.createQuery("from Production");
+		q.setMaxResults(acount);
+		List<Production> productions=q.list();
+		tr.commit();
+		return productions;
 	}
 	
 	

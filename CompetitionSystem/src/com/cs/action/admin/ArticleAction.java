@@ -36,11 +36,10 @@ public class ArticleAction extends ActionSupport {
 		Adminster admin = new Adminster();
 		admin = new Adminster();
 		admin.setAdminNo("12345");
-System.out.println("后台的内容"+article.getContent());
+		
 		article.setPubDate(new Date());
 		article.setPubUser(admin);
 
-		System.out.println(article);
 
 		// 添加到数据库//修改这个竞赛的发布状态
 		if (aService.PubArticle(article) > 0) {
@@ -56,13 +55,6 @@ System.out.println("后台的内容"+article.getContent());
 		return SUCCESS;
 	}
 	
-	//异步请求竞赛征文
-	public String findComarti() {
-		// 根据id找到文章
-		article = aService.getArticleById(articleId);
-		System.out.println(article+"==****===\n");
-		return SUCCESS;
-	}
 
 	// 删除文章
 	public String delectArticle() {
@@ -72,6 +64,15 @@ System.out.println("后台的内容"+article.getContent());
 		return SUCCESS;
 	}
 
+	//修改文章方法
+	public String updateArticle(){
+		System.out.println("-----------"+article);
+		//保存进数据库
+		aService.updateArticle(article);
+		return SUCCESS;
+	}
+	
+	
 	// ---------------get/set方法------------------
 	public int getType() {
 		return type;

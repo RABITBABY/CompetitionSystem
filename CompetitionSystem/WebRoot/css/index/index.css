@@ -1,0 +1,32 @@
+
+.man_content {
+	width: 1024px;
+	height:550px;
+	margin: auto;
+	background: white;
+}
+ul{
+	padding: 0px;
+}
+
+.li{
+	list-style: none;
+	line-height: 30px;
+	overflow: hidden;
+	font-size:18px;
+}
+
+.produ_bar{
+	float: none;
+	width: 1024px;
+	margin: auto;
+}
+
+
+.pro_list p{
+	line-height: 30px;
+	height:30px;
+	overflow: hidden;
+	
+}
+

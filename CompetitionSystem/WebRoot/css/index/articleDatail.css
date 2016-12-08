@@ -1,0 +1,29 @@
+.list_detail{
+	width: 1024px;
+	height:550px;
+	margin: auto;
+}
+.path{
+	margin-bottom: 20px;
+}
+.path li{
+	line-height: 25px;
+	margin-top: 10px
+}
+
+.article_content{
+	width: 1024px;
+	margin: auto;
+}
+.articleinfo{
+	float: left;
+	margin-right: 20px;
+}
+hr {
+	
+}
+.show_content{
+	width:900px;
+	margin: auto;
+}
+

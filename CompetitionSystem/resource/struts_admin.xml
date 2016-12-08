@@ -13,7 +13,7 @@
 
 
 	<package name="admin" namespace="/admin" extends="json-default">
-	
+
 		<!--跳转到管理员首页列表页 -->
 		<action name="toIndex" class="com.cs.action.admin.AdminAction"
 			method="toIndex">
@@ -45,7 +45,7 @@
 				/WEB-INF/jsp/admin/admin_new.jsp
 			</result>
 		</action>
-		
+
 
 
 		<!--跳转到竞赛列表页 -->
@@ -56,7 +56,7 @@
 			</result>
 		</action>
 
-	<!--跳转到近期比赛 -->
+		<!--跳转到近期比赛 -->
 		<action name="toRecCom" class="com.cs.action.admin.AdminAction"
 			method="toRecCom">
 			<result name="success">
@@ -66,7 +66,7 @@
 
 
 
-	<!--跳转到近期获奖 -->
+		<!--跳转到近期获奖 -->
 		<action name="toRecAwards" class="com.cs.action.admin.AdminAction"
 			method="toRecAwards">
 			<result name="success">
@@ -75,14 +75,13 @@
 		</action>
 
 
-<!--ajax获取所有符合筛选条件的竞赛数据 -->
+		<!--ajax获取所有符合筛选条件的竞赛数据 -->
 		<action name="selectCom" class="com.cs.action.admin.AdminAction"
 			method="selectCom">
 			<result name="success" type="json">
 				<param name="includeProperties">
 					^projects\[\d+\]\.comId,
 					^projects\[\d+\]\.comName,
-					^projects\[\d+\]\.level,
 					^projects\[\d+\]\.hunit,
 					^projects\[\d+\]\.sOrganizer,
 					^projects\[\d+\]\.introduction,
@@ -91,12 +90,22 @@
 					^projects\[\d+\]\.comDate,
 					^projects\[\d+\]\.cost,
 					^projects\[\d+\]\.status,
-					^projects\[\d+\]\.isPublish
+					^projects\[\d+\]\.isPublish,
+					^projects\[\d+\]\.level
 				</param>
 			</result>
 		</action>
 
+		<!-- 跳转到文件上传页面 -->
+		<action name="fileUpload" class="com.cs.action.admin.AdminAction"
+			method="fileUpload">
+			<result name="success">
+				/WEB-INF/jsp/admin/admin_uploadFile.jsp
+			</result>
 
+
+
+		</action>
 
 
 

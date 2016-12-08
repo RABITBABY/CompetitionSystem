@@ -48,31 +48,13 @@
 	margin-right: 30px;
 }
 </style>
+
 </head>
 
 <body>
 	<!--导航条-->
 	<div class="man_top">
-		<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">&nbsp;</a> <a class="navbar-brand"
-					href="#">&nbsp;LOGO&nbsp;</a>
-			</div>
-
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-
-					<li class="active"><a href="#">管理员页面</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">你好，MAX</a></li>
-					<li><a href="#">退出</a></li>
-				</ul>
-			</div>
-		</div>
-		</nav>
+		<jsp:include page="admin_head.jsp" flush="true"></jsp:include>
 	</div>
 	<!--中间内容  -->
 	<div class="man_content">
@@ -96,7 +78,7 @@
 				<div>
 					<label class="_title">竞赛动态列表</label>
 
-					<button type="button" class="btn btn-primary add" onclick="location='article/toPublic?type=2'">
+					<button type="button" class="btn btn-primary add" onclick="location='article/toPublic?type=2&comId=${p.comId}'">
 						<span class="glyphicon glyphicon-plus-sign"></span>
 						添加竞赛动态信息</button>
 				</div>
@@ -187,4 +169,6 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+</script>
 </html>

@@ -35,7 +35,6 @@
 					^productions\[\d+\]\.membersName,
 					^productions\[\d+\]\.introduction,
 					^productions\[\d+\]\.pic
-					
 				</param>
 			</result>
 		</action>
