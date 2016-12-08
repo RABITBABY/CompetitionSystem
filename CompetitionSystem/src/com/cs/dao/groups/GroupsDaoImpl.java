@@ -1,5 +1,7 @@
 package com.cs.dao.groups;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,6 +50,16 @@ public class GroupsDaoImpl implements GroupsDao{
 		}else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<Groups> findGroupsByComId(Integer comId) {
+		Session session = HibernateUtil.getSession();
+		Transaction beginTransaction = session.beginTransaction();
+		Query query = session.createQuery("from Groups where project.comId=?");
+		query.setInteger(0, comId);
+		List<Groups> list = query.list();
+		return list;
 	}
 
 	

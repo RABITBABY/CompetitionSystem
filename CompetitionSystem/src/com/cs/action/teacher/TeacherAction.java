@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.apache.struts2.interceptor.RequestAware;
 
+import com.cs.entity.Awards;
 import com.cs.entity.Budget;
 import com.cs.entity.Competition;
 import com.cs.entity.Groups;
@@ -22,6 +23,8 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	private TeacherService teacherService=new TeacherService();
 	private Competition competition;
 	private Groups groups;
+	private List<Groups> findGroups;
+	private List<Awards> awards ;
 	/**
 	 * 指导老师首页
 	 * @return
@@ -107,13 +110,14 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	 */
 	public  String  toManageStudent() {
 		List<Competition> teacher = teacherService.findPassCompetitions(1);
-		for (Competition competition : teacher) {
+		/*for (Competition competition : teacher) {
 			Set<Groups> groups = competition.getGroups();
 			System.out.println("下一组");
 			for (Groups groups2 : groups) {
 				System.out.println(groups2.getGroupsName()+"++++++++++++");
 			}
-		}
+		}*/
+		
 		request.put("teacherComList", teacher);	
 		return SUCCESS;
 	}
@@ -131,12 +135,37 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	}
 	
 	/**
-	 * 指导老师：竞赛管理
+	 * 指导老师：竞赛反馈列表
 	 * @return
 	 */
 	public  String  toManageComp() {
 		List<Project> findProject = teacherService.findProject(1);
 		request.put("projectList", findProject);
+		
+		/*List<Groups> findGroups = teacherService.findGroups(competition.getComId());
+		request.put("findGroups", findGroups);*/
+		return SUCCESS;
+	}
+	
+	/**
+	 * 指导老师：竞赛反馈操作
+	 * @return
+	 */
+	public  String  compResult() {
+	   
+		findGroups = teacherService.findGroups(competition.getComId());
+		//request.put("findGroups", findGroups);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 指导老师：竞赛反馈:查看
+	 * @return
+	 */
+	public  String  seeCompResult() {
+	    System.out.println("===============================================");
+		awards = teacherService.findAwards(competition.getComId());
+		
 		return SUCCESS;
 	}
 	
@@ -165,5 +194,25 @@ public class TeacherAction extends ActionSupport implements RequestAware{
 	public void setGroups(Groups groups) {
 		this.groups = groups;
 	}
+	public TeacherService getTeacherService() {
+		return teacherService;
+	}
+	public void setTeacherService(TeacherService teacherService) {
+		this.teacherService = teacherService;
+	}
+	public List<Groups> getFindGroups() {
+		return findGroups;
+	}
+	public void setFindGroups(List<Groups> findGroups) {
+		this.findGroups = findGroups;
+	}
+	public List<Awards> getAwards() {
+		return awards;
+	}
+	public void setAwards(List<Awards> awards) {
+		this.awards = awards;
+	}
    
+	
+	
 }

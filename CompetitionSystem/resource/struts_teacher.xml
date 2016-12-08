@@ -10,7 +10,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<!-- 使sturts2处于开发模式。改了配置文件黄精会自动更新，否则需要重新部署项目 -->
 	<constant name="struts.devMode" value="true" />
-	<package name="teacher" namespace="/teacher" extends="struts-default">
+	<package name="teacher" namespace="/teacher" extends="json-default">
         <action name="toTeacherIndex" class="com.cs.action.teacher.TeacherAction" method="toTeacherIndex">
             <result name="success">
                 /WEB-INF/jsp/teacher/teacherIndex.jsp
@@ -62,6 +62,18 @@
         <action name="toManageComp" class="com.cs.action.teacher.TeacherAction" method="toManageComp">
             <result name="success">
                 /WEB-INF/jsp/teacher/managerComp.jsp
+            </result>
+        </action>
+        
+         <action name="compResult" class="com.cs.action.teacher.TeacherAction" method="compResult">
+            <result name="success" type="json">
+                 <param name="root">findGroups</param>
+            </result>
+        </action>
+        
+        <action name="seeCompResult" class="com.cs.action.teacher.TeacherAction" method="seeCompResult">
+            <result name="success" type="json">
+                 <param name="root">awards</param>
             </result>
         </action>
         

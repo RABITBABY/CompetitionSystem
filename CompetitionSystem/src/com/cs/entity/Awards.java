@@ -39,6 +39,9 @@ public class Awards implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="groupsNo")
 	private Groups groups;
+	@ManyToOne
+	@JoinColumn(name="comId")
+	private Competition competition;
 	
 	@Column
 	private int isPublish;
@@ -92,6 +95,15 @@ public class Awards implements Serializable {
 	public void setLevel(Level level) {
 		this.level = level;
 	}
+	
+	public Competition getCompetition() {
+		return competition;
+	}
+	
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
+	}
+	
 	@Override
 	public String toString() {
 		return "Awards [awardsId=" + awardsId + ", name=" + name + ", date="

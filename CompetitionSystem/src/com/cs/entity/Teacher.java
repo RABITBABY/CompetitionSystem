@@ -54,7 +54,7 @@ public class Teacher implements Serializable {
 	private String password;
 	@Column
 	private int examiner;//是否审批人员
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "guideteacher",
 	joinColumns = {@JoinColumn(name = "teacherNo", referencedColumnName = "teacherNo")},
 	inverseJoinColumns = {@JoinColumn(name = "comId", referencedColumnName ="comId")})

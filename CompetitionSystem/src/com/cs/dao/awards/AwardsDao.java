@@ -17,4 +17,10 @@ public interface AwardsDao {
 	
 	List<Awards> allAwards();
 	
+	/**
+	 * 根据comId查找奖项
+	 * @return
+	 */
+	List<Awards> findAwardByComId(Integer comId);
+	
 }
