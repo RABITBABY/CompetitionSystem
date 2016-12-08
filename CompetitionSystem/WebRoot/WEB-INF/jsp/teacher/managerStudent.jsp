@@ -106,7 +106,7 @@
 													<c:when test="${comGroup.status==0}">
 														<td>等待审核</td>
 													</c:when>
-													<c:when test="${comGroupcomGroup.status==1}">
+													<c:when test="${comGroup.status==1}">
 														<td>审核不通过</td>
 													</c:when>
 													<c:when test="${comGroup.status==2}">
@@ -121,17 +121,21 @@
 													
 												</c:choose>
 												
-												<c:choose>
+												<c:if test="${n.index==0}">
+													<c:choose>
 													<c:when test="${comGroup.status==0}">
-														<td><button type="button" class="btn btn-info" onclick="pass(${comGroup.groupsNo})">通过</button>
+														<td rowspan="${fn:length(comGroup.groupsDetails)}"><button type="button" class="btn btn-info" onclick="pass(${comGroup.groupsNo})">通过</button>
 													<button type="button" class="btn btn-danger">不合适</button></td>
 													</c:when>
 													<c:otherwise >
-														<td><button type="button" class="btn btn-success">查看详情</button>
+														<td rowspan="${fn:length(comGroup.groupsDetails)}"><button type="button" class="btn btn-success">查看详情</button>
 												      </td>
 													</c:otherwise>
 													
-												</c:choose>
+												  </c:choose>
+												</c:if>
+												
+												
 												
 											</tr>
 										</c:forEach>

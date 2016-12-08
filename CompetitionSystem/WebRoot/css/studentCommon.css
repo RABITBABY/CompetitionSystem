@@ -23,16 +23,18 @@
 	cursor: pointer;
 }
 .list-g{
-	height: 659px;
+	height: 800px;
 }
 .rowadd{
 	margin-left: 60px;
 	margin-right: 60px;
 	margin-top: 7px;
+	background:white;
 }
 
 .left-part{
 	padding-right: 0px;
+	padding-left:0px;
 }
 .right-part{
 	padding-left: 0px;

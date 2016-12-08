@@ -62,60 +62,88 @@
 			</div>
 			<div class="col-md-10 right-part">
 				<div class="main">
-				    <ol class="breadcrumb">
-					  <li class="active">第一步：负责人基本信息</li>
-					  <li><a href="#">第二步：竞赛信息</a></li>
-					  <li ><a href="#">第三步：预算信息</a></li>
+					<ol class="breadcrumb">
+						<li><a href="#">第一步：负责人基本信息</a></li>
+						<li class="active">第二步：竞赛信息</li>
+						<li><a href="#">第三步：预算信息</a></li>
 					</ol>
-					<form class="form-horizontal" role="form" style="width:65%;margin-left: 30px;"
-						method="post" action="<%=path%>/teacher/saveOne">
-						<!-- 申报人信息 -->
-						<div class="panel panel-info">
-							<div class="panel-heading">申报人信息</div>
+					<form class="form-horizontal" role="form"
+						style="width:65%;margin-left: 30px;" method="post"
+						action="<%=path%>">
+
+						<!-- 竞赛情况 -->
+						<div class="panel panel-warning">
+							<div class="panel-heading">竞赛情况</div>
 							<div class="panel-body">
 								<div class="form-group form-group-lg">
-									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛负责人</label>
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛名称</label>
 									<div class="col-sm-10">
-									    <input type="hidden" name="teacher.teacherNo" value="1">
-										<input class="form-control" type="text" name="teacher.teacherName" value="max" readonly="readonly">
+										<input class="form-control" type="text" name="competition.comName">
 									</div>
 								</div>
 
 								<div class="form-group form-group-lg">
-									<label class="col-sm-2 control-label" for="formGroupInputLarge">所在单位</label>
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛类别</label>
 									<div class="col-sm-10">
-										<input class="form-control" type="text" name="competition.unit">
+										<input class="form-control" type="text" name="competition.level.levelName">
 									</div>
 								</div>
 
 								<div class="form-group form-group-lg">
-									<label class="col-sm-2 control-label" for="formGroupInputLarge">联系电话</label>
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">院级以上竞赛举办者</label>
 									<div class="col-sm-10">
-										<input class="form-control" type="text" name="competition.phone">
+										<input class="form-control" type="text" name="competition.host">
 									</div>
 								</div>
 
 								<div class="form-group form-group-lg">
-									<label class="col-sm-2 control-label" for="formGroupInputLarge">电子邮箱</label>
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛时间</label>
 									<div class="col-sm-10">
-										<input class="form-control" type="text" name="competition.email">
+										<input class="form-control" type="text" name="competition.time">
 									</div>
 								</div>
 
 								<div class="form-group form-group-lg">
-									<label class="col-sm-2 control-label" for="formGroupInputLarge">填表日期</label>
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛地点</label>
 									<div class="col-sm-10">
-										<input class="form-control" type="text" name="competition.date">
+										<input class="form-control" type="text" name="competition.place">
+									</div>
+								</div>
+
+								<div class="form-group form-group-lg">
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">参赛对象</label>
+									<div class="col-sm-10">
+										<input class="form-control" type="text" name="competition.object">
+									</div>
+								</div>
+
+								<div class="form-group form-group-lg">
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">人数</label>
+									<div class="col-sm-10">
+										<input class="form-control" type="text" name="competition.people">
+									</div>
+								</div>
+
+								<div class="form-group form-group-lg">
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">校外资助单位</label>
+									<div class="col-sm-10">
+										<input class="form-control" type="text" name="competition.sponsor">
+									</div>
+								</div>
+
+								<div class="form-group form-group-lg">
+									<label class="col-sm-2 control-label" for="formGroupInputLarge">竞赛简介</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="3" cols="3"
+											style="height: 200px;" name="competition.introduce"></textarea>
 									</div>
 								</div>
 
 							</div>
 						</div>
-						
 
-						<div align="center">						
-							<button type="submit" class="btn btn-primary"
-								>下一步</button>
+						<div align="center">
+							<button type="button" class="btn btn-primary" onclick="three()">下一步</button>
 						</div>
 
 					</form>

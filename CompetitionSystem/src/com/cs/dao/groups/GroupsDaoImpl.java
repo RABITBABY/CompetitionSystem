@@ -1,5 +1,7 @@
 package com.cs.dao.groups;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -32,6 +34,32 @@ public class GroupsDaoImpl implements GroupsDao{
 			return false;
 		}
 		
+	}
+
+	@Override
+	public Boolean uodateGroupsStatus(Groups groups) {
+		Session session = HibernateUtil.getSession();
+		Transaction beginTransaction = session.beginTransaction();
+		Query query = session.createQuery("update Groups set status=? where groupsNo=?");
+		query.setInteger(0, groups.getStatus());
+		query.setInteger(1, groups.getGroupsNo());
+		int executeUpdate = query.executeUpdate();
+		beginTransaction.commit();
+		if (executeUpdate>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public List<Groups> findGroupsByComId(Integer comId) {
+		Session session = HibernateUtil.getSession();
+		Transaction beginTransaction = session.beginTransaction();
+		Query query = session.createQuery("from Groups where project.comId=?");
+		query.setInteger(0, comId);
+		List<Groups> list = query.list();
+		return list;
 	}
 
 	

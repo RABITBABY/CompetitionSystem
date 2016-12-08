@@ -35,6 +35,18 @@ public class AwardsDaoImpl implements AwardsDao{
 		return awards;
 	}
 
+	@Override
+	public List<Awards> findAwardByComId(Integer comId) {
+		Session session = HibernateUtil.getSession();
+		Transaction tr = session.beginTransaction();
+		Query query = session.createQuery("from Awards where competition.comId=?");
+		query.setInteger(0,comId);
+		List<Awards> awards=query.list();
+		
+		tr.commit();
+		return awards;
+	}
+
 	
 	
 

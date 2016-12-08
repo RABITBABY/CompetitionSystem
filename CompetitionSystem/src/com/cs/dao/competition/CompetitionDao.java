@@ -50,4 +50,11 @@ public interface CompetitionDao {
      */
 	Boolean deleteCompetitionsById(Integer comId);
 	
+	/**
+	 * 新增申报表
+	 * @param competition
+	 * @return
+	 */
+	Boolean addCompetition(Competition competition);
+	
 }

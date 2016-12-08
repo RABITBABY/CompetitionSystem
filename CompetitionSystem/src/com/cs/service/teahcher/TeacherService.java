@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.cs.dao.awards.AwardsDao;
+import com.cs.dao.awards.AwardsDaoImpl;
 import com.cs.dao.competition.CompetitionDao;
 import com.cs.dao.competition.CompetitionDaoImpl;
 import com.cs.dao.groups.GroupsDao;
 import com.cs.dao.groups.GroupsDaoImpl;
 import com.cs.dao.project.ProjectDao;
 import com.cs.dao.project.ProjectDaoImpl;
+import com.cs.entity.Awards;
 import com.cs.entity.Competition;
 import com.cs.entity.Groups;
 import com.cs.entity.Project;
@@ -20,6 +23,7 @@ public class TeacherService {
 	private CompetitionDao cDao = new CompetitionDaoImpl();
 	private ProjectDao pDao=new ProjectDaoImpl();
 	private GroupsDao groupDao=new GroupsDaoImpl();
+	private AwardsDao awardsDao=new AwardsDaoImpl();
 	/**
 	 * 根据教师id查找申报表
 	 */
@@ -48,6 +52,14 @@ public class TeacherService {
 			// TODO: handle exception
 			return false;
 		}
+	}
+	
+	/**
+	 * 保存申报表
+	 */
+	public boolean addCompetition(Competition competition) {
+		Boolean addCompetition = cDao.addCompetition(competition);
+		return addCompetition;
 	}
 
 	/**
@@ -89,7 +101,8 @@ public class TeacherService {
 	 * 审核学生，修改状态
 	 */
 	public Boolean updateGroups(Groups groups){
-		Boolean result = groupDao.uodateGroups(groups);
+		groups.setStatus(2);
+		Boolean result = groupDao.uodateGroupsStatus(groups);
 		return result;
 	}
 	
@@ -109,4 +122,29 @@ public class TeacherService {
 		return list;
 	}
 
+	/**
+	 * 通过申报表的id查找到队伍。且是比赛结束的队伍
+	 */
+	public List<Groups> findGroups(Integer comId) {
+		List<Groups> groupsList = groupDao.findGroupsByComId(comId);
+		List<Groups> endList=new ArrayList<Groups>();
+		
+		for (Groups getGroups:groupsList) {
+			if (getGroups.getStatus()==4) {
+				endList.add(getGroups);
+			}
+		}
+		return endList;
+	}
+	
+	/**
+	 * 获取通过的竞赛
+	 * 竞赛管理，查看
+	 */
+	public List<Awards> findAwards(Integer comId) {
+       List<Awards> findAwardByComId = awardsDao.findAwardByComId(comId);
+	   return findAwardByComId;
+	}
+
+	
 }
